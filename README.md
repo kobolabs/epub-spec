@@ -36,6 +36,7 @@ This document contains confidential and proprietary information of Kobo Inc. Its
 24. [Fallback Statements/Switches](#fallback-statementsswitches)
 25. [ePub Previews](#epub-previews)
 26. [Tables](#tables)
+27. [Limitations and Maximums](#limitations-and-maximums)
 27. [Support Grid] (#support-grid)
 28. [Questions?](#still-have-questions)
 
@@ -344,7 +345,7 @@ Publishers can also upload custom previews by using the naming convention ISBN_p
  
 Sometimes tables wider than four columns may not be readable in reflowable ePub files, particularly on eInk devices. Content producers adding tables with more than four columns are advised to test their content on all Kobo reading platforms. Likewise, when HTML tables do not render as intended, they can reformat or capture the tables as high-resolution images.
  
-Limitations and Maximums 
+### Limitations and Maximums 
  
 Kobo recommends the following limits for ePub file and component size. Files exceeding these sizes will not necessarily fail to load to the Kobo store. Moreover, large files that successfully load to the store will not degrade app performance. Larger files will simply take longer to download to users’ devices and use more memory.
  
