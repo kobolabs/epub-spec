@@ -5,9 +5,6 @@ What’s in this Document:
 * Features of the five Kobo reading platforms.
 * Recommendations on file production and testing for content creators. 
  
- 
-### Disclosure and Confidentiality
-This document contains confidential and proprietary information of Kobo Inc. Its receipt or possession does not convey any ownership rights therein, or any rights to reproduce or disclose its contents or to manufacture, use, or sell it or anything it may describe. Reproduction, disclosure, or use without specific written authorization of Kobo Inc. is strictly forbidden. Kobo Inc. reserves the right to update this document without notice to its client vendors unless otherwise agreed to.
 
 ### Table of Contents
 
