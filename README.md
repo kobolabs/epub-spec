@@ -125,6 +125,8 @@ Kobo encourages the testing of content on all its reading platforms. However, si
 3. Select the files on the device that you want to import. (The Kobo app will scan all the files on your device that it can import. You may not be able to transfer files via USB depending on the specific Windows 8 device and may need to transfer them by OneDrive, Dropbox, email or some other method instead.)
 4. Select “Open” and wait for the files to load into your library.
 
+(Sideloading is not yet supported on the Kobo app for Windows 8 phones.)
+
 ### Digital Rights Management (DRM)
  
 ePubs loaded to the Kobo store are protected by Kobo DRM. Kobo can turn the DRM off at the publisher-level, when publishers make a request to the Publisher Operations team.
