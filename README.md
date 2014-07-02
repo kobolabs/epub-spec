@@ -63,7 +63,6 @@ Android:
 eInk:
 * Aura
 * Aura HD
-* Aura HD
 * Glo
 
 ### Earlier Kobo Devices
@@ -169,29 +168,33 @@ When an OPF-spine item is not listed in the TOC.ncx, the Kobo CMS will create a 
  
 The hidden attribute can be used to prevent the ToC listing from appearing in the ePub body while still displaying in the ToC menu. ToC menus on Kobo platforms support nesting up to three elements deep.
 
+Kobo does not require a specific naming convention for the .ncx or .html/.xhtml file, the content creator can name the file as they choose ([filename].ncx, [filename].html). Please note the file naming suggestions provided in the [OPF] (#OPF) section. 
+
 ### OPF
  
-The Kobo CMS reads the external metadata provided by the publisher. So most fields in the metadata section of the OPF file are not read. The one exception is the <dc:identifier>. It should contain the eBook ISBN, also supplied in the external metadata. However, if this field does not contain the eBook ISBN, it must be in the ePub file name.
+The Kobo CMS reads the external metadata provided by the publisher. So most fields in the metadata section of the OPF file are not read. The one exception is the <dc:identifier>. It should contain the eBook ISBN, also supplied in the external metadata. However, if this field does not contain the eBook ISBN, it must be in the ePub file name. Content creators are also advised that the <dc:identifier> in the OPF should be indentical to the identifier in the .ncx file.
  
 Kobo uses external metadata files to populate the various metadata fields on the Kobo website. The ISBN in the <dc: identifier> field in the OPF file matches the ePub to the external metadata entry. If there is no ISBN in the <dc: identifier> tab, Kobo looks for the ISBN in the ePub filename. The ISBN from the external metadata must match either the <dc: identifier> field or the ePub file name.
  
+The OPF file can be named however the content creator chooses ([filename].opf), but please note the file naming conventions suggested below. 
+ 
 **Content creators are advised to use [tags for manifest items](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-item-property-values)**, specifically the cover tag. Some of these are read across Kobo’s reading platforms and future developments will be able to take advantage of properly tagged items.
  
-**Special characters and spaces should not be used** for file names within an ePub. This will result in the naming inconsistencies with the items listed in the OPF manifest. Special characters are not letters or numbers (ex: # or ?).
+**Special characters and spaces should not be used** for file names within an ePub. This will result in the naming inconsistencies with the items listed in the OPF manifest. Special characters are not letters or numbers (ex: # or ?). 
 
 ### Supported Fonts
  
-TTF and OTF font types are fully supported on Kobo. Other font types are not supported as per the ePub spec.
- 
+TTF, OTF, and WOFF fonts are supported by all of our platforms with the exception of Windows8. For a detailed breakdown of our font support by platform, check ([EPUBTEST.org]http://epubtest.org/results). 
+
 **Font customization options available to Kobo users** on each reading platform:
  
-**Android:** Droid Sans Serif, Droid Serif.
+**Android:** Droid Sans Serif, Droid Serif
  
-**Desktop:** A-OTF Gothic MB101 Pr6N R, A-OTF Ryumin PR6N R-KL, Arial, Ariel Narrow, Arial Unicode MS, Calibri, Calibri Light, Cambria, Cambria Math, Constantia, DFKai-SB, Georgia, KaiTi, Lucida Sans, Palatino Linotype, Meiryo, Meiryo UI, MS Gothic, MS Mincho, MS PGothic, MS PMincho, SimHei, Times New Roman, Tahoma, Trebuchet MS.
+**Desktop:** A-OTF Gothic MB101 Pr6N R, A-OTF Ryumin PR6N R-KL, Arial, Ariel Narrow, Arial Unicode MS, Calibri, Calibri Light, Cambria, Cambria Math, Constantia, DFKai-SB, Georgia, KaiTi, Lucida Sans, Palatino Linotype, Meiryo, Meiryo UI, MS Gothic, MS Mincho, MS PGothic, MS PMincho, SimHei, Times New Roman, Tahoma, Trebuchet MS
  
-**eInk:** Amasis, Avenir Next, Caecilia, Georgia, Gill Sans, Kobo Nickel, Malabar, Gothic, Ryumin, [Dyslexie](http://www.dyslexiefont.com), [OpenDyslexic](http://opendyslexic.org/) (the last two are optimized for readers with dyslexia).
+**eInk:** Amasis, Avenir Next, Caecilia, Georgia, Gill Sans, Kobo Nickel, Malabar, Gothic, Ryumin, Dyslexie, OpenDyslexic ([optimized for dyslexic readers](http://opendyslexic.org/))
  
-**iOS:** Avenir, Baskerville, Cochin, Georgia, Helvetica, Optima, Palatino, Trebuchet, Verdana.
+**iOS:** Avenir, Baskerville, Cochin, Georgia, Helvetica, Optima, Palatino, Trebuchet, Verdana
  
 **Windows 8:** Cambria, Calibri, Georgia, SegoeUI, Times New Roman, Trebuchet MS, Verdana.
 
@@ -366,5 +369,7 @@ The following table lists features supported by at least one Kobo platform but n
 ### Still have questions? 
  
 Learn more about Kobo’s ePub support at [epubtest.org](http://epubtest.org/). It’s categorized into required and optional features. 
+
+If you encounter any rendering issues you'd like to inform us of, email us at renderingissues@kobo.com. Please provide as much detail as possible, including app version, device, and screenshots if possible. 
  
 Or email questions to pubops@kobo.com, including “ePub Spec” and the section title related to your query in the subject line.
