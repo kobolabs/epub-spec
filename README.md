@@ -370,6 +370,11 @@ The following table lists features supported by at least one Kobo platform but n
  
 Learn more about Kobo’s ePub support at [epubtest.org](http://epubtest.org/). It’s categorized into required and optional features. 
 
-If you encounter any rendering issues you'd like to inform us of, email us at renderingissues@kobo.com. Please provide as much detail as possible, including app version, device, and screenshots if possible. 
- 
-Or email questions to pubops@kobo.com, including “ePub Spec” and the section title related to your query in the subject line.
+If you encounter any rendering issues you can bring them to our attention at renderingissues@kobo.com. Please provide as much detail as possible, including app version, device, and screenshots if possible. Any comments or concerns about the documentation above can be submitted directly via Github comments. Immediate responses to all emails and comments cannot be guaranteed but all feedback related to documentation and content rendering is appreciated.
+
+If you are already configured as a publisher or distributor with Kobo and have a questions concerning content management (metadata or ePub uploads, pricing, pre-orders etc.) you can follow up with your contact on the Publisher Operations team.
+
+If you are a small publisher or a self-published author and would like to sell your content through Kobo you can do so through [Kobo Writing Life](http://www.kobo.com/writinglife).
+
+
+
