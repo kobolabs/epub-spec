@@ -310,7 +310,7 @@ Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.ht
 
 ### Fallback Statements/Switches 
  
-The Desktop, eInk and iOS platforms support ePub switch statements. In addition the Desktop and eInk platforms support fallback statements in the manifest. Further details on fallback content and stataments can be found in the [IDPF spec](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-fallback-processing-flow). As some devices and apps do not yet or cannot support audio/video, JavaScript, MathML, or other “enhanced” elements it is recommended that ePubs with these elements use fallback statements to ensure that they are accessible to readers. ePubs that make proper use of switches and fallback statements will be able to take advantage of future development for fallback statements on the Android and Windows 8 platforms.
+The Desktop, eInk and iOS platforms support ePub switch statements. In addition the Desktop and eInk platforms support fallback statements in the manifest. Further details on fallback content and statements can be found in the [IDPF spec](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-fallback-processing-flow). As some devices and apps do not yet or cannot support audio/video, JavaScript, MathML, or other “enhanced” elements it is recommended that ePubs with these elements use fallback statements to ensure that they are accessible to readers. ePubs that make proper use of switches and fallback statements will be able to take advantage of future development for fallback statements on the Android and Windows 8 platforms.
  
 For example:
  
