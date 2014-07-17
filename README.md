@@ -306,11 +306,11 @@ Kobo’s Android platform supports JavaScript for fixed-layout ePubs. Kobo’s i
  
 ### MathML is Supported on iOS, elnk, and Desktop platforms
  
-Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android or Windows 8 platforms. Kobo recommends using [fallback statements](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#elemdef-switch) in ePubs with MathML components to ensure a comprehensible reading experience across platforms.
+Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android or Windows 8 platforms. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and Windows 8 devices or else use images rather than MathML for the mathematical content.
 
 ### Fallback Statements/Switches 
  
-All Kobo platforms read fallback statements as outlined in the [IDPF spec](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-fallback-processing-flow). However, some devices and apps do not yet or cannot support audio/video, JavaScript, MathML or other “enhanced” elements. It is strongly recommended that ePubs with these elements use fallback statements to ensure that they are accessible to readers.
+The Desktop, eInk and iOS platforms support epub switch statements. In addition the Desktop and eInk platforms support fallback statements in the manifest. Further details on fallback content and stataments can be found in the [IDPF spec](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-fallback-processing-flow). As some devices and apps do not yet or cannot support audio/video, JavaScript, MathML or other “enhanced” elements it is recommended that ePubs with these elements use fallback statements to ensure that they are accessible to readers. ePubs that make proper use of fallback statements will be able to take advantage of future development for fallback statements on the Android and Windows 8 platforms.
  
 For example:
  
@@ -358,13 +358,13 @@ Kobo recommends the following limits for ePub file and component size. Files exc
 
 The following table lists features supported by at least one Kobo platform but not uniformly supported across all platforms. Features not listed here are either supported across all platforms or not supported on any platforms.
 
-| Platform | MathML | SMIL | JavaScript | CSS Animations | Audio/Video |
-|----------|--------|------|------------|----------------|-------------|
-| Android  | N      | Y    | Y          | Y              | Y           |
-| Desktop  | Y      | N    | Y          | Y              | N           |
-| eInk     | Y      | N    | Y          | Y              | N           |
-| iOS      | Y      | Y    | Y          | Y              | Y           |
-| Windows8 | N      | N    | N          | N              | N           |
+| Platform  | MathML | SMIL | JavaScript | CSS Animations | Audio/Video |
+|-----------|--------|------|------------|----------------|-------------|
+| Android   | N      | Y    | Y          | Y              | Y           |
+| Desktop   | Y      | N    | Y          | Y              | N           |
+| eInk      | Y      | N    | Y          | Y              | N           |
+| iOS       | Y      | Y    | Y          | Y              | Y           |
+| Windows 8 | N      | N    | N          | N              | N           |
 
 ### Still have questions? 
  
@@ -372,7 +372,7 @@ Learn more about Kobo’s ePub support at [epubtest.org](http://epubtest.org/). 
 
 If you encounter any rendering issues you can bring them to our attention at renderingissues@kobo.com. Please provide as much detail as possible, including app version, device, and screenshots if possible. Any comments or concerns about the documentation above can be submitted directly via Github comments. Immediate responses to all emails and comments cannot be guaranteed but all feedback related to documentation and content rendering is appreciated.
 
-If you are already configured as a publisher or distributor with Kobo and have a questions concerning content management (metadata or ePub uploads, pricing, pre-orders etc.) you can follow up with your contact on the Publisher Operations team.
+If you are already configured as a publisher or distributor with Kobo and have a questions concerning content management (metadata or ePub uploads, pricing, pre-orders, etc.) you can follow up with your contact on the Publisher Operations team.
 
 If you are a small publisher or a self-published author and would like to sell your content through Kobo you can do so through [Kobo Writing Life](http://www.kobo.com/writinglife).
 
