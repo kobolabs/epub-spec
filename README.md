@@ -218,7 +218,7 @@ Kobo is currently working to add built-in fonts to the eInk and Android-reading 
 
 ### Footnotes/Endnotes Are Fully Supported Across Kobo Platforms
  
-Users of the eInk and iOS platforms see a pop-up text box containing a footnote or endnote’s text. They can also navigate to the HTML section with the content. All other platforms simply link the user to the HTML section with the reference text.
+Users of the eInk and iOS platforms (starting with the upcoming 7.3 update) see a pop-up text box containing a footnote or endnote’s text. They can also navigate to the HTML section with the content. All other platforms simply link the user to the HTML section with the reference text.
  
 It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute). This way Kobo platforms can interpret them correctly.
  
