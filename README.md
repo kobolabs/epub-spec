@@ -303,6 +303,20 @@ Windows 8 does not currently support embedded audio and video. Kobo eInk devices
 ### JavaScript Support
  
 Kobo’s Android platform supports JavaScript for fixed-layout ePubs. Kobo’s iOS platform supports JavaScript for both reflowable and FXL ePubs. ePubs with JavaScript should contain fallback statements. This way, platforms that do not support JavaScript can still produce a coherent reading experience. Thorough testing on all platforms is strongly recommended to ensure that fallback as well as JavaScript content renders correctly.
+
+**Disabling Menu Activation for Interactive Elements**
+
+Taps in book content (on elements other than links) are passed up to the Kobo reading apps in order to trigger menus and other reading system interactions. To avoid having your interactive elements trigger unrelated reading system functionality JavaScript files must contain event listeners for both _click_ and _touchend_ (or _touchstart_) events, and that both listener functions call [preventDefault()](http://www.w3schools.com/jquery/event_preventdefault.asp) on both _click_ and _touchend_ (or _touchstart_, if you’d prefer) events. Any interactive logic will need to be implemented in the touch handler, rather than the click handler, as in the example below:
+<code><pre>exampleElement.addEventListener('click', handleClick, false);
+exampleElement.addEventListener('touchend', handleTouch, false);
+function handleClick(event) {
+	event.preventDefault();
+}
+function handleTouch(event) {
+	exampleElement.style.background="red";
+	event.preventDefault();
+}
+</code></pre>
  
 ### MathML is Supported on iOS, elnk, and Desktop platforms
  
