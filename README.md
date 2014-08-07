@@ -306,12 +306,14 @@ Kobo’s Android platform supports JavaScript for fixed-layout ePubs. Kobo’s i
 
 **Disabling Menu Activation for Interactive Elements**
 
-Taps in book content (on elements other than links) are passed up to the Kobo reading apps in order to trigger menus and other reading system interactions. To avoid having your interactive elements trigger unrelated reading system functionality JavaScript files must contain event listeners for both _click_ and _touchend_ (or _touchstart_) events, and that both listener functions call [preventDefault()](http://www.w3schools.com/jquery/event_preventdefault.asp) on both _click_ and _touchend_ (or _touchstart_, if you’d prefer) events. Any interactive logic will need to be implemented in the touch handler, rather than the click handler, as in the example below:
-<code><pre>exampleElement.addEventListener('click', handleClick, false);
+Taps in book content (on elements other than links) are passed up to the Kobo reading apps in order to trigger menus and other reading system interactions. To avoid having your interactive elements trigger unrelated reading system functionality JavaScript files must contain event listeners for both _click_ and _touchend_ (or _touchstart_) events, and both listener functions must call [preventDefault()](http://www.w3schools.com/jquery/event_preventdefault.asp) on both _click_ and _touchend_ (or _touchstart_, if you’d prefer) events. Any interactive logic will need to be implemented in the touch handler, rather than the click handler, as in the example below:
+<pre><code>exampleElement.addEventListener('click', handleClick, false);
 exampleElement.addEventListener('touchend', handleTouch, false);
+
 function handleClick(event) {
 	event.preventDefault();
 }
+
 function handleTouch(event) {
 	exampleElement.style.background="red";
 	event.preventDefault();
