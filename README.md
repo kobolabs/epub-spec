@@ -216,6 +216,14 @@ Some glyphs do not render on most fonts. In cases where creators are unable to s
  
 Kobo is currently working to add built-in fonts to the eInk and Android-reading platforms and render glyphs from all scripts correctly. The Desktop, iOS and Windows 8 platforms already contain built-in fonts that will render glyphs from all scripts.
 
+Kobo has support for right-to-left language formatting in the following areas:
+* Kobo supports the OPF spine-level [page-progression-direction](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow. 
+* Kobo supports the writing-mode CSS3 property and associated elements for vertical text layouts (LTR or RTL)
+* Kobo supports the HTML5 dir attribute
+* Kobo supports ruby text*
+
+*This support excludes the Windows 8 platform.
+
 ### Footnotes/Endnotes Are Fully Supported Across Kobo Platforms
  
 Users of the eInk and iOS platforms (starting with version 7.3) see a pop-up text box containing a footnote or endnote’s text. They can also navigate to the HTML section with the content. All other platforms simply link the user to the HTML section with the reference text.
@@ -296,13 +304,13 @@ On Android, if the image is determined to be twice as large as the screen in any
  
 Testing across platforms for ePubs with multimedia and other media overlays is recommended.
  
-Embedded audio and video is currently supported on Kobo’s iOS platform for all content, but on the Android platform for FXL content only. The next version of the Android app (5.5) will support embedded audio and video as well as JavaScript for reflowable content as well.
+Embedded audio and video is currently supported on Kobo’s iOS and Android platforms for all content. 
  
 Windows 8 does not currently support embedded audio and video. Kobo eInk devices and the desktop app do not support embedded audio and video either but will display any content included as a fallback using the [switch element](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#elemdef-switch) display instead.
  
 ### JavaScript Support
  
-Kobo’s Android platform supports JavaScript for fixed-layout ePubs. Kobo’s iOS platform supports JavaScript for both reflowable and FXL ePubs. ePubs with JavaScript should contain fallback statements. This way, platforms that do not support JavaScript can still produce a coherent reading experience. Thorough testing on all platforms is strongly recommended to ensure that fallback as well as JavaScript content renders correctly.
+Kobo’s Android and iOS platform supports JavaScript for fixed-layout and reflowable ePubs, but it is recommended not to use Javascript in reflowable content that may alter the layout of the book. Kobo's eInk and Desktop platforms have limited support for Javascript, and do not support interactive javascript elements. ePubs with JavaScript should contain fallback statements. This way, platforms that do not support JavaScript can still produce a coherent reading experience. Thorough testing on all platforms is strongly recommended to ensure that fallback as well as JavaScript content renders correctly.
 
 **Disabling Menu Activation for Interactive Elements**
 
@@ -377,8 +385,8 @@ The following table lists features supported by at least one Kobo platform but n
 | Platform  | MathML | SMIL | JavaScript | CSS Animations | Audio/Video |
 |-----------|--------|------|------------|----------------|-------------|
 | Android   | N      | Y    | Y          | Y              | Y           |
-| Desktop   | Y      | N    | Y          | Y              | N           |
-| eInk      | Y      | N    | Y          | Y              | N           |
+| Desktop   | Y      | N    | N          | Y              | N           |
+| eInk      | Y      | N    | N          | Y              | N           |
 | iOS       | Y      | Y    | Y          | Y              | Y           |
 | Windows 8 | N      | N    | N          | N              | N           |
 
