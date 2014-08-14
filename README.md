@@ -217,12 +217,12 @@ Some glyphs do not render on most fonts. In cases where creators are unable to s
 Kobo is currently working to add built-in fonts to the eInk and Android-reading platforms and render glyphs from all scripts correctly. The Desktop, iOS and Windows 8 platforms already contain built-in fonts that will render glyphs from all scripts.
 
 Kobo has support for right-to-left language formatting in the following areas:
-* Kobo supports the OPF spine-level [page-progression-direction](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow. 
+* Kobo supports the OPF spine-level [page-progression-direction](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow
 * Kobo supports the writing-mode CSS3 property and associated elements for vertical text layouts (LTR or RTL)
 * Kobo supports the HTML5 dir attribute
 * Kobo supports ruby text*
 
-*This support excludes the Windows 8 platform.
+*_This support excludes the Windows 8 platform._
 
 ### Footnotes/Endnotes Are Fully Supported Across Kobo Platforms
  
@@ -310,7 +310,7 @@ Windows 8 does not currently support embedded audio and video. Kobo eInk devices
  
 ### JavaScript Support
  
-Kobo’s Android and iOS platform supports JavaScript for fixed-layout and reflowable ePubs, but it is recommended not to use Javascript in reflowable content that may alter the layout of the book. Kobo's eInk and Desktop platforms have limited support for Javascript, and do not support interactive javascript elements. ePubs with JavaScript should contain fallback statements. This way, platforms that do not support JavaScript can still produce a coherent reading experience. Thorough testing on all platforms is strongly recommended to ensure that fallback as well as JavaScript content renders correctly.
+Kobo’s Android and iOS platforms support JavaScript for fixed-layout and reflowable ePubs, but it is recommended not to use JavaScript in reflowable content in ways that may alter the layout of the book. Kobo’s eInk and Desktop platforms have limited support for JavaScript, and do not support interactive JavaScript elements. ePubs with JavaScript should contain fallback statements. This way, platforms that do not support JavaScript can still produce a coherent reading experience. Thorough testing on all platforms is strongly recommended to ensure that fallback as well as JavaScript content renders correctly.
 
 **Disabling Menu Activation for Interactive Elements**
 
