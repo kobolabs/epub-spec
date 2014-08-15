@@ -180,7 +180,7 @@ The OPF file can be named however the content creator chooses ([filename].opf), 
  
 **Content creators are advised to use [tags for manifest items](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-item-property-values)**, specifically the cover tag. Some of these are read across Kobo’s reading platforms and future developments will be able to take advantage of properly tagged items.
  
-**Special characters and spaces should not be used** for file names within an ePub. This will result in the naming inconsistencies with the items listed in the OPF manifest. Special characters are not letters or numbers (ex: # or ?). 
+**Special characters and spaces should not be used** for file names within an ePub. This can result in naming inconsistencies with the items listed in the OPF manifest. File names containing non-alphanumeric characters are not fully supported, and their use may lead to undefined behaviour, which may be inconsistent across clients.
 
 ### Supported Fonts
  
