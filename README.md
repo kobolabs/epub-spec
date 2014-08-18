@@ -81,7 +81,9 @@ eInk:
  
 The Kobo CMS does not use a built in ePubCheck. To detect errors in ePubs, the IDPF provides both a [web validation tool](http://validator.idpf.org/) and a [desktop application](https://github.com/IDPF/epubcheck). Kobo cannot guarantee that files that fail ePubCheck will render correctly across its reading platforms. So ePubs should be validated using the most recent version of ePubCheck prior to distribution. 
  
-The Kobo Content Management System will neither reject those files that fail ePubCheck nor send reports to their publishers. However, if any rendering or performance issues harm the user experience, the files may be flagged for, and then failed in, the Kobo content QA process.
+The Kobo Content Management System will neither reject those files that fail ePubCheck nor send reports to their publishers. However, if any rendering or performance issues harm the user experience, the files may be flagged for, and then failed in, the Kobo content QA process. 
+
+Kobo recommends content creators remove any files not listed in the OPF document, as suggested by the validator. Leaving these files in the ePub can cause unexpected behaviour that may result in failing QA test results.
 
 ### Sideloading for Testing Purposes
  
@@ -115,7 +117,7 @@ Kobo encourages the testing of content on all its reading platforms. However, si
 3. Select the Kobo app from the box on the left.
 4. Drag the ePub to the box in the bottom right of your iTunes window. The file will then automatically import and display in your library.
 
-(The Kobo iOS app is registered among apps that open epub and pdf files. Users can use the standard “open in…” menu from Safari, Dropbox, or any other app that supports it to view their files.)
+(The Kobo iOS app is registered among apps that open ePub and pdf files. Users can use the standard “open in…” menu from Safari, Dropbox, or any other app that supports it to view their files.)
  
 **Windows 8**
 
@@ -236,7 +238,7 @@ The iOS footnote pop-up renders more than just plain text, including images and 
  
 Kobo supports the [official ePub3 FXL spec](http://www.idpf.org/epub/fxl/). This includes such features as [Right-to-Left Reading](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction), SMIL/Read Along, and various rendition-spread options. The [rendition:layout property](http://www.idpf.org/epub/fxl/#property-layout) in the OPF determines the layout of the content and is read by all of Kobo’s platforms.
  
-Kobo platforms also read the field <option name=”fixed-layout”>true/false</option> to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub.
+Kobo platforms also read the field <option name=”fixed-layout”>true/false</option> to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
  
 All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are also supported. However rendition-spread properties are only read at the book level. Future versions of Kobo’s reading platforms may read the rendition:spread and rendition:layout properties at the spine level.
  
