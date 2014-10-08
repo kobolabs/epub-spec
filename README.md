@@ -1,4 +1,4 @@
-# Kobo ePub Specifications
+# Kobo ePub Guidelines
 What’s in this Document:
  
 * Elements of the ePub spec that Kobo does and does not support.
