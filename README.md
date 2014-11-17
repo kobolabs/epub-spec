@@ -239,8 +239,8 @@ The iOS footnote pop-up renders more than just plain text, including images and 
 Kobo supports the [official ePub3 FXL spec](http://www.idpf.org/epub/fxl/). This includes such features as [Right-to-Left Reading](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction), SMIL/Read Along, and various rendition-spread options. The [rendition:layout property](http://www.idpf.org/epub/fxl/#property-layout) in the OPF determines the layout of the content and is read by all of Kobo’s platforms.
  
 Kobo platforms also read the field <option name=”fixed-layout”>true/false</option> to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
- 
-All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are also supported. However rendition-spread properties are only read at the book level. Future versions of Kobo’s reading platforms may read the rendition:spread and rendition:layout properties at the spine level.
+
+All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are on the Android, Desktop and eInk reading platforms. The iOS platform supports the properties "Both", "None" and "Auto" but not "Portrait" or "Landscape". The Windows 8 platform supports the properties "None" and "Auto" but not "Both", "Portrait" or "Landscape". Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the rendition:spread and rendition:layout properties at the spine level.
  
 **Pinch and zoom gestures** are present on the Android, iOS, and Windows 8 reading platforms. Zooming is possible on eInk devices by accessing the reading menu and zooming. Zooming is not supported on the Kobo Desktop app.
  
