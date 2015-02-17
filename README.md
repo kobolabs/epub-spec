@@ -100,7 +100,7 @@ Kobo encourages the testing of content on all its reading platforms. However, si
 
 1. Open the Kobo Desktop app.
 2. Make sure you have [Adobe Digital Editions](http://www.adobe.com/ca/products/digital-editions/download.html) installed. 
-3. Select the Library tab and press CTRL+Shift+S on Windows or ⌘+SHIFT+S on a Mac. This will display any files in the “My Digital Editions” folder on your computer with the extension .kepub.epub or .fxl.kepub.epub
+3. Select the Library tab in Kobo Desktop and press CTRL+Shift+S on Windows or ⌘+SHIFT+S on a Mac. This will display any files in the “My Digital Editions” folder on your computer with the extension .kepub.epub or .fxl.kepub.epub
  
 **Android**
 
