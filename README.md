@@ -19,23 +19,24 @@ What’s in this Document:
 10. [Scalable Vector Graphics (SVG)](#scalable-vector-graphics-svg)
 11. [Table of Contents (ToC)](#table-of-contents-toc)
 12. [OPF](#opf)
-13. [Supported Fonts](#supported-fonts)
-14. [Obfuscated Fonts](#obfuscated-fonts-are-not-currently-supported-by-the-kobo-cms)
-15. [Embedded Fonts](#embedded-fonts-can-be-selected-by-users)
-16. [Languages](#languages-other-than-english)
-17. [Footnotes/Endnotes](#footnotesendnotes-are-fully-supported-across-kobo-platforms)
-18. [Fixed Layout](#fixed-layout-fxl-support)
-19. [SMIL](#kobo-supports-smil)
-20. [Image-Based FXL Reader](#image-based-fxl-reader)
-21. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
-22. [JavaScript Support](#javascript-support)
-23. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
-24. [Fallback Statements/Switches](#fallback-statementsswitches)
-25. [ePub Previews](#epub-previews)
-26. [Tables](#tables)
-27. [Limitations and Maximums](#limitations-and-maximums)
-27. [Support Grid] (#support-grid)
-28. [Questions?](#still-have-questions)
+13. [CSS](#css)
+14. [Supported Fonts](#supported-fonts)
+15. [Obfuscated Fonts](#obfuscated-fonts-are-not-currently-supported-by-the-kobo-cms)
+16. [Embedded Fonts](#embedded-fonts-can-be-selected-by-users)
+17. [Languages](#languages-other-than-english)
+18. [Footnotes/Endnotes](#footnotesendnotes-are-fully-supported-across-kobo-platforms)
+19. [Fixed Layout](#fixed-layout-fxl-support)
+20. [SMIL](#kobo-supports-smil)
+21. [Image-Based FXL Reader](#image-based-fxl-reader)
+22. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
+23. [JavaScript Support](#javascript-support)
+24. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
+25. [Fallback Statements/Switches](#fallback-statementsswitches)
+26. [ePub Previews](#epub-previews)
+27. [Tables](#tables)
+28. [Limitations and Maximums](#limitations-and-maximums)
+29. [Support Grid] (#support-grid)
+30. [Questions?](#still-have-questions)
 
 ### ePub Versions Kobo Supports
  
@@ -183,6 +184,27 @@ The OPF file can be named however the content creator chooses ([filename].opf), 
 **Content creators are advised to use [tags for manifest items](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-item-property-values)**, specifically the cover tag. Some of these are read across Kobo’s reading platforms and future developments will be able to take advantage of properly tagged items.
  
 **Special characters and spaces should not be used** for file names within an ePub. This can result in naming inconsistencies with the items listed in the OPF manifest. File names containing non-alphanumeric characters are not fully supported, and their use may lead to undefined behaviour, which may be inconsistent across clients.
+
+### CSS
+
+**Background Colors**
+
+Kobo recommends that publishers avoid specifying white as a background colour in the CSS for their ePubs. This can cause text to become unreadable in Night Mode on the Kobo Android app as the text and the background will both display as white. This recommendation only applies to reflowable content as Night Mode cannot be turned on while reading Fixed Layout content.
+
+`.c5 {
+  background: #fff
+  }`
+
+**Small Caps**
+
+In order to structure Small Caps that will display correctly on Kobo's reading platforms content creators must use the CSS property "font-variant".
+
+Ex.
+`p.sc {
+   font-variant: small-caps;
+}`
+
+The property "font-size" is often used incorrectly to format Small Caps and can result in disproportionate text sizing depending on the app/device being used and the font settings chosen by the user. The impact is particularly noticable when the value used for this property is set to "x-small" or "small". Content creators are also advised to use a font that contains Small Caps glyphs for optimal rendering
 
 ### Supported Fonts
  
