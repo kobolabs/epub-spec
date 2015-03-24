@@ -204,7 +204,7 @@ Ex.
    font-variant: small-caps;
 }`
 
-The property "font-size" is often used incorrectly to format Small Caps and can result in disproportionate text sizing depending on the app/device being used and the font settings chosen by the user. The impact is particularly noticeable when the value used for this property is set to "x-small" or "small". Content creators are also advised to use a font that contains Small Caps glyphs for optimal rendering
+The property "font-size" is often used incorrectly to format Small Caps and can result in disproportionate text sizing depending on the app/device being used and the font settings chosen by the user. The impact is particularly noticeable when the value used for this property is set to "x-small" or "small". Content creators are also advised to use a font that contains Small Caps glyphs for optimal rendering.
 
 ### Supported Fonts
  
