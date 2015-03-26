@@ -232,7 +232,7 @@ When opening a new book, the font that displays is the one chosen by the user fo
 
 If the reading experience of a book requires that the embedded font be used, consider adding a note to the front matter. Instruct the user to select the “Document Default” font option. 
 
-**To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all fixed layout ePubs. If fonts are not embedded and specified, the reading platform defaults to Times. Fixed layout files that use the default font should be tested extensively on Kobo’s reading platforms.
+**To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all Fixed Layout ePubs. If fonts are not embedded and specified, the reading platform defaults to Times. Fixed Layout files that use the default font should be tested extensively on Kobo’s reading platforms.
 
 ### Languages Other Than English
  
@@ -274,6 +274,10 @@ FXL content on Android always displays one page in portrait view.
  
 **Kobo also advises against using images where the width or height (in pixels) exceed the dimensions of the viewport**. ePubs containing images that exceed the viewport dimensions may not render correctly on the eInk platform.
 
+**Kobo Advises Against Overuse of Fixed Layout
+
+Content creators are advised against producing Fixed Layout ePubs solely for the purpose of reproducing a print layout. Text cannot be resized by users while reading Fixed Layout content and as a result small text can only be read by zooming in. This can greatly diminish the reading experience particularly on eInk devices, smartphones and Desktop applications. Fixed Layout serves comics, children's books and other categories well but is not an ideal format for text heavy content that could be displayed as reflowable content. Furthermore Fixed Layout ePubs require more in depth testing prior to distribution to ensure that they display correctly across multiple reading platforms.
+
 ### Kobo Supports SMIL
  
 [SMIL (Synchronized Multimedia Integration Language)](http://www.idpf.org/epub/30/spec/epub30-mediaoverlays.html#sec-smil-smil-elem) is supported for FXL titles on Android and iOS. Audio files must be encoded using Apple iTunes AAC-LC mp4-v2 codec, 256 kbps.
@@ -287,13 +291,13 @@ When the rendition:spread property is set to “none” or “auto”, Android d
  
 Custom text colors for highlighting are not currently supported on Android. However, custom text colors for highlighting is possible on iOS. The iOS app uses the CSS class ‘kobo-smil-highlight’ to color highlighted text. So, by adding that class to the CSS plus a color declaration, the color of the highlighted text on the app can be customized.
 
-### Image-Based FXL reader
+### Image-Based FXL Reader
  
-The Kobo Android and iOS platforms will render FXL ePubs that meet certain criteria with an image-based fixed layout reader. This reader features significantly faster panning, zooming, and page-turns than the standard one. Designed to enhance the reading experience of comics, it works for any FXL ePubs composed entirely of images.
+The Kobo Android and iOS platforms will render FXL ePubs that meet certain criteria with an image-based Fixed Layout reader. This reader features significantly faster panning, zooming, and page-turns than the standard one. Designed to enhance the reading experience of comics, it works for any FXL ePubs composed entirely of images.
  
 **ePubs that meet the following criteria will be displayed with the image-based reader on Kobo’s iOS and Android platforms**:
 
-1. The content is fixed-layout.
+1. The content is Fixed Layout.
 2. The ePub does not contain SMIL content.
 3. An image must be available for each spine item. Spine items are inspected for images using these rules — and each spine item must contain one of the following formats:
 <ul>
@@ -336,7 +340,7 @@ Windows 8 does not currently support embedded audio and video. Kobo eInk devices
  
 ### JavaScript Support
  
-Kobo’s Android and iOS platforms support JavaScript for fixed-layout and reflowable ePubs, but it is recommended not to use JavaScript in reflowable content in ways that may alter the layout of the book. Kobo’s eInk and Desktop platforms have limited support for JavaScript, and do not support interactive JavaScript elements. ePubs with JavaScript should contain fallback statements. This way, platforms that do not support JavaScript can still produce a coherent reading experience. Thorough testing on all platforms is strongly recommended to ensure that fallback as well as JavaScript content renders correctly.
+Kobo’s Android and iOS platforms support JavaScript for Fixed Layout and reflowable ePubs, but it is recommended not to use JavaScript in reflowable content in ways that may alter the layout of the book. Kobo’s eInk and Desktop platforms have limited support for JavaScript, and do not support interactive JavaScript elements. ePubs with JavaScript should contain fallback statements. This way, platforms that do not support JavaScript can still produce a coherent reading experience. Thorough testing on all platforms is strongly recommended to ensure that fallback as well as JavaScript content renders correctly.
 
 **Disabling Menu Activation for Interactive Elements**
 
