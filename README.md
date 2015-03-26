@@ -88,7 +88,9 @@ Kobo recommends content creators remove any files not listed in the OPF document
 
 ### Sideloading for Testing Purposes
  
-Kobo encourages the testing of content on all its reading platforms. However, sideloading is currently supported on eInk, Android and iOS. Here’s how to sideload content:
+Kobo encourages the testing of content on all its reading platforms by sideloading. Content should display identically whether sideloaded or downloaded to a device from the Kobo store. Instances where this is not the case can be reported to renderingissues@kobo.com and the epub in question will be logged for investigation. The only present exception applies to ePubs containing obfuscated fonts which will display correctly when sideloaded but will not pass content QA once processed - see [Font Obfuscation] (https://github.com/kobolabs/epub-spec/blob/master/README.md#obfuscated-fonts-are-not-currently-supported-by-the-kobo-cms).
+
+Here’s how to sideload content on Kobo's reading platforms:
  
 **eInk**
 
