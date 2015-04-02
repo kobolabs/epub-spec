@@ -360,6 +360,13 @@ Testing across platforms for ePubs with multimedia and other media overlays is r
 Embedded audio and video is currently supported on Kobo’s iOS and Android platforms for all content. 
  
 Windows 8 does not currently support embedded audio and video. Kobo eInk devices and the desktop app do not support embedded audio and video either but will display any content included as a fallback using the [switch element](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#elemdef-switch) display instead.
+
+**Autoplay Functionality is not currently supported**
+
+Kobo's platforms do not currently support autoplay functionality for embedded media. Elements using this tag will display but will not begin playback without user interaction.
+
+Ex. <br>
+`<audio class="myaudio" src="sounds/audio.mp3" autoplay="autoplay">Sample text.</audio>`
  
 ### JavaScript Support
  
