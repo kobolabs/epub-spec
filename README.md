@@ -208,6 +208,27 @@ Ex.
 
 The property "font-size" is often used incorrectly to format Small Caps and can result in disproportionate text sizing depending on the app/device being used and the font settings chosen by the user. The impact is particularly noticeable when the value used for this property is set to "x-small" or "small". Content creators are also advised to use a font that contains Small Caps glyphs for optimal rendering.
 
+**Inline Styling**
+
+Kobo strongly advises against the use of inline styling for all (reflowable and Fixed Layout). Inline style elements may not be rendered as intended across Kobo's reading platforms. Styling elements should be contained within CSS.
+
+For example page breaks should be formatted as follows.
+
+HTML:<br>
+`<p class="normal text">Sample text before page break</p>`<br>
+`<p class="normal text2">Sample text after page break</p>`<br>
+CSS:<br>
+`@normal text {
+    footer {page-break-after: always;}
+}`
+
+Whereas a page break formatted in this manner may not display across all of Kobo's reading platforms.
+
+HTML:<br>
+`<p class="normal text">Sample text before page break</p>`<br>
+`<code><div style="page-break-before:always;"></div>`<br>
+`<p class="normal text2">Sample text after page break</p>`<br>
+
 ### Supported Fonts
  
 TTF, OTF, and WOFF fonts are supported by all of our platforms with the exception of Windows 8. For a detailed breakdown of our font support by platform, check [EPUBTEST.org](http://epubtest.org/results). 
@@ -276,7 +297,7 @@ FXL content on Android always displays one page in portrait view.
  
 **Kobo also advises against using images where the width or height (in pixels) exceed the dimensions of the viewport**. ePubs containing images that exceed the viewport dimensions may not render correctly on the eInk platform.
 
-**Kobo Advises Against Overuse of Fixed Layout
+**Kobo Advises Against Overuse of Fixed Layout**
 
 Content creators are advised against producing Fixed Layout ePubs solely for the purpose of reproducing a print layout. Text cannot be resized by users while reading Fixed Layout content and as a result small text can only be read by zooming in. This can greatly diminish the reading experience particularly on eInk devices, smartphones and Desktop applications. Fixed Layout serves comics, children's books and other categories well but is not an ideal format for text heavy content that could be displayed as reflowable content. Furthermore Fixed Layout ePubs require more in depth testing prior to distribution to ensure that they display correctly across multiple reading platforms.
 
