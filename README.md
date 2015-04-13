@@ -41,11 +41,21 @@ What’s in this Document:
 ### ePub Versions Kobo Supports
  
 Kobo supports ePub, the universal open standard eBook format maintained by the Independent Digital Publishing Forum [(IDPF)](http://idpf.org/epub). The current version is ePub 3 but Kobo still supports its predecessor, ePub 2.0.1.
+
+Any ePub file sent to Kobo will be made available on all of Kobo's reading platforms with the exception of ePub2 Fixed Layout content which is not available on Desktop or eInk:
+
+| Platform  | ePub2 Reflowable | ePub2 FXL | ePub3 Reflowable | ePub3 FXL |
+|-----------|------------------|-----------|------------------|-----------|
+| Android   | Y                | Y         | Y                | Y         |
+| Desktop   | Y                | N         | Y                | Y         |
+| eInk      | Y                | N         | Y                | Y         |
+| iOS       | Y                | Y         | Y                | Y         |
+| Windows 8 | Y                | Y         | Y                | Y         |
  
 The ePub 3.0 spec is based on HTML5 and CSS3, adhering to the most recent versions. Content creators are advised to review the [HTML5 and CSS3 reference profiles](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#references) because changes to them could impact file production. 
  
 Kobo supports a subset of elements from the ePub 3.0 spec. The following covers which elements are supported across Kobo’s reading platforms.
- 
+
 ### Kobo Serves Content to Users On These 5 Reading Platforms 
  
 1. eInk/EPD — Kobo eInk devices (Aura, Glo, Touch) 
