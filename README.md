@@ -72,9 +72,11 @@ Android:
 * Arc 10 HD
 
 eInk:
+* Glo HD
+* Aura H2O
 * Aura
 * Aura HD
-* Glo
+
 
 ### Earlier Kobo Devices
  
@@ -83,6 +85,7 @@ Android:
 * Vox
 
 eInk:
+* Glo
 * Kobo Mini
 * Touch
 * Kobo WiFi
