@@ -159,10 +159,10 @@ Kobo reading platforms support the core image types outlined in the [IDPF spec](
 All images should use the RGB color model, and not CMYK. Encapsulated PostScript (EPS) images are not supported on Kobo.
  
 **The advised maximum size for all image types is 3 MB.** ePubs with larger images are still accepted and those images will not cause Kobo apps and devices to crash. However, ePubs with images all under this limit perform optimally across platforms.
+
+**Image dimensions should be set in percentages instead of pixels in the CSS for reflowable content.** Images with dimensions set by pixels may stretch depending on the orientation, device and user settings. Kobo reading platforms insert max-width and max-height CSS for images and videos to ensures that they are not split over multiple pages
  
-**Image widths in the Cascading Style Sheets (CSS) should be set in pixels instead of percentages.** Images with widths set by percentages may stretch in landscape orientation on tablets or other devices. Kobo reading platforms insert max-width and max-height CSS for images and video. This ensures they’re not split over multiple pages.
- 
-For a full screen image view on the Android and iOS platforms, users can long press images in reflowable ePubs. Once in full-screen view, users will be able to pinch and zoom.
+**For a full screen image view** on the Android and iOS platforms, users can long press images in reflowable ePubs. Once in full-screen view, users will be able to pinch and zoom. This can also be acheived on eInk devices (running version 3.14 or later) by double tapping images.
 
 ### Cover Images
  
