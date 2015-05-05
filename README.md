@@ -223,24 +223,24 @@ The property "font-size" is often used incorrectly to format Small Caps and can 
 
 **Inline Styling**
 
-Kobo strongly advises against the use of inline styling for all (reflowable and Fixed Layout). Inline style elements may not be rendered as intended across Kobo's reading platforms. Styling elements should be contained within CSS.
+Kobo strongly advises against the use of inline styling for all content types (reflowable and Fixed Layout). Inline style elements may not be rendered as intended across Kobo's reading platforms. Styling elements should be contained within CSS.
 
-For example page breaks should be formatted as follows.
+For example, text should be formatted as follows: 
 
 HTML:<br>
-`<p class="normal text">Sample text before page break</p>`<br>
-`<p class="normal text2">Sample text after page break</p>`<br>
+`<p class="text">Sample text.</p>`<br>
+`<p class="text">Sample text, part two.</p>`<br>
 CSS:<br>
-`@normal text {
-    footer {page-break-after: always;}
+`p.text {
+    margin: 0;
+    text-size: 10px;
 }`
 
-Whereas a page break formatted in this manner may not display across all of Kobo's reading platforms.
+Not like this:
 
 HTML:<br>
-`<p class="normal text">Sample text before page break</p>`<br>
-`<code><div style="page-break-before:always;"></div>`<br>
-`<p class="normal text2">Sample text after page break</p>`<br>
+`<p style="margin: 0;text-size: 10px;">Sample text.</p>`<br>
+`<p style="margin: 0;text-size: 10px;">Sample text, part two.</p>`<br>
 
 ### Supported Fonts
  
