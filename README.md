@@ -288,11 +288,9 @@ Kobo has support for right-to-left language formatting in the following areas:
 
 ### Footnotes/Endnotes Are Fully Supported Across Kobo Platforms
  
-Users of the eInk and iOS platforms (starting with version 7.3) see a pop-up text box containing a footnote or endnote’s text. They can also navigate to the HTML section with the content. All other platforms simply link the user to the HTML section with the reference text.
+Footnotes and endnotes on the eInk (with the exception of the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows 8 platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
  
-It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute). This way Kobo platforms can interpret them correctly.
- 
-The iOS footnote pop-up renders more than just plain text, including images and tappable links. Simply place all the contents of the footnote within the element being linked to.
+It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute) for footnotes and endnotes. Footnotes and endnotes formatted with the proper attribute type will always display as pop-ups on the eInk and iOS platforms. Footnotes and endnotes formatted using regular hyperlinks should but may not always display as pop-ups.
 
 ### Fixed Layout (FXL) Support
  
