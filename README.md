@@ -259,7 +259,8 @@ TTF, OTF, and WOFF fonts are supported by all of our platforms with the exceptio
 **Windows 8:** Cambria, Calibri, Georgia, SegoeUI, Times New Roman, Trebuchet MS, Verdana.
 
 ### Obfuscated Fonts Are Not Currently Supported by the Kobo CMS
-Non-sideloaded titles with obfuscated fonts will display the reading platform’s default font instead of the intended font. As a result they may fail content QA. However, work is underway at Kobo to support obfuscated fonts and render these titles correctly.
+Non-sideloaded titles with obfuscated fonts will display the reading platform’s default font instead of the intended font. As a result all Fixed Layout titles with obfuscated fonts are likely to fail QA. However, work is underway at Kobo to support obfuscated fonts and render these titles correctly.
+DRM is applied to all ePubs sold through Kobo unless the account/publisher sending the content elects to have Kobo distribute their ePubs without DRM. As a result Kobo users will not be able to extract fonts from ePubs with DRM even when the embedded fonts are not obfuscated.
 
 ### Embedded Fonts Can Be Selected By Users 
 When opening a new book, the font that displays is the one chosen by the user for their previous open book. For an embedded font, users can select “Document Default” or “Publisher Default” from the font options. The exception is FXL content for which users cannot choose their font. Fonts in FXL content are determined by the CSS in the ePub.
