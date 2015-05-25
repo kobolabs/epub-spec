@@ -280,10 +280,15 @@ Some glyphs do not render on most fonts. In cases where creators are unable to s
 Kobo is currently working to add built-in fonts to the eInk and Android-reading platforms and render glyphs from all scripts correctly. The Desktop, iOS and Windows 8 platforms already contain built-in fonts that will render glyphs from all scripts.
 
 Kobo has support for right-to-left language formatting in the following areas:
-* Kobo supports the OPF spine-level [page-progression-direction](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow
 * Kobo supports the writing-mode CSS3 property and associated elements for vertical text layouts (LTR or RTL)
 * Kobo supports the HTML5 dir attribute
 * Kobo supports ruby text*
+* * Kobo supports the OPF spine-level [page-progression-direction](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow ex.
+	`<spine toc="ncx" page-progression-direction="rtl">`
+		`<itemref idref="chapter1" />`
+		`<itemref idref="chapter2" />`
+		`<itemref idref="chapter3" />`
+	`</spine>`
 
 *_This support excludes the Windows 8 platform._
 
