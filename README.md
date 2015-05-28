@@ -24,19 +24,20 @@ What’s in this Document:
 15. [Obfuscated Fonts](#obfuscated-fonts-are-not-currently-supported-by-the-kobo-cms)
 16. [Embedded Fonts](#embedded-fonts-can-be-selected-by-users)
 17. [Languages](#languages-other-than-english)
-18. [Footnotes/Endnotes](#footnotesendnotes-are-fully-supported-across-kobo-platforms)
-19. [Fixed Layout](#fixed-layout-fxl-support)
-20. [SMIL](#kobo-supports-smil)
-21. [Image-Based FXL Reader](#image-based-fxl-reader)
-22. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
-23. [JavaScript Support](#javascript-support)
-24. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
-25. [Fallback Statements/Switches](#fallback-statementsswitches)
-26. [ePub Previews](#epub-previews)
-27. [Tables](#tables)
-28. [Limitations and Maximums](#limitations-and-maximums)
-29. [Support Grid] (#support-grid)
-30. [Questions?](#still-have-questions)
+18. [Right to Left Page and Text Direction] (#right-to-left-page-and-text-direction)
+19. [Footnotes/Endnotes](#footnotesendnotes-are-fully-supported-across-kobo-platforms)
+20. [Fixed Layout](#fixed-layout-fxl-support)
+21. [SMIL](#kobo-supports-smil)
+22. [Image-Based FXL Reader](#image-based-fxl-reader)
+23. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
+24. [JavaScript Support](#javascript-support)
+25. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
+26. [Fallback Statements/Switches](#fallback-statementsswitches)
+27. [ePub Previews](#epub-previews)
+28. [Tables](#tables)
+29. [Limitations and Maximums](#limitations-and-maximums)
+30. [Support Grid] (#support-grid)
+31. [Questions?](#still-have-questions)
 
 ### ePub Versions Kobo Supports
  
@@ -279,16 +280,19 @@ Some glyphs do not render on most fonts. In cases where creators are unable to s
  
 Kobo is currently working to add built-in fonts to the eInk and Android-reading platforms and render glyphs from all scripts correctly. The Desktop, iOS and Windows 8 platforms already contain built-in fonts that will render glyphs from all scripts.
 
+###Right to Left Page and Text Direction
+
 Kobo has support for right-to-left language formatting in the following areas:
 * Kobo supports the writing-mode CSS3 property and associated elements for vertical text layouts (LTR or RTL)
 * Kobo supports the HTML5 dir attribute
 * Kobo supports ruby text*
 * * Kobo supports the OPF spine-level [page-progression-direction](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow ex.
-	`<spine toc="ncx" page-progression-direction="rtl">`
-		`<itemref idref="chapter1" />`
-		`<itemref idref="chapter2" />`
-		`<itemref idref="chapter3" />`
+	`<spine toc="ncx" page-progression-direction="rtl">`<br>
+		`<itemref idref="chapter1" />`<br>
+		`<itemref idref="chapter2" />`<br>
+		`<itemref idref="chapter3" />`<br>
 	`</spine>`
+The "page-progression-direction" attribute was introduced as part of the ePub3 specification. However it can be used in both ePub2 and ePub3 files for Kobo and will pass through processing and display correctly on Kobo's reading platforms in spite of flags that ePub2 files will generate in ePubCheck.
 
 *_This support excludes the Windows 8 platform._
 
