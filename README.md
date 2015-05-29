@@ -159,7 +159,7 @@ Kobo reading platforms support the core image types outlined in the [IDPF spec](
  
 All images should use the RGB color model, and not CMYK. Encapsulated PostScript (EPS) images are not supported on Kobo.
  
-**The advised maximum size for all image types is 3 MB.** ePubs with larger images are still accepted and those images will not cause Kobo apps and devices to crash. However, ePubs with images all under this limit perform optimally across platforms.
+**The advised maximum size for all image types is 5 MB.** ePubs with larger images are still accepted and those images will not cause Kobo apps and devices to crash. However, ePubs with images all under this limit perform optimally across platforms.
 
 **Image dimensions should be set in percentages instead of pixels in the CSS for reflowable content.** Images with dimensions set by pixels may stretch depending on the orientation, device and user settings. Kobo reading platforms insert max-width and max-height CSS for images and videos to ensures that they are not split over multiple screens.
  
@@ -454,9 +454,10 @@ Sometimes tables wider than four columns may not be readable in reflowable ePub 
  
 ### Limitations and Maximums 
  
-Kobo recommends the following limits for ePub file and component size. Files exceeding these sizes will not necessarily fail to load to the Kobo store. Moreover, large files that successfully load to the store will not degrade app performance. Larger files will simply take longer to download to users’ devices and use more memory.
+Kobo recommends the following limits for ePub and ePub component sizes. Files exceeding these limits should still to load to the Kobo store and be accessible on all reading platforms but will take longer to download to users’ devices and will take up more memory. To ensure optimal performance content creators are advised against producing files that exceed these limits.
  
-* 3 MB/image in FXL and Reflowable ePubs
+* 5 MB/image in FXL and Reflowable ePubs
+* 10 MB of embedded content/each HTML file in an ePub
 * 3 800 000 pixels/viewport or ~1950x1950 in FXL ePubs 
 * 1 GB/ePub
  
