@@ -300,7 +300,17 @@ The "page-progression-direction" attribute was introduced as part of the ePub3 s
  
 Footnotes and endnotes on the eInk (with the exception of the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows 8 platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
  
-It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute) for footnotes and endnotes. This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. Both the iOS and eInk platforms have additional means of detecting content that is linked as a footnote or endnote for the purpose of creating pop-ups but the best way of ensuring that those pop-ups display as intended is to use the "noteref" attribute.
+It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute) for footnotes and endnotes. This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform. Ex.
+`<span id="fn0005fn" epub:type="footnote">Text linking to footnote or endnote.</span>`
+
+**Hyperlinked content not using the epub:type attribute footnote or endnote will display as a pop-up on Kobo's iOS and eInk platforms in cases where the following criteria are met.**
+
+1) The link references a location in the ePub and also references a specific node within the HTML. Ex.
+<br>`<a href=“chapter.html#uniqueID”>link text</a>`<br>
+Where chapter.html is a file within this epub and where uniqueID is the id of a node within that html document.
+
+2) The content in the node is nine charcters or more once stripped of the HTML tags. Ex.
+<br>`<p id="uniqueID">123456789</p>`
 
 ### Fixed Layout (FXL) Support
  
