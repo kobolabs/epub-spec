@@ -291,7 +291,7 @@ Kobo has support for right-to-left language formatting in the following areas:
 		`<itemref idref="chapter1" />`<br>
 		`<itemref idref="chapter2" />`<br>
 		`<itemref idref="chapter3" />`<br>
-	`</spine>`
+	`</spine>`<br>
 The "page-progression-direction" attribute was introduced as part of the ePub3 specification. However it can be used in both ePub2 and ePub3 files for Kobo and will pass through processing and display correctly on Kobo's reading platforms in spite of flags that ePub2 files will generate in ePubCheck.
 
 *_This support excludes the Windows 8 platform._
