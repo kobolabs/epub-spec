@@ -232,10 +232,10 @@ HTML:<br>
 `<p class="text">Sample text.</p>`<br>
 `<p class="text">Sample text, part two.</p>`<br>
 CSS:<br>
-`p.text {
-    margin: 0;
-    text-size: 10px;
-}`
+`p.text {`
+    `margin: 0;`
+    `text-size: 10px;`
+`}`
 
 Not like this:
 
@@ -324,9 +324,20 @@ All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/
  
 FXL content on Android always displays one page in portrait view.
 
-**Kobo strongly advises against the use of inline styling for FXL content**. Text boxes with inline styling may render inconsistently across platforms, resulting in text overlapping or incorrect positioning.
+**Kobo strongly advises against the following when formatting Fixed Layout content:**
+
+* Text boxes with inline styling. This may result in inconsistent rendering across platforms, resulting in text overlap or incorrect positioning.
  
-**Kobo also advises against using images where the width or height (in pixels) exceed the dimensions of the viewport**. ePubs containing images that exceed the viewport dimensions may not render correctly on the eInk platform.
+* The use of images where the width or height (in pixels) exceed the dimensions of the viewport. ePubs containing images that exceed the viewport dimensions may not render correctly on the eInk platform.
+
+* The use of negative positioning when placing text, images or other content in CSS. Ex.
+
+`.li` </br>
+`{ text-align: justify;`</br>
+`padding: 0;`</br>
+`margin: 0;`</br>
+`word-spacing: -15px;`</br>
+`}`</br>
 
 **Kobo Advises Against Overuse of Fixed Layout**
 
