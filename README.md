@@ -57,6 +57,8 @@ The ePub 3.0 spec is based on HTML5 and CSS3, adhering to the most recent versio
  
 Kobo supports a subset of elements from the ePub 3.0 spec. The following covers which elements are supported across Kobo’s reading platforms.
 
+**Kobo does not accept** .mobi, KF8, PDF or any format outside of ePub that may be used to format eBooks.
+
 ### Kobo Serves Content to Users On These 5 Reading Platforms 
  
 1. eInk/EPD — Kobo eInk devices (Aura, Glo, Touch) 
