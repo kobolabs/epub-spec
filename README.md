@@ -45,13 +45,20 @@ Kobo supports ePub, the universal open standard eBook format maintained by the I
 
 Any ePub file sent to Kobo will be made available on all of Kobo's reading platforms with the exception of ePub2 Fixed Layout content which is not available on Desktop or eInk:
 
-| Platform  | ePub2 Reflowable | ePub2 FXL | ePub3 Reflowable | ePub3 FXL |
-|-----------|------------------|-----------|------------------|-----------|
-| Android   | Y                | Y         | Y                | Y         |
-| Desktop   | Y                | N         | Y                | Y         |
-| eInk      | Y                | N         | Y                | Y         |
-| iOS       | Y                | Y         | Y                | Y         |
-| Windows 8 | Y                | Y         | Y                | Y         |
+| Platform                | ePub2 Reflowable | ePub2 FXL | ePub3 Reflowable | ePub3 FXL |
+|-------------------------|------------------|-----------|------------------|-----------|
+| Android                 | Y                | Y         | Y                | Y         |
+| Desktop                 | Y                | N         | Y                | Y         |
+| eInk                    | Y                | N         | Y                | Y         |
+| iOS                     | Y                | Y         | Y                | Y         |
+| Windows 8               | Y                | Y         | Y                | Y         |
+| Sony eReader            | Y                | N         | Y                | Y**       |
+| Kobo Vox*               | Y                | Y         | Y                | N         |
+| Blackberry*             | Y                | N         | N                | N         |
+| Original Kobo/Kobo WiFi | Y                | N         | N                | N         |
+
+*The Kobo Vox and Blackberry apps both run older versions/ports of the Android app and will not be updated.
+**Fixed Layout content display on Sony Readers is dependant on the capabilities of Adobe SDK. As a result the display of Fixed Layout content may not always match the display across other Kobo reading platforms.
  
 The ePub 3.0 spec is based on HTML5 and CSS3, adhering to the most recent versions. Content creators are advised to review the [HTML5 and CSS3 reference profiles](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#references) because changes to them could impact file production. 
  
