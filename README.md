@@ -253,6 +253,10 @@ HTML:<br>
 `<p style="margin: 0;text-size: 10px;">Sample text.</p>`<br>
 `<p style="margin: 0;text-size: 10px;">Sample text, part two.</p>`<br>
 
+**Viewport Height (vh)**
+
+Kobo advises against using the CSS element 'vh' in reflowable content as it is not supported on all display engines and may result in text getting cut off or overlapping with other content. More conventional elements such as 'height' or 'max-height' are recommended. 
+
 ### Supported Fonts
  
 TTF, OTF, and WOFF fonts are supported by all of our platforms with the exception of Windows 8. For a detailed breakdown of our font support by platform, check [EPUBTEST.org](http://epubtest.org/results). 
