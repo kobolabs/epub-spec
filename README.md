@@ -182,6 +182,17 @@ If an external cover image is uploaded to both the Kobo system and the ePub, tha
 GIF files are not supported for covers.
  
 The suggested optimal ratio for covers on Kobo is 3:4 width:height. (The average size and dimensions for ebook covers in the Kobo store are 800:1224px width:height.) However covers in all dimensions will be rendered consistently across platforms. Content creators are advised to keep their cover images under 3MB. Larger covers will still render but will not improve the display of their content.
+
+Covers should also be listed in the OPF metadata section. The metadata indicates the cover by pointing to the ID of the cover file in the manifest. Kobo uses this tag to identify which image to display as a thumbnail within user's libraries across platforms.
+
+Ex. 
+OPF metadata:
+
+`<meta name=“cover” content=“cover-image”/>`
+
+Manifest item listing:
+
+`<item href="cover.jpg" id="cover-image" media-type="image/jpeg"/>`
  
 ### Scalable Vector Graphics (SVG)
  
