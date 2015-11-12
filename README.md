@@ -32,7 +32,7 @@ What’s in this Document:
 23. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
 24. [JavaScript Support](#javascript-support)
 25. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
-26. [Fallback Statements/Switches](#fallback-statementsswitches)
+26. [Fallback Statements](#fallback-statements)
 27. [ePub Previews](#epub-previews)
 28. [Tables](#tables)
 29. [Limitations and Maximums](#limitations-and-maximums)
@@ -196,7 +196,7 @@ Manifest item listing:
  
 ### Scalable Vector Graphics (SVG)
  
-SVG is partially supported across Kobo platforms. Thorough testing is advised for ePubs with SVG, particularly for text rendering. Content creators are advised to use the [ePub switch element](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#elemdef-switch) to provide fallback content. Refer to the support grid in this document or the test results for Kobo's reading platforms at [ePubtest.org] (http://www.epubtest.org).
+SVG is partially supported across Kobo platforms. Thorough testing is advised for ePubs with SVG, particularly for text rendering. Content creators are advised to use manifest fallbacks for SVG whenever possible. Refer to the support grid in this document or the test results for Kobo's reading platforms at [ePubtest.org] (http://www.epubtest.org).
  
 ### Table of Contents (ToC)
  
@@ -468,30 +468,23 @@ function handleTouch(event) {
  
 Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android or Windows 8 platforms. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and Windows 8 devices, or else use images (rather than MathML) for the mathematical content.
 
-### Fallback Statements/Switches 
+### Fallback Statements
  
-The Desktop, eInk and iOS platforms support ePub switch statements. In addition the Desktop and eInk platforms support fallback statements in the manifest. Further details on fallback content and statements can be found in the [IDPF spec](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-fallback-processing-flow). As some devices and apps do not yet or cannot support audio/video, JavaScript, MathML, or other “enhanced” elements it is recommended that ePubs with these elements use fallback statements to ensure that they are accessible to readers. ePubs that make proper use of switches and fallback statements will be able to take advantage of future development for fallback statements on the Android and Windows 8 platforms.
- 
-For example:
- 
-<pre><code>&lt;!--&lt;epub:switch id=&quot;c01-mdis-0001&quot;&gt;
- &lt;epub:case required-namespace=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-   &lt;span class=&quot;equation&quot;&gt;
-     &lt;span class=&quot;equation-line&quot;&gt;
-       &lt;span class=&quot;equation-label&quot; style=&quot;margin-top:0.02384993em&quot;&gt;(1.1)&lt;/span&gt;
-       &lt;span class=&quot;equation-content&quot;&gt;
-         &lt;math display='block' xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
-&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;V&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;Z&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/msub&gt;&lt;msub&gt;&lt;mi&gt;I&lt;/mi&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;V&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;/math&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
-    &lt;/epub:case&gt;
-     &lt;epub:default&gt;--&gt;
-   &lt;p class=&quot;para_center&quot;&gt;
-     &lt;img id=&quot;c01-mdis-0001&quot; src=&quot;images/m001.gif&quot; alt=&quot;&quot;/&gt;
-   &lt;/p&gt;
-   &lt;!--&lt;/epub:default&gt;
-&lt;/epub:switch&gt;--&gt;
-</code></pre>
- 
-In the above, the parts of the switch which legacy viewers would not be able to handle have been called out. So platforms that do not support MathML display the fallback content instead. 
+Any items listed in the manifest that are not [standard ePub Content Documents](http://www.idpf.org/epub/30/spec/epub30-publications.html#gloss-content-document-epub) should be accompanied by fallback items. Extensive testing should be done across platforms whenever including non-core items in an ePub. More on the IDPF specification on manifest fallbacks can be found [here](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-fallback-processing-flow-manifest).
+
+Ex.
+`<manifest>`<br>
+  `<item id="xpgt1" href="styling/noncorestyling.xpgt" media-type="application/vnd.adobe-page-template+xml" fallback="css"/>`<br>
+  `<item id="css" href="styling/content.css" media-type="text/css"/>`<br>
+`</manifest>`<br>
+
+When embedding audio and video Kobo recommends using intrinsic fallbacks so that users reading on platforms that do not support embedded media (ex. eInk) can be directed to other platforms if they wish to access the content. More on IDPF specification on intrinsic fallbacks can be found (here)[http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-foreign-restrictions].
+
+Ex.
+`<audio controls="">`<br>
+  ` <source src="embeddedaudio.mp4">`<br>
+  ` <p>The device you are reading on cannot play audio content but you can access the media in this book by opening it on your phone or tablet.</p>`<br>
+`</audio>`
 
 ### ePub Previews 
  
