@@ -472,15 +472,15 @@ Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.ht
  
 Any items listed in the manifest that are not [standard ePub Content Documents](http://www.idpf.org/epub/30/spec/epub30-publications.html#gloss-content-document-epub) should be accompanied by fallback items. Extensive testing should be done across platforms whenever including non-core items in an ePub. More on the IDPF specification on manifest fallbacks can be found [here](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-fallback-processing-flow-manifest).
 
-Ex.
+Ex.<br>
 `<manifest>`<br>
   `<item id="xpgt1" href="styling/noncorestyling.xpgt" media-type="application/vnd.adobe-page-template+xml" fallback="css"/>`<br>
   `<item id="css" href="styling/content.css" media-type="text/css"/>`<br>
 `</manifest>`<br>
 
-When embedding audio and video Kobo recommends using intrinsic fallbacks so that users reading on platforms that do not support embedded media (ex. eInk) can be directed to other platforms if they wish to access the content. More on IDPF specification on intrinsic fallbacks can be found (here)[http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-foreign-restrictions].
+When embedding audio and video Kobo recommends using intrinsic fallbacks so that users reading on platforms that do not support embedded media (ex. eInk) can be directed to other platforms if they wish to access the content. More on IDPF specification on intrinsic fallbacks can be found [here](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-foreign-restrictions).
 
-Ex.
+Ex.<br>
 `<audio controls="">`<br>
   ` <source src="embeddedaudio.mp4">`<br>
   ` <p>The device you are reading on cannot play audio content but you can access the media in this book by opening it on your phone or tablet.</p>`<br>
