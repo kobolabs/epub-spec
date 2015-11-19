@@ -390,6 +390,8 @@ When the rendition:spread property is set to “none” or “auto”, Android d
  
 Custom text colors for highlighting are not currently supported on Android. However, custom text colors for highlighting is possible on iOS. The iOS app uses the CSS class ‘kobo-smil-highlight’ to color highlighted text. So, by adding that class to the CSS plus a color declaration, the color of the highlighted text on the app can be customized.
 
+**SMIL for reflowable content** is supported on iOS but is not supported on the Android, Desktop or Windows platforms.
+
 ### Image-Based FXL Reader
  
 The Kobo Android and iOS platforms will render FXL ePubs that meet certain criteria with an image-based Fixed Layout reader. This reader features significantly faster panning, zooming, and page-turns than the standard one. Designed to enhance the reading experience of comics, it works for any FXL ePubs composed entirely of images.
