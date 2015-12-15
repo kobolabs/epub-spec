@@ -354,9 +354,7 @@ Kobo platforms also read the field <option name=”fixed-layout”>true/false</o
 
 All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are on the Android, Desktop and eInk reading platforms. The iOS platform supports the properties "Both", "None" and "Auto" but not "Portrait" or "Landscape". The Windows 8 platform supports the properties "None" and "Auto" but not "Both", "Portrait" or "Landscape". Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the rendition:spread and rendition:layout properties at the spine level.
  
-**Pinch and zoom gestures** are available on the Android, iOS, and Windows 8 reading platforms. The zoom option is available in the reading menu of eReaders. Kobo Desktop App supports three zoom options: Zoom Slider; Double-click to zoom; Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users are allowed to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling  up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
- 
-FXL content on Android always displays one page in portrait view.
+**Pinch and zoom gestures** are available on the Android, iOS, and Windows 8 reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling  up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
 
 **Kobo strongly advises against the following when formatting Fixed Layout content:**
 
