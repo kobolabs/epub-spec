@@ -135,7 +135,8 @@ Here’s how to sideload content on Kobo's reading platforms:
 2. Find the drive on your computer in Windows Explorer. If you use a Mac, install and connect to the device using [Android File Transfer](http://www.android.com/filetransfer/).
 3. Drag your ePub onto the device.
 4. If you use a Kobo Arc, navigate to the Books Collection. Otherwise, navigate to the Kobo App, then tap the side bar menu icon on the top left (the icon with the three horizontal bars vertically stacked) to bring out the sidebar. Then tap on either 'All' or 'All Items' based on your app version.
-5. Once the files appear, confirm that you want to import them. They will display in your library.
+5. Select options (the three dots on the top right) then “Import”.
+6. Once the files appear, confirm that you want to import them. They will display in your library.
  
 **iOS**
 
