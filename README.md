@@ -76,14 +76,10 @@ Kobo supports a subset of elements from the ePub 3.0 spec. The following covers 
 5. Windows 8 — all tablets, smartphones and computers running Windows 8.
 
 ### Current Kobo Devices
- 
-Android: 
-* Arc 7 SD
-* Arc 7 HD
-* Arc 10 HD
 
 eInk:
 * Glo HD
+* Touch 2.0
 * Aura H2O
 * Aura
 * Aura HD
@@ -92,6 +88,9 @@ eInk:
 ### Earlier Kobo Devices
  
 Android:
+* Arc 7 SD
+* Arc 7 HD
+* Arc 10 HD
 * Arc (original)
 * Vox
 
@@ -126,8 +125,8 @@ Here’s how to sideload content on Kobo's reading platforms:
 **Desktop**
 
 1. Open the Kobo Desktop app.
-2. Make sure you have [Adobe Digital Editions](http://www.adobe.com/ca/products/digital-editions/download.html) installed. 
-3. Select the Library tab in Kobo Desktop and press CTRL+Shift+S on Windows or ⌘+SHIFT+S on a Mac. This will display any files in the “My Digital Editions” folder on your computer with the extension .kepub.epub or .fxl.kepub.epub
+2. Make sure you have [Adobe Digital Editions](http://www.adobe.com/ca/products/digital-editions/download.html) installed. If you do not wish to install ADE you can skip this step by creating a folder named "My Digital Editions" in your "My Documents" folder.
+3. Select the Library tab in Kobo Desktop and press CTRL+Shift+S on Windows or ⌘+SHIFT+S on a Mac. This will display any files in the “My Digital Editions” folder on your computer with the extension .epub
  
 **Android**
 
