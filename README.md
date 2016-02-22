@@ -226,10 +226,10 @@ The OPF file can be named however the content creator chooses ([filename].opf), 
 
 **Background Colors**
 
-Kobo recommends that publishers avoid specifying white as a background colour in the CSS for their ePubs. This can cause text to become unreadable in Night Mode on the Kobo Android app as the text and the background will both display as white. This recommendation only applies to reflowable content as Night Mode cannot be turned on while reading Fixed Layout content.
+Kobo recommends that publishers avoid specifying background colors in the CSS for reflowable ePubs. Background colors may make the content difficult to read when the user has selected the sepia or night modes or when reading on eInk devices. 
 
 `.c5 {
-  background: #fff
+  background: #FF0000
   }`
 
 **Small Caps**
