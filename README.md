@@ -273,10 +273,22 @@ Kobo advises against using the CSS element 'vh' in reflowable content as it is n
 
 Kobo advises against applying stlye elements in CSS to 'div' tags. These style elements will be applied to all content wrapped in 'div' tags throughout the ePub. In addition Kobo inserts 'div' tags during processing to enable user functionality (ex. text highlighting) and as a result any content contained within the added tags will inherit the styling applied in the CSS.
 
-ex.
+Ex.
 `div {`<br>
     `font-weight: bold;`<br>
 `}`
+
+**Body Padding**
+
+Kobo advises against adding padding to the 'body' class to accomodate background images. On the Kobo iOS platform this may result in the background image overlapping with the text.
+
+Ex.
+`body {`<br>
+      `padding: 2em 1em 2em 70px !important;`<br>
+      `background-image: url(logo-CR.png);`<br>
+    `}`
+
+![background sidebar image](https://github.com/kobolabs/epub-spec/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202016-02-22%2014.51.00.png)
 
 ### Supported Fonts
  
