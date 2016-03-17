@@ -228,6 +228,7 @@ The OPF file can be named however the content creator chooses ([filename].opf), 
 
 Kobo recommends that publishers avoid specifying background colors in the CSS for reflowable ePubs. Background colors may make the content difficult to read when the user has selected the sepia or night modes or when reading on eInk devices. 
 
+Ex.
 `.c5 {
   background: #FF0000
   }`
