@@ -479,7 +479,7 @@ function handleTouch(event) {
  
 ### MathML is Supported on iOS, elnk, and Desktop platforms
  
-Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android platform. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and devices, or else use images (rather than MathML) for the mathematical content. The website https://www.mathmlcloud.org/ is advised for converting MathML into various outputs for inclusing in your ePubs.
+Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android platform. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and devices, or else use images (rather than MathML) for the mathematical content. The website https://www.mathmlcloud.org/ is recommended for converting MathML into various outputs for inclusing in your ePubs.
 
 ### Fallback Statements
  
