@@ -292,7 +292,7 @@ Ex.
 
 ### Supported Fonts
  
-TTF, OTF, and WOFF fonts are supported by all of our platforms with the exception of Windows 8. For a detailed breakdown of our font support by platform, check [EPUBTEST.org](http://epubtest.org/results). 
+TTF, OTF, and WOFF fonts are supported by all of our platforms. For a detailed breakdown of our font support by platform, check [EPUBTEST.org](http://epubtest.org/results). 
 
 **Font customization options available to Kobo users** on each reading platform:
  
@@ -479,7 +479,7 @@ function handleTouch(event) {
  
 ### MathML is Supported on iOS, elnk, and Desktop platforms
  
-Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android or Windows 8 platforms. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and Windows 8 devices, or else use images (rather than MathML) for the mathematical content.
+Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android platform. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and devices, or else use images (rather than MathML) for the mathematical content. The website https://www.mathmlcloud.org/ is advised for converting MathML into various outputs for inclusing in your ePubs.
 
 ### Fallback Statements
  
