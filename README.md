@@ -51,7 +51,7 @@ Any ePub file sent to Kobo will be made available on all of Kobo's reading platf
 | Desktop                 | Y                | N         | Y                | Y         |
 | eInk                    | Y                | N         | Y                | Y         |
 | iOS                     | Y                | Y         | Y                | Y         |
-| Windows 8               | Y                | Y         | Y                | Y         |
+| Windows                 | Y                | Y         | Y                | Y         |
 | Sony eReader            | Y                | N         | Y                | Y&#42;&#42;       |
 | Kobo Vox&#42;               | Y                | Y         | Y                | N         |
 | Blackberry&#42;             | Y                | N         | N                | N         |
@@ -73,7 +73,7 @@ Kobo supports a subset of elements from the ePub 3.0 spec. The following covers 
 2. Desktop — the Kobo desktop app for PC and Apple Computers
 3. Android — all Android devices running the Kobo app including all Kobo Arc versions
 4. iOS — iPad, iPhone and iPod Touch
-5. Windows 8 — all tablets, smartphones and computers running Windows 8.
+5. Windows — all tablets, smartphones and computers running Windows apps.
 
 ### Current Kobo Devices
 
@@ -146,14 +146,12 @@ Here’s how to sideload content on Kobo's reading platforms:
 
 (The Kobo iOS app is registered among apps that open ePub and pdf files. Users can use the standard “open in…” menu from Safari, Dropbox, or any other app that supports it to view their files.)
  
-**Windows 8**
+**Windows**
 
 1. Open the Kobo app, navigate to the Library and swipe up from the bottom of the screen.
 2. Select “import”.
-3. Select the files on the device that you want to import. (The Kobo app will scan all the files on your device that it can import. You may not be able to transfer files via USB depending on the specific Windows 8 device and may need to transfer them by OneDrive, Dropbox, email or some other method instead.)
+3. Select the files on the device that you want to import. (The Kobo app will scan all the files on your device that it can import. You may not be able to transfer files via USB depending on the specific Windows device and may need to transfer them by OneDrive, Dropbox, email or some other method instead.)
 4. Select “Open” and wait for the files to load into your library.
-
-(Sideloading is not yet supported on the Kobo app for Windows 8 phones.)
 
 ### Digital Rights Management (DRM)
  
@@ -304,7 +302,7 @@ TTF, OTF, and WOFF fonts are supported by all of our platforms. For a detailed b
  
 **iOS:** Avenir, Baskerville, Cochin, Georgia, Helvetica, Optima, Palatino, Trebuchet, Verdana.
  
-**Windows 8:** Cambria, Calibri, Georgia, SegoeUI, Times New Roman, Trebuchet MS, Verdana.
+**Windows:** Cambria, Calibri, Georgia, SegoeUI, Times New Roman, Trebuchet MS, Verdana.
 
 ### Obfuscated Fonts Are Not Currently Supported by the Kobo CMS
 Non-sideloaded titles with obfuscated fonts will display the reading platform’s default font instead of the intended font. As a result all Fixed Layout titles with obfuscated fonts are likely to fail QA. However, work is underway at Kobo to support obfuscated fonts and render these titles correctly.
@@ -325,7 +323,7 @@ When a user selects an available default font, Kobo reading platforms may not co
  
 Some glyphs do not render on most fonts. In cases where creators are unable to supply embedded fonts they can insert a note into the front matter of their content instructing users to select the font Georgia. It correctly renders the greatest set of scripts.
  
-Kobo is currently working to add built-in fonts to the eInk and Android-reading platforms and render glyphs from all scripts correctly. The Desktop, iOS and Windows 8 platforms already contain built-in fonts that will render glyphs from all scripts.
+Kobo is currently working to add built-in fonts to the eInk and Android-reading platforms and render glyphs from all scripts correctly. The Desktop, iOS and Windows platforms already contain built-in fonts that will render glyphs from all scripts.
 
 ###Right to Left Page and Text Direction
 
@@ -341,11 +339,9 @@ Kobo has support for right-to-left language formatting in the following areas:
 	`</spine>`<br>
 The "page-progression-direction" attribute was introduced as part of the ePub3 specification. However it can be used in both ePub2 and ePub3 files for Kobo and will pass through processing and display correctly on Kobo's reading platforms in spite of flags that ePub2 files will generate in ePubCheck.
 
-*_This support excludes the Windows 8 platform._
-
 ### Footnotes/Endnotes Are Fully Supported Across Kobo Platforms
  
-Footnotes and endnotes on the eInk (with the exception of the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows 8 platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
+Footnotes and endnotes on the eInk (with the exception of the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
  
 It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute) for footnotes and endnotes. This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform. Ex.
 `<span id="fn0005fn" epub:type="footnote">Text linking to footnote or endnote.</span>`
@@ -365,9 +361,9 @@ Kobo supports the [official ePub3 FXL spec](http://www.idpf.org/epub/fxl/). This
  
 Kobo platforms also read the field <option name=”fixed-layout”>true/false</option> to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
 
-All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are on the Android, Desktop and eInk reading platforms. The iOS platform supports the properties "Both", "None" and "Auto" but not "Portrait" or "Landscape". The Windows 8 platform supports the properties "None" and "Auto" but not "Both", "Portrait" or "Landscape". Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the rendition:spread and rendition:layout properties at the spine level.
+All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are on the Android, Desktop and eInk reading platforms. The iOS platform supports the properties "Both", "None" and "Auto" but not "Portrait" or "Landscape". The Windows platform supports the properties "None" and "Auto" but not "Both", "Portrait" or "Landscape". Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the rendition:spread and rendition:layout properties at the spine level.
  
-**Pinch and zoom gestures** are available on the Android, iOS, and Windows 8 reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling  up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
+**Pinch and zoom gestures** are available on the Android, iOS, and Windows reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling  up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
 
 **Kobo strongly advises against the following when formatting Fixed Layout content:**
 
@@ -448,7 +444,7 @@ Testing across platforms for ePubs with multimedia and other media overlays is r
  
 Embedded audio and video is currently supported on Kobo’s iOS and Android platforms for all content. 
  
-Windows 8 does not currently support embedded audio and video. Kobo eInk devices and the desktop app do not support embedded audio and video either but will display any content included as a fallback using the [switch element](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#elemdef-switch) display instead.
+Windows does not currently support embedded audio and video. Kobo eInk devices and the desktop app do not support embedded audio and video either but will display any content included as a fallback using the [switch element](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#elemdef-switch) display instead.
 
 **Autoplay Functionality is not currently supported**
 
@@ -532,7 +528,7 @@ The following table lists features supported by at least one Kobo platform but n
 | Desktop   | Y      | N    | N          | Y              | N           |
 | eInk      | Y      | N    | N          | Y              | N           |
 | iOS       | Y      | Y    | Y          | Y              | Y           |
-| Windows 8 | N      | N    | N          | N              | N           |
+| Windows   | N      | N    | N          | N              | N           |
 
 ### Still have questions? 
  
