@@ -23,21 +23,22 @@ What’s in this Document:
 14. [Supported Fonts](#supported-fonts)
 15. [Obfuscated Fonts](#obfuscated-fonts-are-not-currently-supported-by-the-kobo-cms)
 16. [Embedded Fonts](#embedded-fonts-can-be-selected-by-users)
-17. [Languages](#languages-other-than-english)
-18. [Right to Left Page and Text Direction] (#right-to-left-page-and-text-direction)
-19. [Footnotes/Endnotes](#footnotesendnotes-are-fully-supported-across-kobo-platforms)
-20. [Fixed Layout](#fixed-layout-fxl-support)
-21. [SMIL](#kobo-supports-smil)
-22. [Image-Based FXL Reader](#image-based-fxl-reader)
-23. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
-24. [JavaScript Support](#javascript-support)
-25. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
-26. [Fallback Statements](#fallback-statements)
-27. [ePub Previews](#epub-previews)
-28. [Tables](#tables)
-29. [Limitations and Maximums](#limitations-and-maximums)
-30. [Support Grid] (#support-grid)
-31. [Questions?](#still-have-questions)
+17. [Embedding All Fonts in Fixed Layout] (#all-fonts-used-in-fixed-layout-content-must-be-embedded-and-cannot-be-modified)
+18. [Languages](#languages-other-than-english)
+19. [Right to Left Page and Text Direction] (#right-to-left-page-and-text-direction)
+20. [Footnotes/Endnotes](#footnotesendnotes-are-fully-supported-across-kobo-platforms)
+21. [Fixed Layout](#fixed-layout-fxl-support)
+22. [SMIL](#kobo-supports-smil)
+23. [Image-Based FXL Reader](#image-based-fxl-reader)
+24. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
+25. [JavaScript Support](#javascript-support)
+26. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
+27. [Fallback Statements](#fallback-statements)
+28. [ePub Previews](#epub-previews)
+29. [Tables](#tables)
+30. [Limitations and Maximums](#limitations-and-maximums)
+31. [Support Grid] (#support-grid)
+32. [Questions?](#still-have-questions)
 
 ### ePub Versions Kobo Supports
  
@@ -316,6 +317,20 @@ If the reading experience of a book requires that the embedded font be used, con
 **To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all Fixed Layout ePubs. If fonts are not embedded and specified, the reading platform defaults to Times. Fixed Layout files that use the default font should be tested extensively on Kobo’s reading platforms.
 
 **Content creators are advised against referencing fonts in the CSS that are not embedded in the ePub.** Kobo devices and devices that Kobo apps can be installed on will have specific fonts included. However the available fonts vary across these devices and there is no way to ensure that any one font will be available on the device chosen by the user. As a result the font styling in the CSS will not display as intended across multiple devices and platforms.
+
+### All Fonts Used In Fixed Layout Content Must Be Embedded And Cannot be Modified
+
+Emphasis cannot be added to embedded fonts for Fixed Layout content in the CSS. Reading systems cannot modify embedded fonts with bold or italics. Instead a seperate font file must me embedded for bold or italic versions of any fonts used. Files produced using InDesign will often add such modifiers to embedded fonts resulting in text that cannot be read on all Kobo platforms.
+
+Ex. 
+`CharOverride-22 { `</br>
+`font-family:"Avenir Black",`</br>
+`font-size:240px;`</br>
+`font-style:normal;`</br>
+`font-weight:800;`</br>
+`}`
+
+In this case a bold font should have been embedded instead of taking the original font and adding "font-weight:800". Alternatively the "font-weight" element could be removed entirely. The font would no longer appear bold but it would display consistently across all reading platforms. This can be detected most easily by sideloading content to the Kobo Desktop app where the resulting display issues are the most prominent.
 
 ### Languages Other Than English
  
