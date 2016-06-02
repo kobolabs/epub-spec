@@ -361,7 +361,7 @@ Footnotes and endnotes on the eInk (with the exception of the original Kobo read
 It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute) for footnotes and endnotes. This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform. Ex.
 `<span id="fn0005fn" epub:type="footnote">Text linking to footnote or endnote.</span>`
 
-**Hyperlinked content not using the epub:type attribute footnote or endnote will display as a pop-up on Kobo's iOS and eInk platforms in cases where all of the following criteria are met.**
+**Warning: Hyperlinked content not using the epub:type attribute footnote or endnote will display as a pop-up on Kobo's iOS and eInk platforms in cases where all of the following criteria are met.**
 
 1) The link references a location in the ePub and also references a specific node within the HTML. Ex.
 <br>`<a href=“chapter.html#uniqueID”>link text</a>`<br>
