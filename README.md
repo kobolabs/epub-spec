@@ -465,12 +465,18 @@ Embedded audio and video is currently supported on Kobo’s iOS and Android plat
  
 Windows does not currently support embedded audio and video. Kobo eInk devices and the desktop app do not support embedded audio and video either but will display any content included as a fallback using the [switch element](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#elemdef-switch) display instead.
 
-**Autoplay Functionality is not currently supported**
+**Autoplay Functionality is Not Currently Supported**
 
 Kobo's platforms do not currently support autoplay functionality for embedded media. Elements using this tag will display but will not begin playback without user interaction.
 
 Ex. <br>
 `<audio class="myaudio" src="sounds/audio.mp3" autoplay="autoplay">Sample text.</audio>`
+ 
+**Extensive Testing is Strongly Recommended For All Interactive Content**
+
+For content with interactive features (ex. pop-ups, buttons that trigger media, scrolling windows within Fixed-Layout ePubs, text input boxes) it is strongly recommended that content creators test by sideloading to both Kobo's iOS and Android platforms to ensure that all features work as intended. Furthermore this content should be tested by sideloading on Kobo's Windows and Desktop platforms to verify that the lack of interactivity support does not make the content unreadable to the user. Ideally these ePubs will be sent with metadata where the synopsis indicates that features within the content may not work on all platforms.
+
+Any content creators who cannot test each interactive title on both Kobo's Android and iOS apps are advised to not distribute such titles to Kobo at present.
  
 ### JavaScript Support
  
