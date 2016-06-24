@@ -289,6 +289,26 @@ Ex.
 
 ![background sidebar image](https://github.com/kobolabs/epub-spec/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202016-02-22%2014.51.00.png)
 
+**Page Breaks**
+
+Page breaking CSS is only partially supported across Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
+
+|Page Break Type| Windows | iOS | Android | EPD | KDA |
+|---------------|---------|-----|---------|-----|-----|
+| after:always  |    N    |  Y  |    Y    |  N  |  N  |
+| after:auto    |    N    |  N  |    N    |  N  |  N  |
+| after:avoid   |    N    |  Y  |    Y    |  N  |  N  |
+| after:left    |    N    |  Y  |    Y    |  N  |  N  |
+| after:right   |    N    |  Y  |    Y    |  N  |  N  |
+| before:auto   |    N    |  N  |    N    |  N  |  N  |
+| before:always |    N    |  Y  |    Y    |  N  |  N  |
+| before:avoid  |    N    |  Y  |    Y    |  N  |  N  |
+| before:left   |    N    |  Y  |    Y    |  N  |  N  |
+| before:right  |    N    |  Y  |    Y    |  N  |  N  |
+| inside:auto   |    N    |  N  |    N    |  N  |  N  |
+| inside:avoid  |    N    |  N  |    N    |  N  |  N  |
+
+
 ### Supported Fonts
  
 TTF, OTF, and WOFF fonts are supported by all of our platforms. For a detailed breakdown of our font support by platform, check [EPUBTEST.org](http://epubtest.org/results). 
