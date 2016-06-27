@@ -14,7 +14,7 @@ What’s in this Document:
 5. [Kobo Recommends Initial ePub Check](#kobo-recommends-initial-epub-check)
 6. [Sideloading for Testing Purposes](#sideloading-for-testing-purposes)
 7. [Digital Rights Management (DRM)](#digital-rights-management-drm)
-8. [Placing Images Properly](#placing-images-properly)
+8. [Image Formatting](#images-formatting)
 9. [Cover Images](#cover-images)
 10. [Scalable Vector Graphics (SVG)](#scalable-vector-graphics-svg)
 11. [Table of Contents (ToC)](#table-of-contents-toc)
@@ -162,7 +162,7 @@ Kobo’s DRM system hosts content on its reading platforms using advanced securi
  
 At a minimum, Kobo employs encryption standards in the 128-bit version of the Advanced Encryption Standard (AES) of the US Government.
  
-### Placing Images Properly
+### Image Formatting
  
 Kobo reading platforms support the core image types outlined in the [IDPF spec](http://www.idpf.org/epub/30/spec/epub30-publications.html#cmt-grp-image). This includes JPG, PNG and GIF but not Scalable Vector Graphics (SVG), which are not supported on all reading platforms. (See the Support Grid.) PNG files are preferred over JPG.
  
@@ -171,6 +171,8 @@ All images should use the RGB color model, and not CMYK. Encapsulated PostScript
 **The advised maximum size for all image types is 5 MB.** ePubs with larger images are still accepted and those images will not cause Kobo apps and devices to crash. However, ePubs with images all under this limit perform optimally across platforms.
 
 **Image dimensions should be set in percentages instead of pixels in the CSS for reflowable content.** Images with dimensions set by pixels may stretch depending on the orientation, device and user settings. Kobo reading platforms insert max-width and max-height CSS for images and videos to ensures that they are not split over multiple screens.
+
+**Images should not have transparent backgrounds.** This will result in the reading system inserting a default background color or pattern. Fixed Layout titles with where image backgrounds are transparent will fail QA in cases where the content is unreadable.
  
 **For a full screen image view** on the Android and iOS platforms, users can long press images in reflowable ePubs. Once in full-screen view, users will be able to pinch and zoom. This can also be acheived on eInk devices (running version 3.14 or later) by double tapping images.
 
