@@ -178,7 +178,7 @@ All images should use the RGB color model, and not CMYK. Encapsulated PostScript
 
 ### Cover Images
  
-If an external cover image is uploaded to both the Kobo system and the ePub, that external image displays as the thumbnail image in the store and in user’s libraries. The internal ePub cover still displays when the user opens the file on their device.
+If an external cover image is uploaded to both the Kobo system and the ePub, that external image displays as the thumbnail image in the store and in user’s libraries. The internal ePub cover still displays when the user opens the file on their device. External cover images must have the ISBN in the filename ex. "9781234567890.jpg" or "9781234567890.png".
  
 GIF files are not supported for covers.
  
