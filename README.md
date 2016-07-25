@@ -195,7 +195,7 @@ Manifest item listing:
 
 `<item href="cover.jpg" id="cover-image" media-type="image/jpeg"/>`
 
-**Cover images must be contained in their own XHTML files.** Kobo's eInk devices will activate the Fixed Layout reader for the XHTML file containing the cover image to optimize the display. As a result any text or images that have been placed in the same XHTML file as the cover will be displayed as Fixed Layout content. The user will be unable to resize the text and some of the content may not display on the screeen at all. 
+**Cover images must be contained in their own XHTML files.** Kobo's eInk devices will activate the Fixed Layout reader for the XHTML file containing the cover image to optimize the display. As a result any text or images that have been placed in the same XHTML file as the cover will be displayed as Fixed Layout content. The user will be unable to resize the text and some of the content may not display on the screen at all. 
  
 ### Scalable Vector Graphics (SVG)
  
