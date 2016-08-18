@@ -120,7 +120,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 
 1. Connect the device to your computer via USB.
 2. Find the drive on your computer in Finder or Windows Explorer.
-3. Drag your ePub onto the device. To trigger the Kobo WebKit, change the file extension to “.kepub.epub”. To trigger the Kobo Webkit for a Fixed Layout title, change the extension to “.fxl.kepub.epub”. (If the extension is left unchanged it will render using the Adobe Digital Editions Webkit.)
+3. Drag your ePub onto the device. To trigger the Kobo WebKit, change the file extension to “.kepub.epub”. To trigger the Kobo Webkit for a Fixed Layout title, change the extension to “.fxl.kepub.epub”. (If the extension is left unchanged it will render using the Adobe Digital Editions Webkit. This is the default display engine for side-loaded content to enable bookmarking, searching and highlighting.)
 4. Disconnect your device. The file will automatically appear in your library.
  
 **Desktop**
