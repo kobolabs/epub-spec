@@ -312,6 +312,9 @@ Page breaking CSS is only partially supported across Kobo's reading platforms. W
 | inside:auto   |    N    |  N  |    N    |  N  |  N  |
 | inside:avoid  |    N    |  N  |    N    |  N  |  N  |
 
+**Setting Font Sizes**
+
+Font size can be set in the CSS using the unit type em, px, pt or %. However % has been known to trigger bugs on Desktop and eInk that can restrict the users ability to change the font size or to reset the font size at the start of each chapter. Kobo advises that content creators set a base font size in px or pt or not set a base size at all (this will allow each platform to use it's default font size) then increase or decrease the font size throughout using em.
 
 ### Supported Fonts
  
