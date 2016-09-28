@@ -31,7 +31,7 @@ What’s in this Document:
 22. [SMIL](#kobo-supports-smil)
 23. [Image-Based FXL Reader](#image-based-fxl-reader)
 24. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
-25. [Script Support](#javascript-support)
+25. [JavaScript Support](#javascript-support)
 26. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
 27. [Fallback Statements](#fallback-statements)
 28. [ePub Previews](#epub-previews)
