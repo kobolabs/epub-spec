@@ -31,7 +31,7 @@ What’s in this Document:
 22. [SMIL](#kobo-supports-smil)
 23. [Image-Based FXL Reader](#image-based-fxl-reader)
 24. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
-25. [JavaScript Support](#javascript-support)
+25. [Script Support](#javascript-support)
 26. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
 27. [Fallback Statements](#fallback-statements)
 28. [ePub Previews](#epub-previews)
@@ -508,6 +508,10 @@ Any content creators who cannot test each interactive title on both Kobo's Andro
 ### JavaScript Support
  
 Kobo’s Android and iOS platforms support JavaScript for Fixed Layout and reflowable ePubs, but it is recommended not to use JavaScript in reflowable content in ways that may alter the layout of the book. Kobo’s eInk and Desktop platforms have limited support for JavaScript, and do not support interactive JavaScript elements. ePubs with JavaScript should contain fallback statements. This way, platforms that do not support JavaScript can still produce a coherent reading experience. Thorough testing on all platforms is strongly recommended to ensure that fallback as well as JavaScript content renders correctly.
+
+**The navigator.epubReadingSystem Property** 
+
+Note that <a href="http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#app-ers-syntax">navigator.epubReadingSystem property</a> is only supported on Kobo's Desktop and eInk platforms and is not presently supported on iOS, Android or Windows. As a result ePubs that need to query information on three of Kobo's five reading platforms. Any ePubs that depend on this functionality to present readable content will not pass content QA. 
 
 **Disabling Menu Activation for Interactive Elements**
 
