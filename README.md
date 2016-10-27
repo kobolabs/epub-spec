@@ -14,7 +14,7 @@ What’s in this Document:
 5. [Kobo Recommends Initial ePub Check](#kobo-recommends-initial-epub-check)
 6. [Sideloading for Testing Purposes](#sideloading-for-testing-purposes)
 7. [Digital Rights Management (DRM)](#digital-rights-management-drm)
-8. [Image Formatting](#images-formatting)
+8. [Image Formatting](#image-formatting)
 9. [Cover Images](#cover-images)
 10. [Scalable Vector Graphics (SVG)](#scalable-vector-graphics-svg)
 11. [Table of Contents (ToC)](#table-of-contents-toc)
@@ -38,7 +38,16 @@ What’s in this Document:
 29. [Tables](#tables)
 30. [Limitations and Maximums](#limitations-and-maximums)
 31. [Support Grid] (#support-grid)
-32. [Questions?](#still-have-questions)
+32. [Common QA Failure Issues](#common-qa-failure-issues)
+	* [Pixelated or Low Resolution Images](#pixelated-or-low-resolution-images)
+	* [Missing Images](#missing-images)
+	* [Blocks Appearing in Place of Text on Desktop and eInk Platforms](#blocks-appearing-in-place-of-text-on-desktop-and-eink-platforms)
+	* [Font Obfuscation](#font-obfuscation)
+	* [Text Spacing and Overlap Issues](#text-spacing-and-overlap-issues)
+	* [Viewport Issues](#viewport-issues)
+	* [Read-Along issues](#read-along-issues)
+	* [Audio Video Issues on Android and iOS Platforms](#audio-video-issues-on-android-and-ios-platforms)
+33. [Questions?](#still-have-questions)
 
 ### ePub Versions Kobo Supports
  
@@ -175,6 +184,18 @@ All images should use the RGB color model, and not CMYK. Encapsulated PostScript
 **Images should not have transparent backgrounds.** This will result in the reading system inserting a default background color or pattern. Fixed Layout titles with where image backgrounds are transparent will fail QA in cases where the content is unreadable.
  
 **For a full screen image view** on the Android and iOS platforms, users can long press images in reflowable ePubs. Once in full-screen view, users will be able to pinch and zoom. This can also be acheived on eInk devices (running version 3.14 or later) by double tapping images.
+
+**Scaling images may prevent them from displaying on eInk and Desktop.** Some ePubs will rotate and shrink images down to the size of a single pixel and then blow them back up to the intended view size. This will work on Android, iOS and Windows but on Desktop it results in the image either not displaying at all or only displaying as a single pixel.
+
+Ex.</br>
+`<g transform="matrix(850.4 0 0 680.3 0 0)">`</br>
+    `<image width="1" height="1" transform="matrix(1 0 0 -1 0 1)" preserveAspectRatio="none" image-rendering="optimizeSpeed" xlink:href="images/GrandRendezVous_002.jpg"/>`</br>
+`</g>`</br>
+
+If the content is formatted this way instead it will display correctly on all Kobo platforms (note that the image is still be rotated but not shrunken):</br>
+`<g>` </br>
+    `<image width="850" height="680" transform="matrix(1 0 0 -1 0 680)" preserveAspectRatio="none" image-rendering="optimizeSpeed" xlink:href="images/GrandRendezVous_001.jpg"/>`</br>
+`</g>`</br>
 
 ### Cover Images
  
@@ -531,7 +552,7 @@ function handleTouch(event) {
  
 ### MathML is Supported on iOS, elnk, and Desktop platforms
  
-Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android platform. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and devices, or else use images (rather than MathML) for the mathematical content. The website https://www.mathmlcloud.org/ is recommended for converting MathML into various outputs for inclusing in your ePubs.
+Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android platform. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and devices, or else uses (rather than MathML) for the mathematical content. The website https://www.mathmlcloud.org/ is recommended for converting MathML into various outputs for inclusing in your ePubs.
 
 ### Fallback Statements
  
@@ -586,6 +607,106 @@ The following table lists features supported by at least one Kobo platform but n
 | iOS       | Y      | Y    | Y          | Y              | Y           |
 | Windows   | N      | N    | N          | N              | N           |
 
+### Common QA Failure Issues
+
+Kobo routinely reviews content and will remove titles from sale when display issues have a significant and negative impact on the reading experience. In these cases a report will be sent to the account contacts indicating which reading platforms the issues were detected on and why it was removed from sale. Upon request Kobo can perform further testing, provide more feedback and sync to content to a Kobo user account belonging to the distributor or creator of the ePub file in question. Two key methods for revising failed content are side-loading and running ePubCheck.
+
+**Side-loading**
+
+Sideloading content for testing purposes will allow you to see the issue first hand (with the exception of ePubs with obfuscated fonts which will display correctly when side-loaded but not when loaded into the Kobo store). This can also be used after fixes are applied, to verify that content is displaying as intended. Instructions for sideloading ePubs to each of the different platforms can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes).
+
+**Running ePubCheck**
+
+Using an [ePub validator](http://validator.idpf.org/) will help detect errors within the ePub. In some cases Kobo will be unable to investigate failed content until the file passes validation without raising any flags. There are ePubs that will raise flags in ePubCheck that will sucsessfully load and display on Kobo as well as files that will pass ePubCheck and still fail to display correctly on Kobo's platforms. However files that pass ePubCheck are always less likely to produce display issues and those that do are much easier to diagnose. When display issues are produced by valid ePubs that display correctly on other reading platforms Kobo will log bugs and attempt to resolve them for future releases.
+
+### Pixelated or Low Resolution Images
+
+Kobo often receives reports from customers that images in ePubs are blurry and contain text or images that are not legible.
+
+To revise ePubs with this issue:
+* Embed higher resolution images and test via sideloading. Instructions for sideloading can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes). There's no miniumum size or dimension required for images but if the image does not appear pixelated on an iPad or Android tablet it should pass content QA. You can  double tap to expand images in reflowable content to full screen on Android and iOS for review.
+* When you are satisfied with the image quality, please send in the revised file and let us know that it is available for additional QA testing.
+* If you have tried replacing the images and the issue still exists contact the Content QA team for additional feedback.
+
+### Missing Images
+
+Kobo often receives ePubs where images are missing or fail to display within the ePub on one or more reading platforms.
+
+To revise ePubs with this issue:
+* If images are failing to display on all platforms:
+	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the ePub could be called “image with spaces.jpg” and would be labelled “image&nbsp;with&nbsp;spaces.jpg” in the OPF file.
+* If images are failing to display specifically on the desktop platform:
+	* Check the code for the use of negative positioning in regards to the images.
+	* Check to see if you are scaling images. If you are using transforms to shrink/expand the image is may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#images-formatting)
+* If you have tried revising the images and the issue still exists contact the Content QA team for additional feedback.
+
+### Blocks Appearing in Place of Text on Desktop and eInk Platforms
+
+Applying style modifications (ex: bolding, italicizing, etc) to embedded fonts rather than embedding separate modified versions of those fonts will result in a display on Desktop and eInk where the text expands to the point where it is not legible. [This section above](https://github.com/kobolabs/epub-spec#all-fonts-used-in-fixed-layout-content-must-be-embedded-and-cannot-be-modified) covers this display issue in greater detail.
+
+To revise ePubs with this issue:
+* Embed actual styled fonts (ex: bold or italic fonts) in place of modifying fonts in the CSS.
+* Test via sideloading to the desktop platform to ensure that the text is displaying properly. Instructions for sideloading can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes).
+* If the fonts are displaying as intended, please send in the revised file and let us know that it is available for additional QA testing.
+* If you cannot get the fonts to display correctly on Desktop and eInk contact the Content QA team for additional feedback.
+
+### Font Obfuscation
+
+Kobo does not currently support [font obfuscation](https://github.com/kobolabs/epub-spec#obfuscated-fonts-are-not-currently-supported-by-the-kobo-cms) and will fail Fixed Layout content when the fonts have been encrypted. When loaded to the store these titles will have revert to system fonts instead of the fonts that are embedded and the text will not display as designed.
+
+To revise ePubs with this issue:
+*Embed versions of the fonts that are not encrypted, or replace the fonts with new non-encrypted fonts. Removing the encryption key (the encryption.xml file) will not fix the file as the fonts will still be encrypted. 
+* Extract the ePub, open the font folder and try to open the font file. If the font can’t be opened our apps and devices won’t be able to read the fonts either.
+* If needed, revise the layout of the book to accommodate the new fonts.
+[Sideload the ePub](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes) to various platforms and test that the text displays as intended. 
+* If the fonts are displaying as intended send in the revised file for retesting.
+* If the fonts cannot be replaced and must be obfuscated then simply confirm that you will not be revising the content. Kobo will have the content retested and activated (if it passes QA) when support for obfuscated fonts is added.
+* If you cannot revise the file contact the Content QA team for additional feedback.
+
+### Text Spacing and Overlap Issues
+
+Issues with text spacing and overlap in Fixed Layout ePubs are often caused by strict styling specifications. Kobo strongly recommends that styling be done at the paragraph level (as opposed to placing each character or word individually) and that styling elements be contained within the CSS (as opposed to the XHTML files). The more styling present in the .xhtml files and the more rigidly the text is styled the less likely it is that the content will display as designed across all Kobo reading platforms.
+
+To revise ePubs with this issue:
+* If your file is using inline styling (or even styling individual words or characters), consider styling your content at the paragraph level. If your style elements are contained within the .xhtml files, consider placing the styling within the CSS. An example and a more detailed explanation can be found [here](https://github.com/kobolabs/epub-spec#css).
+* Increase the width allowance of the line/paragraph and build in extra space to accommodate slight display discrepancies between Kobo reading platoforms and the devices they are available on.
+* Side-load the ePub to various platforms and test that the text displays as intended. Instructions for side-loading content can be found here: https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes
+* If the text is displaying as intended send in the revised file for additional QA testing.
+* If you cannot revise the text layout contact the Content QA team for additional feedback.
+
+### Viewport Issues
+
+Fixed Layout content will fail QA in instances where the page content does not fit into or exceeds the window/screen. On devices this will manifest itself as extra white space on the screen or it appearing as though a zoom has been applied. This is the result of inconsistencies between the viewport specified in the XHTML, CSS or in the dimensions of the images being referenced on the pages.
+
+To revise ePubs with this issue:
+* Ensure that the viewport listed in all the CSS and XHTML files is the same.
+* Check to see if the image dimensions (if there is one background image for each page) matches the dimensions of the viewport. The image size does not have to match the viewport but the width:height ratio does. Ex. The image can be 100px by 200px and the viewport could be 200px by 400px.
+* [Side-load](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes) the ePub to various platforms and make sure that there is no extra space, that the whole page displays and that the left and right sides of the pages match up if the book is designed to be displayed in two page spreads.
+* If you cannot correct the viewports contact the Content QA team for additional feedback.
+
+### Read-Along issues
+
+Common issues flagged in QA for books with Read-Along audio include audio stuttering, audio getting cut off before all the text on the page has been read, reading text that is not on the current page or not playing the audio track at all. More on Kobo's support of Read-Along can be found [here](https://github.com/kobolabs/epub-spec#multimedia-support--media-overlays).
+
+To revise ePubs with these issues:
+* Ensure that you are using the SMIL format to enable Read-Along and that it conforms with the [specification](https://www.w3.org/TR/SMIL/)
+* Check the mimetype for your SMIL files in the OPF manifest. It should be application/smil+xml.
+* Play the embedded audio file and compare it to the times listed in the .smil files. The times listed in the .smil files should match the audio you want to hear for that page in the audio file.
+* If a page references multiple audio files or if the SMIL file references out of sequence points in the audio file (ex. it reads seconds 2-8, then 20-24, then 10-13) this may result in performance issues across reading platforms. You can improve performance by having each page only refer to one audio file and having that sequence of the audio match the sequence of the text being read.
+* [Side-load](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes) the ePub to various platforms and test that the audio plays as intended.
+* If you cannot resolve the playback issues contact the Content QA team for additional feedback.
+
+### Audio Video Issues on Android and iOS Platforms 
+
+Kobo often receives content with embedded audio that does not work on on or both of our iOS and Android platoforms (the criteria for activating such content is that is pass QA on both). This is usually either because the content has not been designed and tested for more than one reading platform or because the media, codecs, HTML or mimetypes are not compatible with one or both of the Android and iOS devices at all (ie. even outside of the Kobo app).
+
+To revise ePubs with these issues:
+* Ensure that the audio/video components are compatible with iOS and Android devices independent of the Kobo app by extracting the audio or video file and opening it in an app that will play the content. If it does not play the problem is likely the case that the file itself is not compatible with the Android or iOS platform.
+* Make sure you are using the [correct mimetype](http://www.iana.org/assignments/media-types/media-types.xhtml) for the audio/video file you’ve embedded.
+* Unzip the ePub and open the page containing the media in Chrome and Safari. If it doesn’t work on Safari it will not likely work on the Kobo iOS app and if it does not work in Chrome it will not likely work on the Kobo Android app. The display engines will not always be the same version but they will be very similiar. If the media plays in the browser and when opened in a media app on the device but not the Kobo app we will log a ticket in order to support the media for a future release.
+* Check the media controls. If the reading system has been allowed to use it’s default media controls it will decrease the likelihood that the media will not play. If Javascript is in use try to remove it without breaking the intended display of the content.
+* If you unable to get the media to play on both platforms contact the Content QA team for additional feedback.
+
 ### Still have questions? 
  
 Learn more about Kobo’s ePub support at [epubtest.org](http://epubtest.org/). It’s categorized into required and optional features. 
@@ -595,6 +716,3 @@ If you encounter any rendering issues you can bring them to our attention at ren
 If you are already configured as a publisher or distributor with Kobo and have a questions concerning content management (metadata or ePub uploads, pricing, pre-orders, etc.) you can follow up with your contact on the Publisher Operations team.
 
 If you are a small publisher or a self-published author and would like to sell your content through Kobo you can do so through [Kobo Writing Life](http://www.kobo.com/writinglife).
-
-
-
