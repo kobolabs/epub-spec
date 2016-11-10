@@ -314,6 +314,16 @@ Ex.
 
 ![background sidebar image](https://github.com/kobolabs/epub-spec/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202016-02-22%2014.51.00.png)
 
+**Using em units for Margins**
+
+Kobo advises against using em units to set text margins unless it's set to 1 or 2. When users on mobile devices select a large font this can make the content nearly unreadable. In this example the margins will always be 4x the size of the font selected and each line will only fit a few letters or words.
+
+Ex.
+From the HTML:
+`<p class='quote_section'><b>This test will be unreadable on phones at large fonts sizes</b></p>`<br>
+From the CSS:
+`p.quote_section { margin: 0em 4em; text-align:justify; text-indent: 0em; }`<br>
+
 **Page Breaks**
 
 Page breaking CSS is only partially supported across Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
