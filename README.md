@@ -442,6 +442,18 @@ All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/
  
 **Pinch and zoom gestures** are available on the Android, iOS, and Windows reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling  up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
 
+**Starting a Fixed Layout Book with a left spread will throw off the page sequence on iOS**
+
+The Kobo iOS app will always display the first page centered and as it's own spread. As a result if a Fixed Layout book is formatted as follows it will display the first item as the cover then the second as the left side of the first fill spread and the third as the right side of the first full spread. This will alter the sequence for the entire book, making all right spreads fall on the left side and vice versa. To avoid triggering this display issue simply do not indicate a page spread property for the first item and have your second item start as a left side spread.
+
+Ex. </br>
+  `<spine toc="ncx">`</br>
+    `<itemref idref="page_000001.xhtml" properties="page-spread-left"/> [blank page]`</br>
+    `<itemref idref="page_000002.xhtml" properties="page-spread-right"/> [cover image]`</br>
+    `<itemref idref="page_000003.xhtml" properties="page-spread-left"/>`</br>
+    `<itemref idref="page_000004.xhtml" properties="page-spread-right"/>`</br>
+    `<itemref idref="page_000005.xhtml" properties="page-spread-left"/>`</br>
+
 **Kobo strongly advises against the following when formatting Fixed Layout content:**
 
 * Text boxes with inline styling. This may result in inconsistent rendering across platforms, resulting in text overlap or incorrect positioning.
