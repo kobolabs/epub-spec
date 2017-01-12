@@ -192,7 +192,7 @@ Ex.</br>
     `<image width="1" height="1" transform="matrix(1 0 0 -1 0 1)" preserveAspectRatio="none" image-rendering="optimizeSpeed" xlink:href="images/GrandRendezVous_002.jpg"/>`</br>
 `</g>`</br>
 
-If the content is formatted this way instead it will display correctly on all Kobo platforms (note that the image is still be rotated but not shrunken):</br>
+If the content is formatted this way instead it will display correctly on all Kobo platforms (note that the image will still be rotated but not shrunken):</br>
 `<g>` </br>
     `<image width="850" height="680" transform="matrix(1 0 0 -1 0 680)" preserveAspectRatio="none" image-rendering="optimizeSpeed" xlink:href="images/GrandRendezVous_001.jpg"/>`</br>
 `</g>`</br>
@@ -656,10 +656,10 @@ Kobo often receives ePubs where images are missing or fail to display within the
 
 To revise ePubs with this issue:
 * If images are failing to display on all platforms:
-	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the ePub could be called “image with spaces.jpg” and would be labelled “image&nbsp;with&nbsp;spaces.jpg” in the OPF file.
+	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the ePub could be called “image with spaces.jpg” and would be labelled “`image&nbsp;with&nbsp;spaces.jpg`” in the OPF file.
 * If images are failing to display specifically on the desktop platform:
-	* Check the code for the use of negative positioning in regards to the images.
-	* Check to see if you are scaling images. If you are using transforms to shrink/expand the image is may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#images-formatting)
+	* Check the code for the use of negatively positioned images.
+	* Check to see if you are scaling images. If you are using transforms to shrink/expand the image iy may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#image-formatting)
 * If you have tried revising the images and the issue still exists contact the Content QA team for additional feedback.
 
 ### Blocks Appearing in Place of Text on Desktop and eInk Platforms
