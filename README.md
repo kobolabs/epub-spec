@@ -88,12 +88,10 @@ Kobo supports a subset of elements from the ePub 3.0 spec. The following covers 
 ### Current Kobo Devices
 
 eInk:
-* Glo HD
 * Touch 2.0
 * Aura H2O
 * Aura
-* Aura HD
-
+* Aura One
 
 ### Earlier Kobo Devices
  
@@ -105,6 +103,8 @@ Android:
 * Vox
 
 eInk:
+* Aura HD
+* Glo HD
 * Glo
 * Kobo Mini
 * Touch
@@ -131,6 +131,9 @@ Here’s how to sideload content on Kobo's reading platforms:
 2. Find the drive on your computer in Finder or Windows Explorer.
 3. Drag your ePub onto the device. To trigger the Kobo WebKit, change the file extension to “.kepub.epub”. To trigger the Kobo Webkit for a Fixed Layout title, change the extension to “.fxl.kepub.epub”. (If the extension is left unchanged it will render using the Adobe Digital Editions Webkit. This is the default display engine for side-loaded content to enable bookmarking, searching and highlighting.)
 4. Disconnect your device. The file will automatically appear in your library.
+
+*Sideloaded ePubs with the ".fxl.kepub.epub" or ".kepub.epub" will disable bookmarking and note keeping. Thumbnails for covers may not display. Otherwise the reading experience and content display will be identical to how the file would display when loaded through the store.
+ 
  
 **Desktop**
 
