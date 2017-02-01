@@ -485,6 +485,7 @@ Note: the Kobo Android platform **does not currently support**:
 * Non-Linear playback
 * Text highlighting for SVG text
 * Using decimals when the time is already specified in milliseconds. ex. clipBegin="47808.823ms" clipEnd="48330.373ms. This may cause the audio to stop playing or not start playing at all.
+* Using more than 4 decimals ex. clipBegin="4.82333" clipEnd="7.45334ms. This may also prevent the audio track from playing.
  
 When the rendition:spread property is set to “none” or “auto”, Android displays a full spread in FXL Read Along content in landscape.
  
