@@ -132,7 +132,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 3. Drag your ePub onto the device. To trigger the Kobo WebKit, change the file extension to “.kepub.epub”. To trigger the Kobo Webkit for a Fixed Layout title, change the extension to “.fxl.kepub.epub”. (If the extension is left unchanged it will render using the Adobe Digital Editions Webkit. This is the default display engine for side-loaded content to enable bookmarking, searching and highlighting.)
 4. Disconnect your device. The file will automatically appear in your library.
 
-*Sideloaded ePubs with the ".fxl.kepub.epub" or ".kepub.epub" will disable bookmarking and note keeping. Thumbnails for covers may not display. Otherwise the reading experience and content display will be identical to how the file would display when loaded through the store.
+*Sideloaded ePubs with the ".fxl.kepub.epub" or ".kepub.epub" will disable bookmarking and note keeping. Thumbnails for covers may not display. Otherwise the reading experience and content display will be identical to how the file would display when loaded through the store. Leaving the extension as ".epub" will enable bookmarking and note keeping and will trigger the ADE display engine.
  
  
 **Desktop**
