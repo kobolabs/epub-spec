@@ -21,7 +21,7 @@ What’s in this Document:
 12. [OPF](#opf)
 13. [CSS](#css)
 14. [Supported Fonts](#supported-fonts)
-15. [Obfuscated Fonts](#obfuscated-fonts-are-not-currently-supported-by-the-kobo-cms)
+15. [Obfuscated Fonts](#obfuscated-fonts-are-supported-on-all-reading-platforms)
 16. [Embedded Fonts](#embedded-fonts-can-be-selected-by-users)
 17. [Embedding All Fonts in Fixed Layout](#all-fonts-used-in-fixed-layout-content-must-be-embedded-and-cannot-be-modified)
 18. [Languages](#languages-other-than-english)
@@ -42,7 +42,6 @@ What’s in this Document:
 	* [Pixelated or Low Resolution Images](#pixelated-or-low-resolution-images)
 	* [Missing Images](#missing-images)
 	* [Blocks Appearing in Place of Text on Desktop and eInk Platforms](#blocks-appearing-in-place-of-text-on-desktop-and-eink-platforms)
-	* [Font Obfuscation](#font-obfuscation)
 	* [Text Spacing and Overlap Issues](#text-spacing-and-overlap-issues)
 	* [Viewport Issues](#viewport-issues)
 	* [Read-Along issues](#read-along-issues)
@@ -122,7 +121,7 @@ Kobo recommends content creators remove any files not listed in the OPF document
 
 ### Sideloading for Testing Purposes
  
-Kobo encourages the testing of content on all its reading platforms by sideloading. Content should display identically whether sideloaded or downloaded to a device from the Kobo store. Instances where this is not the case can be reported to renderingissues@kobo.com and the epub in question will be logged for investigation. The only present exception applies to ePubs containing obfuscated fonts which will display correctly when sideloaded but will not pass content QA once processed - see [Font Obfuscation](https://github.com/kobolabs/epub-spec/blob/master/README.md#obfuscated-fonts-are-not-currently-supported-by-the-kobo-cms).
+Kobo encourages the testing of content on all its reading platforms by sideloading. Content should display identically whether sideloaded or downloaded to a device from the Kobo store. Instances where this is not the case can be reported to renderingissues@kobo.com and the epub in question will be logged for investigation.
 
 Here’s how to sideload content on Kobo's reading platforms:
  
@@ -367,9 +366,9 @@ TTF, OTF, and WOFF fonts are supported by all of our platforms. For a detailed b
  
 **Windows:** Cambria, Calibri, Georgia, SegoeUI, Times New Roman, Trebuchet MS, Verdana.
 
-### Obfuscated Fonts Are Not Currently Supported by the Kobo CMS
-Non-sideloaded titles with obfuscated fonts will display the reading platform’s default font instead of the intended font. As a result all Fixed Layout titles with obfuscated fonts are likely to fail QA. However, work is underway at Kobo to support obfuscated fonts and render these titles correctly.
-DRM is applied to all ePubs sold through Kobo unless the account/publisher sending the content elects to have Kobo distribute their ePubs without DRM. As a result Kobo users will not be able to extract fonts from ePubs with DRM even when the embedded fonts are not obfuscated.
+### Obfuscated Fonts Are Supported on all Reading Platforms
+
+As of 2017 Kobo's reading platforms all support font obfuscation. This was not previously the case but Kobo's CMS can now process the embedded fonts and decryption keys and the fonts will display as intended on eInk, Desktop, Android, iOS and Windows.
 
 ### Embedded Fonts Can Be Selected By Users 
 When opening a new book, the font that displays is the one chosen by the user for their previous open book. For an embedded font, users can select “Document Default” or “Publisher Default” from the font options. The exception is FXL content for which users cannot choose their font. Fonts in FXL content are determined by the CSS in the ePub.
@@ -641,7 +640,7 @@ Kobo routinely reviews content and will remove titles from sale when display iss
 
 **Sideloading**
 
-Sideloading content for testing purposes will allow you to see the issue first hand (with the exception of ePubs with obfuscated fonts which will display correctly when sideloaded but not when loaded into the Kobo store). This can also be used after fixes are applied, to verify that content is displaying as intended. Instructions for sideloading ePubs to each of the different platforms can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes).
+Sideloading content for testing purposes will allow you to see the issue first hand. This can also be used after fixes are applied, to verify that content is displaying as intended. Instructions for sideloading ePubs to each of the different platforms can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes).
 
 **Running ePubCheck**
 
@@ -677,19 +676,6 @@ To revise ePubs with this issue:
 * Test via sideloading to the desktop platform to ensure that the text is displaying properly. Instructions for sideloading can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes).
 * If the fonts are displaying as intended, please send in the revised file and let us know that it is available for additional QA testing.
 * If you cannot get the fonts to display correctly on Desktop and eInk contact the Content QA team for additional feedback.
-
-### Font Obfuscation
-
-Kobo does not currently support [font obfuscation](https://github.com/kobolabs/epub-spec#obfuscated-fonts-are-not-currently-supported-by-the-kobo-cms) and will fail Fixed Layout content when the fonts have been encrypted. When loaded to the store these titles will have revert to system fonts instead of the fonts that are embedded and the text will not display as designed.
-
-To revise ePubs with this issue:
-*Embed versions of the fonts that are not encrypted, or replace the fonts with new non-encrypted fonts. Removing the encryption key (the encryption.xml file) will not fix the file as the fonts will still be encrypted. 
-* Extract the ePub, open the font folder and try to open the font file. If the font can’t be opened our apps and devices won’t be able to read the fonts either.
-* If needed, revise the layout of the book to accommodate the new fonts.
-[Sideload the ePub](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes) to various platforms and test that the text displays as intended. 
-* If the fonts are displaying as intended send in the revised file for retesting.
-* If the fonts cannot be replaced and must be obfuscated then simply confirm that you will not be revising the content. Kobo will have the content retested and activated (if it passes QA) when support for obfuscated fonts is added.
-* If you cannot revise the file contact the Content QA team for additional feedback.
 
 ### Text Spacing and Overlap Issues
 
