@@ -615,7 +615,7 @@ Sometimes tables wider than four columns may not be readable in reflowable ePub 
  
 ### Limitations and Maximums 
  
-Kobo recommends the following limits for ePub and ePub component sizes. Files exceeding these limits should still to load to the Kobo store and be accessible on all reading platforms but will take longer to download to users’ devices and will take up more memory. To ensure optimal performance content creators are advised against producing files that exceed these limits.
+Kobo recommends the following limits for ePub and ePub component sizes. Files exceeding these limits should still load to the Kobo store and be accessible on all reading platforms but will take longer to download to users’ devices and will take up more memory. To ensure optimal performance content creators are advised against producing files that exceed these limits.
  
 * 5 MB/image in FXL and Reflowable ePubs
 * 10 MB of embedded content/each HTML file in an ePub
