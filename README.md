@@ -298,7 +298,7 @@ Kobo advises against using the CSS element 'vh' in reflowable content as it is n
 
 **Styling div tags**
 
-Kobo advises against applying stlye elements in CSS to 'div' tags. These style elements will be applied to all content wrapped in 'div' tags throughout the ePub. In addition Kobo inserts 'div' tags during processing to enable user functionality (ex. text highlighting) and as a result any content contained within the added tags will inherit the styling applied in the CSS.
+Kobo advises against applying style elements in CSS to 'div' tags. These style elements will be applied to all content wrapped in 'div' tags throughout the ePub. In addition Kobo inserts 'div' tags during processing to enable user functionality (ex. text highlighting) and as a result any content contained within the added tags will inherit the styling applied in the CSS.
 
 Ex.
 `div {`<br>
