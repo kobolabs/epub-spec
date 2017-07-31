@@ -235,7 +235,9 @@ When an OPF-spine item is not listed in the TOC.ncx, the Kobo CMS will create a 
  
 The hidden attribute can be used to prevent the ToC listing from appearing in the ePub body while still displaying in the ToC menu. ToC menus on Kobo platforms support nesting up to three elements deep.
 
-Kobo does not require a specific naming convention for the .ncx or .html/.xhtml file, the content creator can name the file as they choose ([filename].ncx, [filename].html). Please note the file naming suggestions provided in the [OPF] (#OPF) section. 
+Kobo does not require a specific naming convention for the .ncx or .html/.xhtml file, the content creator can name the file as they choose ([filename].ncx, [filename].html). Please note the file naming suggestions provided in the [OPF] (#OPF) section.
+
+**Landmarks will display as TOC items but will not trigger behaviour on the apps.** The ePub specification does not define any specific way reading platforms are supposed to handle landmarks (<nav epub:type"landmarks">) and Kobo will not do anything beyond displaying them to users in the TOC. Ex. <epub:type="bodymatter"> will not determine what page/section the book opens to or change the navigation/paging experience in any way.
 
 ### OPF
  
