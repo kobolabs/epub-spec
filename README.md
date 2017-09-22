@@ -610,6 +610,8 @@ Publishers can set the amount of content they make available in previews. They u
 **On the product level**, the default is 5%. Publishers can set preview percentages for individual titles. They can use the Kobo Excel metadata template or ONIX 3.0 with the tags EpubUsageType, EpubUsageStatus or EpubUsageLimit. Previews can be set between 0% and 25%.
  
 Publishers can also upload custom previews by using the naming convention ISBN_preview.epub in the preview files they distribute.
+
+The preview generation process does not support images referenced using the CSS `background-image` property. Images will only be included in a fixed-layout preview if they are inserted as HTML, using the `<img>` element. Images referenced using the CSS `background-image` property will appear as expected in the full book however.
  
 ### Tables 
  
