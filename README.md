@@ -727,7 +727,7 @@ To revise ePubs with these issues:
 
 ### Two Pages Display in Portrait Orientation on Android
 
-In cases with graphic novels or books with small text, Fixed Layout content will fail QA for displaying a full 2-page spread in portrait orientation on our Android platform when they should ideally only display 1 page in portrait. This issue occurs when the rendition:spready property in the OPF file of the ePub is set to "portrait" or "both". To ensure that only 1 page appears in portrait and a full 2-page spread appears in landscape, set the rendition:spread property to "auto" or "landscape" in the OPF file.
+In cases with graphic novels or books with small text, Fixed Layout content will fail QA for displaying a full 2-page spread in portrait orientation on our Android platform when they should ideally only display 1 page in portrait. This issue occurs when the rendition:spread property in the OPF file of the ePub is set to "portrait" or "both". To ensure that only 1 page appears in portrait and a full 2-page spread appears in landscape, set the rendition:spread property to "auto" or "landscape" in the OPF file.
 
 ### Still have questions? 
  
