@@ -40,8 +40,7 @@ What’s in this Document:
 31. [Support Grid](#support-grid)
 32. [Common QA Failure Issues](#common-qa-failure-issues)
 	* [Pixelated or Low Resolution Images](#pixelated-or-low-resolution-images)
-	* [Missing Images](#missing-images)
-	* [Blocks Appearing in Place of Text on Desktop and eInk Platforms](#blocks-appearing-in-place-of-text-on-desktop-and-eink-platforms)
+	* [Missing Images](#missing-images)	
 	* [Text Spacing and Overlap Issues](#text-spacing-and-overlap-issues)
 	* [Viewport Issues](#viewport-issues)
 	* [Read-Along issues](#read-along-issues)
@@ -69,7 +68,7 @@ Any ePub file sent to Kobo will be made available on all of Kobo's reading platf
 
 &#42;The Kobo Vox and Blackberry apps both run older versions/ports of the Android app and will not be updated.
 
-&#42;&#42;Fixed Layout content display on Sony Readers is dependant on the capabilities of Adobe SDK. As a result the display of Fixed Layout content may not always match the display across other Kobo reading platforms.
+&#42;&#42;Fixed Layout content display on Sony Readers is dependent on the capabilities of Adobe SDK. As a result the display of Fixed Layout content may not always match the display across other Kobo reading platforms.
  
 The ePub 3.0 spec is based on HTML5 and CSS3, adhering to the most recent versions. Content creators are advised to review the [HTML5 and CSS3 reference profiles](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#references) because changes to them could impact file production. 
  
@@ -77,7 +76,7 @@ Kobo supports a subset of elements from the ePub 3.0 spec. The following covers 
 
 **Kobo does not accept** .mobi, KF8, PDF or any format outside of ePub that may be used to format eBooks.
 
-### Kobo Serves Content to Users On These 5 Reading Platforms 
+### Kobo Serves Content to Users on These 5 Reading Platforms 
  
 1. eInk/EPD — Kobo eInk devices (Aura, Glo, Touch) 
 2. Desktop — the Kobo desktop app for PC and Apple Computers
@@ -121,7 +120,7 @@ Kobo recommends content creators remove any files not listed in the OPF document
 
 ### Sideloading for Testing Purposes
  
-Kobo encourages the testing of content on all its reading platforms by sideloading. Content should display identically whether sideloaded or downloaded to a device from the Kobo store. Instances where this is not the case can be reported to renderingissues@kobo.com and the epub in question will be logged for investigation.
+Kobo encourages the testing of content on all its reading platforms by sideloading. Content should display identically whether sideloaded or downloaded to a device from the Kobo store. Instances where this is not the case can be reported to renderingissues@kobo.com and the ePub in question will be logged for investigation.
 
 Here’s how to sideload content on Kobo's reading platforms:
  
@@ -129,7 +128,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 
 1. Connect the device to your computer via USB.
 2. Find the drive on your computer in Finder or Windows Explorer.
-3. Drag your ePub onto the device. To trigger the Kobo WebKit, change the file extension to “.kepub.epub”. To trigger the Kobo Webkit for a Fixed Layout title, change the extension to “.fxl.kepub.epub”. (If the extension is left unchanged it will render using the Adobe Digital Editions Webkit. This is the default display engine for sideloaded content to enable bookmarking, searching and highlighting.)
+3. Drag your ePub onto the device. To trigger the Kobo WebKit, change the file extension to “.kepub.epub”. To trigger the Kobo WebKit for a Fixed Layout title, change the extension to “.fxl.kepub.epub”. (If the extension is left unchanged it will render using the Adobe Digital Editions WebKit. This is the default display engine for sideloaded content to enable bookmarking, searching and highlighting.)
 4. Disconnect your device. The file will automatically appear in your library.
 
 *Sideloaded ePubs with the ".fxl.kepub.epub" or ".kepub.epub" will disable bookmarking and note keeping. Thumbnails for covers may not display. Otherwise the reading experience and content display will be identical to how the file would display when loaded through the store. Leaving the extension as ".epub" will enable bookmarking and note keeping and will trigger the ADE display engine.
@@ -186,7 +185,7 @@ All images should use the RGB color model, and not CMYK. Encapsulated PostScript
 
 **Images should not have transparent backgrounds.** This will result in the reading system inserting a default background color or pattern. Fixed Layout titles with where image backgrounds are transparent will fail QA in cases where the content is unreadable.
  
-**For a full screen image view** on the Android and iOS platforms, users can long press images in reflowable ePubs. Once in full-screen view, users will be able to pinch and zoom. This can also be acheived on eInk devices (running version 3.14 or later) by double tapping images.
+**For a full screen image view** on the Android and iOS platforms, users can long press images in reflowable ePubs. Once in full-screen view, users will be able to pinch and zoom. This can also be achieved on eInk devices (running version 3.14 or later) by double tapping images.
 
 **Scaling images may prevent them from displaying on eInk and Desktop.** Some ePubs will rotate and shrink images down to the size of a single pixel and then blow them back up to the intended view size. This will work on Android, iOS and Windows but on Desktop it results in the image either not displaying at all or only displaying as a single pixel.
 
@@ -264,7 +263,7 @@ Ex.
 
 **Small Caps**
 
-In order to structure Small Caps that will display correctly on Kobo's reading platforms content creators must use the CSS property "font-variant".
+To structure Small Caps that will display correctly on Kobo's reading platforms content creators must use the CSS property "font-variant".
 
 Ex.
 `p.sc {
@@ -309,7 +308,7 @@ Ex.
 
 **Body Padding**
 
-Kobo advises against adding padding to the 'body' class to accomodate background images. On the Kobo iOS platform this may result in the background image overlapping with the text.
+Kobo advises against adding padding to the 'body' class to accommodate background images. On the Kobo iOS platform, this may result in the background image overlapping with the text.
 
 Ex.
 `body {`<br>
@@ -350,11 +349,11 @@ Page breaking CSS is only partially supported across Kobo's reading platforms. W
 
 **Setting Font Sizes**
 
-Font size can be set in the CSS using the unit type em, px, pt or %. However % has been known to trigger bugs on Desktop and eInk that can restrict the users ability to change the font size or to reset the font size at the start of each chapter. Kobo advises that content creators set a base font size in px or pt or not set a base size at all (this will allow each platform to use it's default font size) then increase or decrease the font size throughout using em.
+Font size can be set in the CSS using the unit type em, px, pt or %. However, % has been known to trigger bugs on Desktop and eInk that can restrict users' ability to change the font size or to reset the font size at the start of each chapter. Kobo advises that content creators set a base font size in px or pt or not set a base size at all (this will allow each platform to use its default font size) then increase or decrease the font size throughout using em.
 
 ### Supported Fonts
  
-TTF, OTF, and WOFF fonts are supported by all of our platforms. For a detailed breakdown of our font support by platform, check [EPUBTEST.org](http://epubtest.org/results). 
+TTF, OTF, and WOFF fonts are supported by all our platforms. For a detailed breakdown of our font support by platform, check [EPUBTEST.org](http://epubtest.org/results). 
 
 **Font customization options available to Kobo users** on each reading platform:
  
@@ -379,11 +378,11 @@ If the reading experience of a book requires that the embedded font be used, con
 
 **To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all Fixed Layout ePubs. If fonts are not embedded and specified, the reading platform defaults to Times. Fixed Layout files that use the default font should be tested extensively on Kobo’s reading platforms.
 
-**Content creators are advised against referencing fonts in the CSS that are not embedded in the ePub.** Kobo devices and devices that Kobo apps can be installed on will have specific fonts included. However the available fonts vary across these devices and there is no way to ensure that any one font will be available on the device chosen by the user. As a result the font styling in the CSS will not display as intended across multiple devices and platforms.
+**Content creators are advised against referencing fonts in the CSS that are not embedded in the ePub.** Kobo devices and devices that Kobo apps can be installed on will have specific fonts included. However, the available fonts vary across these devices and there is no way to ensure that any one font will be available on the device chosen by the user. As a result, the font styling in the CSS will not display as intended across multiple devices and platforms.
 
 ### All Fonts Used In Fixed Layout Content Must Be Embedded And Cannot be Modified
 
-Emphasis cannot be added to embedded fonts for Fixed Layout content in the CSS. Reading systems cannot modify embedded fonts with bold or italics. Instead a seperate font file must me embedded for bold or italic versions of any fonts used. Files produced using InDesign will often add such modifiers to embedded fonts resulting in text that cannot be read on all Kobo platforms.
+Emphasis cannot be added to embedded fonts for Fixed Layout content in the CSS. Reading systems cannot modify embedded fonts with bold or italics. Instead a separate font file must me embedded for bold or italic versions of any fonts used. Files produced using InDesign will often add such modifiers to embedded fonts resulting in text that cannot be read on all Kobo platforms.
 
 Ex. 
 `CharOverride-22 { `</br>
@@ -397,7 +396,7 @@ In this case a bold font should have been embedded instead of taking the origina
 
 ### Languages Other Than English
  
-When a user selects an available default font, Kobo reading platforms may not correctly render all glyphs within the script. So Content containing glyphs not present in Kobo’s default apps should be tested across platforms. Creators may want to embed a font that contains the glyphs used in their content to ensure it renders correctly.
+When a user selects an available default font, Kobo reading platforms may not correctly render all glyphs within the script. So content containing glyphs not present in Kobo’s default apps should be tested across platforms. Creators may want to embed a font that contains the glyphs used in their content to ensure it renders correctly.
  
 Some glyphs do not render on most fonts. In cases where creators are unable to supply embedded fonts they can insert a note into the front matter of their content instructing users to select the font Georgia. It correctly renders the greatest set of scripts.
  
@@ -415,22 +414,22 @@ Kobo has support for right-to-left language formatting in the following areas:
 		`<itemref idref="chapter2" />`<br>
 		`<itemref idref="chapter3" />`<br>
 	`</spine>`<br>
-The "page-progression-direction" attribute was introduced as part of the ePub3 specification. However it can be used in both ePub2 and ePub3 files for Kobo and will pass through processing and display correctly on Kobo's reading platforms in spite of flags that ePub2 files will generate in ePubCheck.
+The "page-progression-direction" attribute was introduced as part of the ePub3 specification. However it can be used in both ePub2 and ePub3 files for Kobo and will pass through processing and display correctly on Kobo's reading platforms despite flags that ePub2 files will generate in ePubCheck.
 
 ### Footnotes/Endnotes Are Fully Supported Across Kobo Platforms
  
-Footnotes and endnotes on the eInk (with the exception of the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
+Footnotes and endnotes on the eInk (except for the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS, the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
  
 It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute) for footnotes and endnotes (note: this markup is only valid in ePub 3 files and cannot be used in ePub3). This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform. Ex.
 `<span id="fn0005fn" epub:type="footnote">Text linking to footnote or endnote.</span>`
 
-**Warning: Hyperlinked content not using the epub:type attribute footnote or endnote will display as a pop-up on Kobo's iOS and eInk platforms in cases where all of the following criteria are met.**
+**Warning: Hyperlinked content not using the epub:type attribute footnote or endnote will display as a pop-up on Kobo's iOS and eInk platforms in cases where all the following criteria are met.**
 
 1) The link references a location in the ePub and also references a specific node within the HTML. Ex.
 <br>`<a href=“chapter.html#uniqueID”>link text</a>`<br>
-Where chapter.html is a file within this epub and where uniqueID is the id of a node within that html document.
+Where chapter.html is a file within this ePub and where uniqueID is the id of a node within that html document.
 
-2) The content in the node is nine charcters or more once stripped of the HTML tags. Ex.
+2) The content in the node is nine characters or more once stripped of the HTML tags. Ex.
 <br>`<p id="uniqueID">123456789</p>`
 
 3) The node being linked to is less than or equal to 5000 characters.
@@ -445,11 +444,11 @@ Kobo platforms also read the field <option name=”fixed-layout”>true/false</o
 
 All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are on the Android, Desktop and eInk reading platforms. The iOS platform supports the properties "Both", "None" and "Auto" but not "Portrait" or "Landscape". The Windows platform supports the properties "None" and "Auto" but not "Both", "Portrait" or "Landscape". Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the rendition:spread and rendition:layout properties at the spine level.
  
-**Pinch and zoom gestures** are available on the Android, iOS, and Windows reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling  up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
+**Pinch and zoom gestures** are available on the Android, iOS, and Windows reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
 
 **Starting a Fixed Layout Book with a left spread will throw off the page sequence on iOS**
 
-The Kobo iOS app will always display the first page centered and as it's own spread. As a result if a Fixed Layout book is formatted as follows it will display the first item as the cover then the second as the left side of the first fill spread and the third as the right side of the first full spread. This will alter the sequence for the entire book, making all right spreads fall on the left side and vice versa. To avoid triggering this display issue simply do not indicate a page spread property for the first item and have your second item start as a left side spread.
+The Kobo iOS app will always display the first page centered and as its own spread. As a result, if a Fixed Layout book is formatted as follows it will display the first item as the cover then the second as the left side of the first fill spread and the third as the right side of the first full spread. This will alter the sequence for the entire book, making all right spreads fall on the left side and vice versa. To avoid triggering this display issue simply do not indicate a page spread property for the first item and have your second item start as a left side spread.
 
 Ex. </br>
   `<spine toc="ncx">`</br>
@@ -476,13 +475,13 @@ Ex. </br>
 
 **Kobo Advises Against Overuse of Fixed Layout**
 
-Content creators are advised against producing Fixed Layout ePubs solely for the purpose of reproducing a print layout. Text cannot be resized by users while reading Fixed Layout content and as a result small text can only be read by zooming in. This can greatly diminish the reading experience particularly on eInk devices, smartphones and Desktop applications. Fixed Layout serves comics, children's books and other categories well but is not an ideal format for text heavy content that could be displayed as reflowable content. Furthermore Fixed Layout ePubs require more in depth testing prior to distribution to ensure that they display correctly across multiple reading platforms.
+Content creators are advised against producing Fixed Layout ePubs solely to reproduce a print layout. Text cannot be resized by users while reading Fixed Layout content and as a result small text can only be read by zooming in. This can greatly diminish the reading experience particularly on eInk devices, smartphones and Desktop applications. Fixed Layout serves comics, children's books and other categories well but is not an ideal format for text heavy content that could be displayed as reflowable content. Furthermore, Fixed Layout ePubs require more in-depth testing prior to distribution to ensure that they display correctly across multiple reading platforms.
 
 ### Kobo Supports SMIL
  
 [SMIL (Synchronized Multimedia Integration Language)](http://www.idpf.org/epub/30/spec/epub30-mediaoverlays.html#sec-smil-smil-elem) is supported for FXL titles on Android and iOS. Audio files must be encoded using Apple iTunes AAC-LC mp4-v2 codec, 256 kbps.
  
-Note: the Kobo Android platform **does not currently support**:
+Note: The Kobo Android platform **does not currently support**:
 
 * Non-Linear playback
 * Text highlighting for SVG text
@@ -551,7 +550,7 @@ Ex. <br>
  
 **Extensive Testing is Strongly Recommended For All Interactive Content**
 
-For content with interactive features (ex. pop-ups, buttons that trigger media, scrolling windows within Fixed-Layout ePubs, text input boxes) it is strongly recommended that content creators test by sideloading to both Kobo's iOS and Android platforms to ensure that all features work as intended. Furthermore this content should be tested by sideloading on Kobo's Windows and Desktop platforms to verify that the lack of interactivity support does not make the content unreadable to the user. Ideally these ePubs will be sent with metadata where the synopsis indicates that features within the content may not work on all platforms.
+For content with interactive features (ex. pop-ups, buttons that trigger media, scrolling windows within Fixed-Layout ePubs, text input boxes) it is strongly recommended that content creators test by sideloading to both Kobo's iOS and Android platforms to ensure that all features work as intended. Furthermore, this content should be tested by sideloading on Kobo's Windows and Desktop platforms to verify that the lack of interactivity support does not make the content unreadable to the user. Ideally these ePubs will be sent with metadata where the synopsis indicates that features within the content may not work on all platforms.
 
 Any content creators who cannot test each interactive title on both Kobo's Android and iOS apps are advised to not distribute such titles to Kobo at present.
  
@@ -581,7 +580,7 @@ function handleTouch(event) {
  
 ### MathML is Supported on iOS, elnk, and Desktop platforms
  
-Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android platform. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and devices, or else uses (rather than MathML) for the mathematical content. The website https://www.mathmlcloud.org/ is recommended for converting MathML into various outputs for inclusing in your ePubs.
+Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android platform. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and devices, or else uses (rather than MathML) for the mathematical content. The website https://www.mathmlcloud.org/ is recommended for converting MathML into various outputs for including in your ePubs.
 
 ### Fallback Statements
  
@@ -648,14 +647,14 @@ Sideloading content for testing purposes will allow you to see the issue first h
 
 **Running ePubCheck**
 
-Using an [ePub validator](http://validator.idpf.org/) will help detect errors within the ePub. In some cases Kobo will be unable to investigate failed content until the file passes validation without raising any flags. There are ePubs that will raise flags in ePubCheck that will sucsessfully load and display on Kobo as well as files that will pass ePubCheck and still fail to display correctly on Kobo's platforms. However files that pass ePubCheck are always less likely to produce display issues and those that do are much easier to diagnose. When display issues are produced by valid ePubs that display correctly on other reading platforms Kobo will log bugs and attempt to resolve them for future releases.
+Using an [ePub validator](http://validator.idpf.org/) will help detect errors within the ePub. In some cases Kobo will be unable to investigate failed content until the file passes validation without raising any flags. There are ePubs that will raise flags in ePubCheck that will successfully load and display on Kobo as well as files that will pass ePubCheck and still fail to display correctly on Kobo's platforms. However, files that pass ePubCheck are always less likely to produce display issues and those that do are much easier to diagnose. When display issues are produced by valid ePubs that display correctly on other reading platforms Kobo will log bugs and attempt to resolve them for future releases.
 
-### Pixelated or Low Resolution Images
+### Pixelated or Low-Resolution Images
 
 Kobo often receives reports from customers that images in ePubs are blurry and contain text or images that are not legible.
 
 To revise ePubs with this issue:
-* Embed higher resolution images and test via sideloading. Instructions for sideloading can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes). There's no miniumum size or dimension required for images but if the image does not appear pixelated on an iPad or Android tablet it should pass content QA. You can  double tap to expand images in reflowable content to full screen on Android and iOS for review.
+* Embed higher resolution images and test via sideloading. Instructions for sideloading can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes). There's no minimum size or dimension required for images but if the image does not appear pixelated on an iPad or Android tablet it should pass content QA. You can double tap to expand images in reflowable content to full screen on Android and iOS for review.
 * When you are satisfied with the image quality, please send in the revised file and let us know that it is available for additional QA testing.
 * If you have tried replacing the images and the issue still exists contact the Content QA team for additional feedback.
 
@@ -668,18 +667,8 @@ To revise ePubs with this issue:
 	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the ePub could be called “image with spaces.jpg” and would be labelled “`image&nbsp;with&nbsp;spaces.jpg`” in the OPF file.
 * If images are failing to display specifically on the desktop platform:
 	* Check the code for the use of negatively positioned images.
-	* Check to see if you are scaling images. If you are using transforms to shrink/expand the image iy may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#image-formatting)
+	* Check to see if you are scaling images. If you are using transforms to shrink/expand the image it may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#image-formatting)
 * If you have tried revising the images and the issue still exists contact the Content QA team for additional feedback.
-
-### Blocks Appearing in Place of Text on Desktop and eInk Platforms
-
-Applying style modifications (ex: bolding, italicizing, etc) to embedded fonts rather than embedding separate modified versions of those fonts will result in a display on Desktop and eInk where the text expands to the point where it is not legible. [This section above](https://github.com/kobolabs/epub-spec#all-fonts-used-in-fixed-layout-content-must-be-embedded-and-cannot-be-modified) covers this display issue in greater detail.
-
-To revise ePubs with this issue:
-* Embed actual styled fonts (ex: bold or italic fonts) in place of modifying fonts in the CSS.
-* Test via sideloading to the desktop platform to ensure that the text is displaying properly. Instructions for sideloading can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes).
-* If the fonts are displaying as intended, please send in the revised file and let us know that it is available for additional QA testing.
-* If you cannot get the fonts to display correctly on Desktop and eInk contact the Content QA team for additional feedback.
 
 ### Text Spacing and Overlap Issues
 
@@ -687,7 +676,7 @@ Issues with text spacing and overlap in Fixed Layout ePubs are often caused by s
 
 To revise ePubs with this issue:
 * If your file is using inline styling (or even styling individual words or characters), consider styling your content at the paragraph level. If your style elements are contained within the .xhtml files, consider placing the styling within the CSS. An example and a more detailed explanation can be found [here](https://github.com/kobolabs/epub-spec#css).
-* Increase the width allowance of the line/paragraph and build in extra space to accommodate slight display discrepancies between Kobo reading platoforms and the devices they are available on.
+* Increase the width allowance of the line/paragraph and build in extra space to accommodate slight display discrepancies between Kobo reading platforms and the devices they are available on.
 * Sideload the ePub to various platforms and test that the text displays as intended. Instructions for sideloading content can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes).
 * If the text is displaying as intended send in the revised file for additional QA testing.
 * If you cannot revise the text layout contact the Content QA team for additional feedback.
@@ -716,13 +705,13 @@ To revise ePubs with these issues:
 
 ### Audio Video Issues on Android and iOS Platforms 
 
-Kobo often receives content with embedded audio that does not work on on or both of our iOS and Android platforms (the criteria for activating such content is that is pass QA on both). This is usually either because the content has not been designed and tested for more than one reading platform or because the media, codecs, HTML or mimetypes are not compatible with one or both of the Android and iOS devices at all (ie. even outside of the Kobo app).
+Kobo often receives content with embedded audio that does not work on one or both of our iOS and Android platforms (the criteria for activating such content is that is pass QA on both). This is usually either because the content has not been designed and tested for more than one reading platform or because the media, codecs, HTML or mimetypes are not compatible with one or both of the Android and iOS devices at all (i.e. even outside of the Kobo app).
 
 To revise ePubs with these issues:
 * Ensure that the audio/video components are compatible with iOS and Android devices independent of the Kobo app by extracting the audio or video file and opening it in an app that will play the content. If it does not play the problem is likely the case that the file itself is not compatible with the Android or iOS platform.
 * Make sure you are using the [correct mimetype](http://www.iana.org/assignments/media-types/media-types.xhtml) for the audio/video file you’ve embedded.
-* Unzip the ePub and open the page containing the media in Chrome and Safari. If it doesn’t work on Safari it will not likely work on the Kobo iOS app and if it does not work in Chrome it will not likely work on the Kobo Android app. The display engines will not always be the same version but they will be very similiar. If the media plays in the browser and when opened in a media app on the device but not the Kobo app we will log a ticket in order to support the media for a future release.
-* Check the media controls. If the reading system has been allowed to use it’s default media controls it will decrease the likelihood that the media will not play. If Javascript is in use try to remove it without breaking the intended display of the content.
+* Unzip the ePub and open the page containing the media in Chrome and Safari. If it doesn’t work on Safari it will not likely work on the Kobo iOS app and if it does not work in Chrome it will not likely work on the Kobo Android app. The display engines will not always be the same version but they will be very similar. If the media plays in the browser and when opened in a media app on the device but not the Kobo app we will log a ticket to support the media for a future release.
+* Check the media controls. If the reading system has been allowed to use its default media controls it will decrease the likelihood that the media will not play. If JavaScript is in use try to remove it without breaking the intended display of the content.
 * If you unable to get the media to play on both platforms contact the Content QA team for additional feedback.
 
 ### Two Pages Display in Portrait Orientation on Android
@@ -733,8 +722,8 @@ In cases with graphic novels or books with small text, Fixed Layout content will
  
 Learn more about Kobo’s ePub support at [epubtest.org](http://epubtest.org/). It’s categorized into required and optional features. 
 
-If you encounter any rendering issues you can bring them to our attention at renderingissues@kobo.com. Please provide as much detail as possible, including app version, device, and screenshots if possible. Any comments or concerns about the documentation above can be submitted directly via Github comments. Immediate responses to all emails and comments cannot be guaranteed but all feedback related to documentation and content rendering is appreciated.
+If you encounter any rendering issues you can bring them to our attention at renderingissues@kobo.com. Please provide as much detail as possible, including app version, device, and screenshots if possible. Any comments or concerns about the documentation above can be submitted directly via GitHub comments. Immediate responses to all emails and comments cannot be guaranteed but all feedback related to documentation and content rendering is appreciated.
 
-If you are already configured as a publisher or distributor with Kobo and have a questions concerning content management (metadata or ePub uploads, pricing, pre-orders, etc.) you can follow up with your contact on the Publisher Operations team.
+If you are already configured as a publisher or distributor with Kobo and have questions concerning content management (metadata or ePub uploads, pricing, pre-orders, etc.) you can follow up with your contact on the Publisher Operations team.
 
 If you are a small publisher or a self-published author and would like to sell your content through Kobo you can do so through [Kobo Writing Life](http://www.kobo.com/writinglife).
