@@ -224,7 +224,7 @@ It is recommended that cover images be embedded in the html using the `<img>` ta
  
 ### Scalable Vector Graphics (SVG)
  
-SVG is partially supported across Kobo platforms. Thorough testing is advised for ePubs with SVG, particularly for text rendering. Content creators are advised to use manifest fallbacks for SVG whenever possible. Refer to the support grid in this document or the test results for Kobo's reading platforms at [ePubtest.org](http://www.epubtest.org).
+Text, images and animations in SVG are supported on all Kobo reading platforms (performance on eInk is limited but the animations will function). Placing SVG items directly in the spine (as opposed to in XHTML files in the spine) is partially supported (Android and iOS) but is not recommended.
  
 ### Table of Contents (ToC)
  
@@ -355,7 +355,7 @@ Font size can be set in the CSS using the unit type em, px, pt or %. However, % 
 
 ### Supported Fonts
  
-TTF, OTF, and WOFF fonts are supported by all our platforms. For a detailed breakdown of our font support by platform, check [EPUBTEST.org](http://epubtest.org/results). 
+TTF, OTF, and WOFF fonts are supported by all Kobo platforms.
 
 **Font customization options available to Kobo users** on each reading platform:
  
@@ -511,7 +511,7 @@ The Kobo Android and iOS platforms will render FXL ePubs that meet certain crite
 <li>c. or an HTML file which falls under one of the following categories:
 <ul>
 <li>i. either it contains a single ‘img’ tag which references an image. In this case, this image will be used</li>
-<li>ii. or it contains a svg definition with an ‘image’ child tag referencing an image. In this case, the referenced image will be used. NB: embedded object tags (‘object’), which may include an SVG image in the ‘data’ attribute, do not fall into this category</li>
+<li>ii. or it contains a SVG definition with an ‘image’ child tag referencing an image. In this case, the referenced image will be used. NB: embedded object tags (‘object’), which may include an SVG image in the ‘data’ attribute, do not fall into this category</li>
 <li>iii. or an HTML page which contains no child elements under ‘body’. This item will be rendered as a blank white page.</li></ul></li></ul>
 4. The same image cannot appear twice in a row. If two consecutive pages refer to the same image, the platform will assume that CSS styling is repositioning the image, which is not supported by the image-based FXL reader.
  
@@ -722,8 +722,6 @@ In cases with graphic novels or books with small text, Fixed Layout content will
 
 ### Still have questions? 
  
-Learn more about Kobo’s ePub support at [epubtest.org](http://epubtest.org/). It’s categorized into required and optional features. 
-
 If you encounter any rendering issues you can bring them to our attention at renderingissues@kobo.com. Please provide as much detail as possible, including app version, device, and screenshots if possible. Any comments or concerns about the documentation above can be submitted directly via GitHub comments. Immediate responses to all emails and comments cannot be guaranteed but all feedback related to documentation and content rendering is appreciated.
 
 If you are already configured as a publisher or distributor with Kobo and have questions concerning content management (metadata or ePub uploads, pricing, pre-orders, etc.) you can follow up with your contact on the Publisher Operations team.
