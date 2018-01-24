@@ -295,10 +295,6 @@ HTML:<br>
 `<p style="margin: 0;text-size: 10px;">Sample text.</p>`<br>
 `<p style="margin: 0;text-size: 10px;">Sample text, part two.</p>`<br>
 
-**Viewport Height (vh)**
-
-Kobo advises against using the CSS element 'vh' in reflowable content as it is not supported on all display engines and may result in text getting cut off or overlapping with other content. More conventional elements such as 'height' or 'max-height' are recommended. 
-
 **Styling div tags**
 
 Kobo advises against applying style elements in CSS to 'div' tags. These style elements will be applied to all content wrapped in 'div' tags throughout the ePub. In addition Kobo inserts 'div' tags during processing to enable user functionality (ex. text highlighting) and as a result any content contained within the added tags will inherit the styling applied in the CSS.
