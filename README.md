@@ -112,11 +112,9 @@ eInk:
  
 ### Kobo Recommends Initial ePub Check 
  
-The Kobo CMS does not use a built in ePubCheck. To detect errors in ePubs, the IDPF provides both a [web validation tool](http://validator.idpf.org/) and a [desktop application](https://github.com/IDPF/epubcheck). Kobo cannot guarantee that files that fail ePubCheck will render correctly across its reading platforms. So ePubs should be validated using the most recent version of ePubCheck prior to distribution. 
- 
-The Kobo Content Management System will neither reject those files that fail ePubCheck nor send reports to their publishers. However, if any rendering or performance issues harm the user experience, the files may be flagged for, and then failed in, the Kobo content QA process. 
+The Kobo CMS runs incoming files through [ePubCheck](https://github.com/IDPF/epubcheck). If your ePub raises failure messages that are known to prevent files from loading or displaying correctly you will receive an automated failure report indicating which files failed validation and why.
 
-Kobo recommends content creators remove any files not listed in the OPF document, as suggested by the validator. Leaving these files in the ePub can cause unexpected behaviour that may result in failing QA test results.
+Not all ePubCheck flags will result in files failing upon ingestion but Kobo strongly recommends that only files that pass ePubCheck without flags are distributed. ePubs that raise warning flags may pass ingestion but still fail content QA if they produce display issues on Kobo's reading platforms.
 
 ### Sideloading for Testing Purposes
  
