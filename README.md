@@ -112,7 +112,7 @@ eInk:
  
 ### Kobo Recommends Initial ePub Check 
  
-The Kobo CMS runs incoming files through [ePubCheck](https://github.com/IDPF/epubcheck). If your ePub raises failure messages that are known to prevent files from loading or displaying correctly you will receive an automated failure report indicating which files failed validation and why.
+The Kobo CMS runs incoming files through [ePubCheck](https://github.com/IDPF/epubcheck) version 4.0.1. If your ePub raises failure messages that are known to prevent files from loading or displaying correctly you will receive an automated failure report indicating which files failed validation and why within two business days.
 
 Not all ePubCheck flags will result in files failing upon ingestion but Kobo strongly recommends that only files that pass ePubCheck without flags are distributed. ePubs that raise warning flags may pass ingestion but still fail content QA if they produce display issues on Kobo's reading platforms.
 
