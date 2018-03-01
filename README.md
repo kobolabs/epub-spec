@@ -349,7 +349,7 @@ Font size can be set in the CSS using the unit type em, px, pt or %. However, % 
 
 ### Supported Fonts
  
-TTF, OTF, and WOFF fonts are supported by all Kobo platforms.
+TTF, OTF, and WOFF (v. 1.0) fonts are supported by all Kobo platforms.
 
 **Font customization options available to Kobo users** on each reading platform:
  
