@@ -52,19 +52,7 @@ What’s in this Document:
  
 Kobo supports ePub, the universal open standard eBook format maintained by the Independent Digital Publishing Forum [(IDPF)](http://idpf.org/epub). The current version is ePub 3 but Kobo still supports its predecessor, ePub 2.0.1.
 
-Any ePub file sent to Kobo will be made available on all of Kobo's reading platforms with the exception of ePub2 Fixed Layout content which is not available on Desktop or eInk:
-
-| Platform                | ePub2 Reflowable | ePub2 FXL | ePub3 Reflowable | ePub3 FXL |
-|-------------------------|------------------|-----------|------------------|-----------|
-| Android                 | Y                | Y         | Y                | Y         |
-| Desktop                 | Y                | N         | Y                | Y         |
-| eInk                    | Y                | N         | Y                | Y         |
-| iOS                     | Y                | Y         | Y                | Y         |
-| Windows                 | Y                | Y         | Y                | Y         |
-| Sony eReader            | Y                | N         | Y                | Y&#42;&#42;       |
-| Kobo Vox&#42;               | Y                | Y         | Y                | N         |
-| Blackberry&#42;             | Y                | N         | N                | N         |
-| Original Kobo/Kobo WiFi | Y                | N         | N                | N         |
+Any ePub file sent to Kobo will be made available on all of Kobo's reading platforms.
 
 &#42;The Kobo Vox and Blackberry apps both run older versions/ports of the Android app and will not be updated.
 
@@ -173,7 +161,7 @@ At a minimum, Kobo employs encryption standards in the 128-bit version of the Ad
  
 ### Image Formatting
  
-Kobo reading platforms support the core image types outlined in the [IDPF spec](http://www.idpf.org/epub/30/spec/epub30-publications.html#cmt-grp-image). This includes JPG, PNG and GIF but not Scalable Vector Graphics (SVG), which are not supported on all reading platforms. (See [Support Grid](https://github.com/kobolabs/epub-spec#support-grid)). PNG files are preferred over JPG.
+Kobo reading platforms support the core image types outlined in the [IDPF spec](http://www.idpf.org/epub/30/spec/epub30-publications.html#cmt-grp-image). This includes JPG, PNG and Scalable Vector Graphics (SVG). PNG files are preferred over JPG.
  
 All images should use the RGB color model, and not CMYK. Encapsulated PostScript (EPS) images are not supported on Kobo.
  
