@@ -10,35 +10,34 @@ What’s in this Document:
 
 1. [ePub Versions Kobo Supports](#epub-versions-kobo-supports)
 2. [Kobo Reading Platforms](#kobo-serves-content-to-users-on-these-5-reading-platforms)
-3. [Kobo Devices](#current-kobo-devices)
-5. [Kobo Recommends Initial ePub Check](#kobo-recommends-initial-epub-check)
-6. [Sideloading for Testing Purposes](#sideloading-for-testing-purposes)
-7. [Digital Rights Management (DRM)](#digital-rights-management-drm)
-8. [Image Formatting](#image-formatting)
-9. [Cover Images](#cover-images)
-10. [Scalable Vector Graphics (SVG)](#scalable-vector-graphics-svg)
-11. [Table of Contents (ToC)](#table-of-contents-toc)
-12. [OPF](#opf)
-13. [CSS](#css)
-14. [Supported Fonts](#supported-fonts)
-15. [Obfuscated Fonts](#obfuscated-fonts-are-supported-on-all-reading-platforms)
-16. [Embedded Fonts](#embedded-fonts-can-be-selected-by-users)
-17. [Embedding All Fonts in Fixed Layout](#all-fonts-used-in-fixed-layout-content-must-be-embedded-and-cannot-be-modified)
-18. [Languages](#languages-other-than-english)
-19. [Right to Left Page and Text Direction](#right-to-left-page-and-text-direction)
-20. [Footnotes/Endnotes](#footnotesendnotes-are-fully-supported-across-kobo-platforms)
-21. [Fixed Layout](#fixed-layout-fxl-support)
-22. [SMIL](#kobo-supports-smil)
-23. [Image-Based FXL Reader](#image-based-fxl-reader)
-24. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
-25. [JavaScript Support](#javascript-support)
-26. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
-27. [Fallback Statements](#fallback-statements)
-28. [ePub Previews](#epub-previews)
-29. [Tables](#tables)
-30. [Limitations and Maximums](#limitations-and-maximums)
-31. [Support Grid](#support-grid)
-32. [Common QA Failure Issues](#common-qa-failure-issues)
+3. [Kobo Recommends Initial ePub Check](#kobo-recommends-initial-epub-check)
+4. [Sideloading for Testing Purposes](#sideloading-for-testing-purposes)
+5. [Digital Rights Management (DRM)](#digital-rights-management-drm)
+6. [Image Formatting](#image-formatting)
+7. [Cover Images](#cover-images)
+8. [Scalable Vector Graphics (SVG)](#scalable-vector-graphics-svg)
+9. [Table of Contents (ToC)](#table-of-contents-toc)
+10. [OPF](#opf)
+11. [CSS](#css)
+12. [Supported Fonts](#supported-fonts)
+13. [Obfuscated Fonts](#obfuscated-fonts-are-supported-on-all-reading-platforms)
+14. [Embedded Fonts](#embedded-fonts-can-be-selected-by-users)
+15. [Embedding All Fonts in Fixed Layout](#all-fonts-used-in-fixed-layout-content-must-be-embedded-and-cannot-be-modified)
+16. [Languages](#languages-other-than-english)
+17. [Right to Left Page and Text Direction](#right-to-left-page-and-text-direction)
+18. [Footnotes/Endnotes](#footnotesendnotes-are-fully-supported-across-kobo-platforms)
+19. [Fixed Layout](#fixed-layout-fxl-support)
+20. [SMIL](#kobo-supports-smil)
+21. [Image-Based FXL Reader](#image-based-fxl-reader)
+22. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
+23. [JavaScript Support](#javascript-support)
+24. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
+25. [Fallback Statements](#fallback-statements)
+26. [ePub Previews](#epub-previews)
+27. [Tables](#tables)
+28. [Limitations and Maximums](#limitations-and-maximums)
+29. [Support Grid](#support-grid)
+30. [Common QA Failure Issues](#common-qa-failure-issues)
 	* [Pixelated or Low Resolution Images](#pixelated-or-low-resolution-images)
 	* [Missing Images](#missing-images)	
 	* [Text Spacing and Overlap Issues](#text-spacing-and-overlap-issues)
@@ -46,7 +45,7 @@ What’s in this Document:
 	* [Read-Along issues](#read-along-issues)
 	* [Audio Video Issues on Android and iOS Platforms](#audio-video-issues-on-android-and-ios-platforms)
 	* [Two Pages Display in Portrait Orientation on Android](#two-pages-display-in-portrait-orientation-on-android)
-33. [Questions?](#still-have-questions)
+31. [Questions?](#still-have-questions)
 
 ### ePub Versions Kobo Supports
  
@@ -71,32 +70,6 @@ Kobo supports a subset of elements from the ePub 3.0 spec. The following covers 
 3. Android — all Android devices running the Kobo app including all Kobo Arc versions
 4. iOS — iPad, iPhone and iPod Touch
 5. Windows — all tablets, smartphones and computers running Windows apps.
-
-### Current Kobo Devices
-
-eInk:
-* Touch 2.0
-* Aura H2O
-* Aura
-* Aura One
-
-### Earlier Kobo Devices
- 
-Android:
-* Arc 7 SD
-* Arc 7 HD
-* Arc 10 HD
-* Arc (original)
-* Vox
-
-eInk:
-* Aura HD
-* Glo HD
-* Glo
-* Kobo Mini
-* Touch
-* Kobo WiFi
-* Kobo1
  
 ### Kobo Recommends Initial ePub Check 
  
@@ -592,7 +565,7 @@ Publishers can set the amount of content they make available in previews. They u
  
 **On the product level**, the default is 5%. Publishers can set preview percentages for individual titles. They can use the Kobo Excel metadata template or ONIX 3.0 with the tags EpubUsageType, EpubUsageStatus or EpubUsageLimit. Previews can be set between 0% and 25%.
  
-Publishers can also upload custom previews by using the naming convention ISBN_preview.epub in the preview files they distribute.
+Publishers can also upload custom previews by using the naming convention ISBN_preview.epub or ISBN_sample.epub in the preview files they distribute.
 
 The preview generation process does not support images referenced using the CSS `background-image` property. Images will only be included in a fixed-layout preview if they are inserted as HTML, using the `<img>` element. Images referenced using the CSS `background-image` property will appear as expected in the full book however.
  
