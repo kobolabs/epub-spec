@@ -31,7 +31,7 @@ What’s in this Document:
 21. [Image-Based FXL Reader](#image-based-fxl-reader)
 22. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
 23. [JavaScript Support](#javascript-support)
-24. [MathML](#mathml-is-supported-on-ios-elnk-and-desktop-platforms)
+24. [MathML](#mathml-support)
 25. [Fallback Statements](#fallback-statements)
 26. [ePub Previews](#epub-previews)
 27. [Tables](#tables)
@@ -535,9 +535,9 @@ function handleTouch(event) {
 }
 </code></pre>
  
-### MathML is Supported on iOS, elnk, and Desktop platforms
+### MathML Support
  
-Please note that [MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is not presently supported on the Kobo Android platform. At present content creators are encouraged to either include a note to indicate that the content is not optimized for Android and devices, or else uses (rather than MathML) for the mathematical content. The website https://www.mathmlcloud.org/ is recommended for converting MathML into various outputs for including in your ePubs.
+[MathML](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-mathml) is currently supported on Kobo's iOS, Android, Desktop and eInk platforms. It is not currently supported on the Windows app for Desktop and mobile. It is recommended that content creators test their content across Android, iOS and Desktop prior to distribution to ensure that equations are displaying as intended.
 
 ### Fallback Statements
  
@@ -588,7 +588,7 @@ The following table lists features supported by at least one Kobo platform but n
 
 | Platform  | MathML | SMIL | JavaScript | CSS Animations | Audio/Video |
 |-----------|--------|------|------------|----------------|-------------|
-| Android   | N      | Y    | Y          | Y              | Y           |
+| Android   | Y      | Y    | Y          | Y              | Y           |
 | Desktop   | Y      | N    | N          | Y              | N           |
 | eInk      | Y      | N    | N          | Y              | N           |
 | iOS       | Y      | Y    | Y          | Y              | Y           |
