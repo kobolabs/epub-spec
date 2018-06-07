@@ -490,6 +490,8 @@ If images are set using the [background property](http://www.w3.org/TR/CSS21/col
  
 On Android, if the image is determined to be twice as large as the screen in any dimension, a low-res version of the image loads when the user turns a page. Within a second, the high-res version replaces the original image. This optimization prevents memory issues when users quickly flip through pages. The low-res image might appear slightly blurry or soft compared to the final hi-res image.
 
+**Web links will be disabled in the Image Based FXL reader.** If web links must work for an image only Fixed Layout epub it is recommended that invisible sample text be added to any HTML file so that Kobo's Android and iOS apps will open the file with the default reader.
+
 ### Multimedia Support / Media Overlays 
  
 Testing across platforms for ePubs with multimedia and other media overlays is recommended.
