@@ -405,7 +405,7 @@ All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/
 
 **Starting a Fixed Layout Book with a left spread will throw off the page sequence on iOS**
 
-The Kobo iOS app will always display the first page centered and as its own spread. As a result, if a Fixed Layout book is formatted as follows it will display the first item as the cover then the second as the left side of the first fill spread and the third as the right side of the first full spread. This will alter the sequence for the entire book, making all right spreads fall on the left side and vice versa. To avoid triggering this display issue simply do not indicate a page spread property for the first item and have your second item start as a left side spread.
+The Kobo iOS app will always display the first page centered and as its own spread. As a result, if a Fixed Layout book is formatted as follows it will display the first item as the cover then the second as the left side of the first fill spread and the third as the right side of the first full spread. This will alter the sequence for the entire book, making all right spreads fall on the left side and vice versa. To avoid triggering this display issue simply do not indicate a page spread property for the first item and have your second item start as a left side spread. The same rule applies to books with `<spine page-progression-direction="rtl">` but with opposite directions; applying `properties="page-spread-right"` to the first spine item in `rtl` books will throw off the page secuence on iOS.
 
 Ex. </br>
   `<spine toc="ncx">`</br>
