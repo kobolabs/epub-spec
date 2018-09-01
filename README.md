@@ -333,7 +333,7 @@ When opening a new book, the font that displays is the one chosen by the user fo
 
 If the reading experience of a book requires that the embedded font be used, consider adding a note to the front matter. Instruct the user to select the “Document Default” font option. 
 
-**To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all Fixed Layout ePubs. If fonts are not embedded and specified, the reading platform defaults to Times. Fixed Layout files that use the default font should be tested extensively on Kobo’s reading platforms.
+**To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all Fixed Layout ePubs. If fonts are not embedded and specified the reading platform falls back to different default fonts depending on the system. This can lead to unexpected text reflow and element-sizing issues. Fixed Layout files that use the default fonts should be tested extensively on Kobo’s reading platforms.
 
 **Content creators are advised against referencing fonts in the CSS that are not embedded in the ePub.** Kobo devices and devices that Kobo apps can be installed on will have specific fonts included. However, the available fonts vary across these devices and there is no way to ensure that any one font will be available on the device chosen by the user. As a result, the font styling in the CSS will not display as intended across multiple devices and platforms.
 
@@ -430,7 +430,7 @@ Ex. </br>
 `word-spacing: -15px;`</br>
 `}`</br>
 
-**Kobo Advises Against Overuse of Fixed Layout**
+### Kobo Advises Against Overuse of Fixed Layout
 
 Content creators are advised against producing Fixed Layout ePubs solely to reproduce a print layout. Text cannot be resized by users while reading Fixed Layout content and as a result small text can only be read by zooming in. This can greatly diminish the reading experience particularly on eInk devices, smartphones and Desktop applications. Fixed Layout serves comics, children's books and other categories well but is not an ideal format for text heavy content that could be displayed as reflowable content. Furthermore, Fixed Layout ePubs require more in-depth testing prior to distribution to ensure that they display correctly across multiple reading platforms.
 
