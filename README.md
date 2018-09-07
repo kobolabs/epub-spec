@@ -180,6 +180,8 @@ Manifest item listing:
 **Cover images must be contained in their own XHTML files.** Kobo's eInk devices will activate the Fixed Layout reader for the XHTML file containing the cover image to optimize the display. As a result any text or images that have been placed in the same XHTML file as the cover will be displayed as Fixed Layout content. The user will be unable to resize the text and some of the content may not display on the screen at all. 
 
 It is recommended that cover images be embedded in the html using the `<img>` tag, rather than using the `background-image` CSS property. The CSS `background-image` method is not supported by the automatic cover extraction process. Books that do use the CSS method will require separate covers to be submitted in order for covers to appear in the store and in customer libraries.
+
+Kobo advises against placing links in covers. This can create a poor reading experience when attempting to page forward and a link is triggered instead.
  
 ### Scalable Vector Graphics (SVG)
  
@@ -287,7 +289,7 @@ From the CSS:
 
 **Page Breaks**
 
-Page breaking CSS is only partially supported across Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
+Page breaking CSS is only partially supported across Kobo's reading platforms. The reasoning for limited support of page breaking CSS at this time is that our rendering system does not currently implement pagination in a way that supports its use across all of Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
 
 |Page Break Type| Windows | iOS | Android | EPD | KDA |
 |---------------|---------|-----|---------|-----|-----|
