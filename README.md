@@ -146,17 +146,7 @@ All images should use the RGB color model, and not CMYK. Encapsulated PostScript
  
 **For a full screen image view** on the Android and iOS platforms, users can long press images in reflowable ePubs. Once in full-screen view, users will be able to pinch and zoom. This can also be achieved on eInk devices (running version 3.14 or later) by double tapping images.
 
-**Scaling images may prevent them from displaying on eInk and Desktop.** Some ePubs will rotate and shrink images down to the size of a single pixel and then blow them back up to the intended view size. This will work on Android, iOS and Windows but on Desktop it results in the image either not displaying at all or only displaying as a single pixel.
 
-Ex.</br>
-`<g transform="matrix(850.4 0 0 680.3 0 0)">`</br>
-    `<image width="1" height="1" transform="matrix(1 0 0 -1 0 1)" preserveAspectRatio="none" image-rendering="optimizeSpeed" xlink:href="images/GrandRendezVous_002.jpg"/>`</br>
-`</g>`</br>
-
-If the content is formatted this way instead it will display correctly on all Kobo platforms (note that the image will still be rotated but not shrunken):</br>
-`<g>` </br>
-    `<image width="850" height="680" transform="matrix(1 0 0 -1 0 680)" preserveAspectRatio="none" image-rendering="optimizeSpeed" xlink:href="images/GrandRendezVous_001.jpg"/>`</br>
-`</g>`</br>
 
 ### Cover Images
  
@@ -184,6 +174,23 @@ It is recommended that cover images be embedded in the html using the `<img>` ta
 ### Scalable Vector Graphics (SVG)
  
 Text, images and animations in SVG are supported on all Kobo reading platforms (performance on eInk is limited but the animations will function). Placing SVG items directly in the spine (as opposed to in XHTML files in the spine) is partially supported (Android and iOS) but is not recommended.
+
+**Scaling images may prevent them from displaying on eInk and Desktop.** Some ePubs will rotate and shrink images down to the size of a single pixel and then blow them back up to the intended view size. This will work on Android, iOS and Windows but on Desktop it results in the image either not displaying at all or only displaying as a single pixel.
+
+Unsupported:
+```svg
+<g transform="matrix(850.4 0 0 680.3 0 0)">
+    <image width="1" height="1" transform="matrix(1 0 0 -1 0 1)" preserveAspectRatio="none" image-rendering="optimizeSpeed" xlink:href="images/img_001.jpg" />
+</g>
+```
+
+If the content is formatted this way instead it will display correctly on all Kobo platforms (note that the image will still be rotated but not shrunken).
+Supported:
+```svg
+<g>
+    <image width="850" height="680" transform="matrix(1 0 0 -1 0 680)" preserveAspectRatio="none" image-rendering="optimizeSpeed" xlink:href="images/img_001.jpg" />
+</g>
+```
  
 ### Table of Contents (ToC)
  
@@ -217,75 +224,75 @@ The OPF file can be named however the content creator chooses ([filename].opf), 
 
 Kobo recommends that publishers avoid specifying background colors in the CSS for reflowable ePubs. Background colors may make the content difficult to read when the user has selected the sepia or night modes or when reading on eInk devices. 
 
-Ex.
-`.c5 {
-  background: #FF0000
-  }`
+CSS:
+```css
+.c5 {
+    background: #FF0000
+}
+```
 
 **Small Caps**
 
-To structure Small Caps that will display correctly on Kobo's reading platforms content creators must use the CSS property "font-variant".
+To structure Small Caps that will display correctly on Kobo's reading platforms content creators must use the CSS property "font-variant":
+```css
+p.sc {
+    font-variant: small-caps;
+}
+```
+
+The property "font-size" is often used incorrectly to format Small Caps and can result in disproportionate text sizing depending on the app/device being used and the font settings chosen by the user. The impact is particularly noticeable when the value used for this property is set to `x-small` or `small`. Content creators are also advised to embed a font that contains Small Caps glyphs for optimal rendering.
+
+**Style locations**
+
+Kobo strongly advises against the use of inline styling for all content types (reflowable and Fixed Layout). Inline style elements may not be rendered as intended across Kobo's reading platforms. Styles should instead be contained in a linked stylesheet.
+
+**Choosing Selectors**
+
+Kobo advises against applying styles to type selectors alone, like the `div` or `span` selectors. It is safer to style and easier to debug CSS that is as specific as possible. Increase specificity by selecting for type and class, or by selecting for nesting structure.  In addition, Kobo inserts `div` and `span` tags during processing to enable user functionality (ex. text highlighting). As a result, any content contained within the added tags will inherit the styling applied in the CSS.
 
 Ex.
-`p.sc {
-   font-variant: small-caps;
-}`
-
-The property "font-size" is often used incorrectly to format Small Caps and can result in disproportionate text sizing depending on the app/device being used and the font settings chosen by the user. The impact is particularly noticeable when the value used for this property is set to "x-small" or "small". Content creators are also advised to use a font that contains Small Caps glyphs for optimal rendering.
-
-**Inline Styling**
-
-Kobo strongly advises against the use of inline styling for all content types (reflowable and Fixed Layout). Inline style elements may not be rendered as intended across Kobo's reading platforms. Styling elements should be contained within CSS.
-
-For example, text should be formatted as follows: 
-
-HTML:<br>
-`<p class="text">Sample text.</p>`<br>
-`<p class="text">Sample text, part two.</p>`<br>
-CSS:<br>
-`p.text {`
-    `margin: 0;`
-    `text-size: 10px;`
-`}`
-
-Not like this:
-
-HTML:<br>
-`<p style="margin: 0;text-size: 10px;">Sample text.</p>`<br>
-`<p style="margin: 0;text-size: 10px;">Sample text, part two.</p>`<br>
-
-**Styling div tags**
-
-Kobo advises against applying style elements in CSS to 'div' tags. These style elements will be applied to all content wrapped in 'div' tags throughout the ePub. In addition Kobo inserts 'div' tags during processing to enable user functionality (ex. text highlighting) and as a result any content contained within the added tags will inherit the styling applied in the CSS.
-
-Ex.
-`div {`<br>
-    `font-weight: bold;`<br>
-`}`
+```css
+p {
+    font-size: 1em;
+    line-height: 1.2em;
+    word-spacing: -1px;
+}
+```
 
 **Body Padding**
 
-Kobo advises against adding padding to the 'body' class to accommodate background images. On the Kobo iOS platform, this may result in the background image overlapping with the text.
+Kobo advises against adding padding to the `body` selector to accommodate background images. On the Kobo iOS platform, this may result in the background image overlapping with the text.
 
-Ex.
-`body {`<br>
-      `padding: 2em 1em 2em 70px !important;`<br>
-      `background-image: url(logo-CR.png);`<br>
-    `}`
+Incorrect:
+```css
+body {
+    padding: 2em 1em 2em 70px !important;
+    background-image: url(logo.png);
+}
+```
 
 ![background sidebar image](https://github.com/kobolabs/epub-spec/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202016-02-22%2014.51.00.png)
 
 **Using em units for Margins**
 
-Kobo advises against using em units to set text margins unless it's set to 1 or 2. When users on mobile devices select a large font this can make the content nearly unreadable. In this example the margins will always be 4x the size of the font selected and each line will only fit a few letters or words.
+Kobo advises against using `em` units to set text margins unless it's set to 1 or 2. When users on mobile devices select a large font-size, it will also increase margins set in `em`s. This can make the content nearly unreadable as the margins increase on each side. Instead, use a fixed unit like `px` for margins. In this example the margins will always be 4x the size of the font selected and each line will only fit a few letters or words.
 
-Ex.
-From the HTML:
-`<p class='quote_section'><b>This test will be unreadable on phones at large fonts sizes</b></p>`<br>
-From the CSS:
-`p.quote_section { margin: 0em 4em; text-align:justify; text-indent: 0em; }`<br>
+HTML:
+```html
+<p class='quote'><b>This test will be unreadable on phones at large fonts sizes</b></p>
+```
+CSS:
+```css
+p.quote {
+    margin: 0em 4em;
+    text-align: justify;
+    text-indent: 0em;
+}
+```
 
 **Page Breaks**
+
+A page break will occur whenever the reading system encounters a new html file. Creating a new file is the best way to establish page breaks across all Kobo apps. Support for other page-break methods is not consistent.
 
 Page breaking CSS is only partially supported across Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
 
@@ -339,17 +346,33 @@ If the reading experience of a book requires that the embedded font be used, con
 
 ### All Fonts Used In Fixed Layout Content Must Be Embedded And Cannot be Modified
 
-Emphasis cannot be added to embedded fonts for Fixed Layout content in the CSS. Reading systems cannot modify embedded fonts with bold or italics. Instead a separate font file must me embedded for bold or italic versions of any fonts used. Files produced using InDesign will often add such modifiers to embedded fonts resulting in text that cannot be read on all Kobo platforms.
+Emphasis cannot be added to embedded fonts for Fixed Layout content in the CSS. Reading systems cannot modify regular fonts with `font-weight:bold;` or `font-style:italic;` applied unless the corresponding font file has been embedded. 
 
 Ex. 
-`CharOverride-22 { `</br>
-`font-family:"Avenir Black",`</br>
-`font-size:240px;`</br>
-`font-style:normal;`</br>
-`font-weight:800;`</br>
-`}`
+```css
+@font-face {
+    font-family: "Helvetica";
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/Helvetica.ttf");
+}
 
-In this case a bold font should have been embedded instead of taking the original font and adding "font-weight:800". Alternatively the "font-weight" element could be removed entirely. The font would no longer appear bold but it would display consistently across all reading platforms. This can be detected most easily by sideloading content to the Kobo Desktop app where the resulting display issues are the most prominent.
+@font-face {
+    font-family: "Helvetica Bold";
+    font-style: normal;
+    font-weight: bold;
+    src: url("fonts/Helvetica-Bold.ttf");
+}
+
+.bolded {
+    font-family: "Helvetica Bold";
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 800;
+}
+```
+
+Here, a bold version of the font has correctly been embedded and linked to using a separate `@font-face` rule, rather than incorrectly linking to the same "Helvetica" `font-family` and just adding `font-weight:bold`. Issues with incorrectly modified fonts can be detected most easily by sideloading content to the Kobo Desktop app, where the resulting display issues are the most prominent.
 
 ### Languages Other Than English
  
