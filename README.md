@@ -439,7 +439,7 @@ All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/
 The Kobo iOS app will always display the first page centered and as its own spread. As a result, if a Fixed Layout book is formatted as follows it will display the first item as the cover then the second as the left side of the first fill spread and the third as the right side of the first full spread. This will alter the sequence for the entire book, making all right spreads fall on the left side and vice versa. To avoid triggering this display issue simply do not indicate a page spread property for the first item and have your second item start as a left side spread. The same rule applies to books with `<spine page-progression-direction="rtl">` but with opposite directions; applying `properties="page-spread-right"` to the first spine item in `rtl` books will throw off the page sequence on iOS.
 
 Not supported:
-```html
+```
 <spine toc="ncx">
     <itemref idref="page_001.xhtml" properties="page-spread-left" /> <!-- blank page -->
     <itemref idref="page_002.xhtml" properties="page-spread-right" /> <!-- cover image -->
@@ -511,7 +511,7 @@ For example, a file that lists spine items, manifest items, and contains nothing
  
 First spine item:
 
-```html
+```
 <spine page-progression-direction="ltr" toc="ncx">
     <itemref idref="page0" linear="yes" /> 
 </spine>
@@ -519,13 +519,13 @@ First spine item:
 
 Matching item in manifest:
 
-```html
+```
 <item id="page0" href="contents/Page00.xhtml" media-type="application/xhtml+xml"/>
 ```
 
 HTML body for item:
 
-```html
+```
 <body>
     <div id="layer0">
         <image width="1076" height="1394" xlink:href="../images/Image01-1-0.jpg" />
@@ -592,19 +592,22 @@ function handleTouch(event) {
  
 Any items listed in the manifest that are not [standard ePub Content Documents](http://www.idpf.org/epub/30/spec/epub30-publications.html#gloss-content-document-epub) should be accompanied by fallback items. Extensive testing should be done across platforms whenever including non-core items in an ePub. More on the IDPF specification on manifest fallbacks can be found [here](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-fallback-processing-flow-manifest).
 
-Ex.<br>
-`<manifest>`<br>
-  `<item id="xpgt1" href="styling/noncorestyling.xpgt" media-type="application/vnd.adobe-page-template+xml" fallback="css"/>`<br>
-  `<item id="css" href="styling/content.css" media-type="text/css"/>`<br>
-`</manifest>`<br>
+Example:
+```
+<manifest>
+    <item id="xpgt1" href="styling/noncorestyling.xpgt" media-type="application/vnd.adobe-page-template+xml" fallback="css" />
+    <item id="css" href="styling/content.css" media-type="text/css" />
+</manifest>
+```
 
 When embedding audio and video Kobo recommends using intrinsic fallbacks so that users reading on platforms that do not support embedded media (ex. eInk) can be directed to other platforms if they wish to access the content. More on IDPF specification on intrinsic fallbacks can be found [here](http://www.idpf.org/epub/30/spec/epub30-publications.html#sec-foreign-restrictions).
 
-Ex.<br>
-`<audio controls="">`<br>
-  ` <source src="embeddedaudio.mp4">`<br>
-  ` <p>The device you are reading on cannot play audio content but you can access the media in this book by opening it on your phone or tablet.</p>`<br>
-`</audio>`
+```html
+<audio controls="">
+    <source src="embeddedaudio.mp4">
+    <p>The device you are reading on cannot play audio content but you can access the media in this book by opening it on your phone or tablet.</p>
+</audio>
+```
 
 ### ePub Previews 
  
@@ -670,7 +673,7 @@ Kobo often receives ePubs where images are missing or fail to display within the
 
 To revise ePubs with this issue:
 * If images are failing to display on all platforms:
-	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the ePub could be called “image with spaces.jpg” and would be labelled “`image&nbsp;with&nbsp;spaces.jpg`” in the OPF file.
+	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the ePub could be called “image with spaces.jpg” and would be labelled `image&nbsp;with&nbsp;spaces.jpg` in the OPF file.
 * If images are failing to display specifically on the desktop platform:
 	* Check the code for the use of negatively positioned images.
 	* Check to see if you are scaling images. If you are using transforms to shrink/expand the image it may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#image-formatting)
