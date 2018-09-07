@@ -177,7 +177,7 @@ Text, images and animations in SVG are supported on all Kobo reading platforms (
 
 **Scaling images may prevent them from displaying on eInk and Desktop.** Some ePubs will rotate and shrink images down to the size of a single pixel and then blow them back up to the intended view size. This will work on Android, iOS and Windows but on Desktop it results in the image either not displaying at all or only displaying as a single pixel.
 
-Unsupported:
+Not supported:
 ```svg
 <g transform="matrix(850.4 0 0 680.3 0 0)">
     <image width="1" height="1" transform="matrix(1 0 0 -1 0 1)" preserveAspectRatio="none" image-rendering="optimizeSpeed" xlink:href="images/img_001.jpg" />
@@ -313,7 +313,7 @@ Page breaking CSS is only partially supported across Kobo's reading platforms. W
 
 **Setting Font Sizes**
 
-Font size can be set in the CSS using the unit type em, px, pt or %. However, % has been known to trigger bugs on Desktop and eInk that can restrict users' ability to change the font size or to reset the font size at the start of each chapter. Kobo advises that content creators set a base font size in px or pt or not set a base size at all (this will allow each platform to use its default font size) then increase or decrease the font size throughout using em.
+Font size can be set in the CSS using the unit type `em`, `px`, `pt` or `%`. However, `%` has been known to trigger bugs on Desktop and eInk that can restrict users' ability to change the font size or to reset the font size at the start of each chapter. Kobo advises that content creators set a base font size in `px` or `pt` (or not set a base size at all, to allow each platform to use its default font size) then increase or decrease the font size for specific classes using `em` units.
 
 ### Supported Fonts
  
@@ -338,11 +338,11 @@ As of 2017 Kobo's reading platforms all support font obfuscation. This was not p
 ### Embedded Fonts Can Be Selected By Users 
 When opening a new book, the font that displays is the one chosen by the user for their previous open book. For an embedded font, users can select “Document Default” or “Publisher Default” from the font options. The exception is FXL content for which users cannot choose their font. Fonts in FXL content are determined by the CSS in the ePub.
 
-If the reading experience of a book requires that the embedded font be used, consider adding a note to the front matter. Instruct the user to select the “Document Default” font option. 
+If the reading experience of a book requires that the embedded font be used, consider adding a note to the front matter. Instruct the user to select the “Publisher Default” font option. 
 
-**To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all Fixed Layout ePubs. If fonts are not embedded and specified the reading platform falls back to different default fonts depending on the system. This can lead to unexpected text reflow and element-sizing issues. Fixed Layout files that use the default fonts should be tested extensively on Kobo’s reading platforms.
+**To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all Fixed Layout ePubs. If fonts are not embedded and specified, the reading platform falls back to different default fonts depending on the system. This can lead to unexpected text reflow and element-sizing issues. Fixed Layout files that use the default fonts should be tested extensively on Kobo’s reading platforms.
 
-**Content creators are advised against referencing fonts in the CSS that are not embedded in the ePub.** Kobo devices and devices that Kobo apps can be installed on will have specific fonts included. However, the available fonts vary across these devices and there is no way to ensure that any one font will be available on the device chosen by the user. As a result, the font styling in the CSS will not display as intended across multiple devices and platforms.
+**Content creators are advised against referencing fonts in the CSS that are not embedded in the ePub.** Kobo devices and devices that Kobo apps can be installed on will have specific fonts included. However, the available fonts vary across these devices and there is no way to ensure that any one font will be available on the device chosen by the user. If fonts are not embedded then text will be rendered differently across multiple devices and platforms, with each using the fonts available to it.
 
 ### All Fonts Used In Fixed Layout Content Must Be Embedded And Cannot be Modified
 
@@ -388,22 +388,30 @@ Kobo has support for right-to-left language formatting in the following areas:
 * Kobo supports the writing-mode CSS3 property and associated elements for vertical text layouts (LTR or RTL)
 * Kobo supports the HTML5 dir attribute
 * Kobo supports ruby text*
-* * Kobo supports the OPF spine-level [page-progression-direction](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow ex.
-	`<spine toc="ncx" page-progression-direction="rtl">`<br>
-		`<itemref idref="chapter1" />`<br>
-		`<itemref idref="chapter2" />`<br>
-		`<itemref idref="chapter3" />`<br>
-	`</spine>`<br>
-The "page-progression-direction" attribute was introduced as part of the ePub3 specification. However it can be used in both ePub2 and ePub3 files for Kobo and will pass through processing and display correctly on Kobo's reading platforms despite flags that ePub2 files will generate in ePubCheck.
+* * Kobo supports the OPF spine-level [page-progression-direction](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow:
+
+```html
+<spine toc="ncx" page-progression-direction="rtl">
+    <itemref idref="chapter1" />
+    <itemref idref="chapter2" />
+    <itemref idref="chapter3" />
+</spine>
+```
+
+The `page-progression-direction` attribute was introduced as part of the ePub3 specification. However it can be used in both ePub2 and ePub3 files for Kobo and will pass through processing and display correctly on Kobo's reading platforms despite flags that ePub2 files will generate in ePubCheck.
 
 ### Footnotes/Endnotes Are Fully Supported Across Kobo Platforms
  
 Footnotes and endnotes on the eInk (except for the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS, the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
  
-It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute) for footnotes and endnotes (note: this markup is only valid in ePub 3 files and cannot be used in ePub3). This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform. Ex.
-`<span id="fn0005fn" epub:type="footnote">Text linking to footnote or endnote.</span>`
+It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#sec-xhtml-content-type-attribute) for footnotes and endnotes (note: this markup is only valid in ePub 3 files and cannot be used in ePub3). This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform. 
 
-**Warning: Hyperlinked content not using the epub:type attribute footnote or endnote will display as a pop-up on Kobo's iOS and eInk platforms in cases where all the following criteria are met.**
+Ex.
+```html
+<span id="fn0005fn" epub:type="footnote">Text linking to footnote or endnote.</span>
+```
+
+**Warning: Hyperlinked content not using the `epub:type` attribute footnote or endnote will display as a pop-up on Kobo's iOS and eInk platforms in cases where all the following criteria are met.**
 
 1) The link references a location in the ePub and also references a specific node within the HTML. Ex.
 <br>`<a href=“chapter.html#uniqueID”>link text</a>`<br>
@@ -420,9 +428,9 @@ Where chapter.html is a file within this ePub and where uniqueID is the id of a 
  
 Kobo supports the [official ePub3 FXL spec](http://www.idpf.org/epub/fxl/). This includes such features as [Right-to-Left Reading](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction), SMIL/Read Along, and various rendition-spread options. The [rendition:layout property](http://www.idpf.org/epub/fxl/#property-layout) in the OPF determines the layout of the content and is read by all of Kobo’s platforms.
  
-Kobo platforms also read the field <option name=”fixed-layout”>true/false</option> to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
+Kobo platforms also read the field `<option name=”fixed-layout”>true/false</option>` to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
 
-All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are on the Android, Desktop and eInk reading platforms. The iOS platform supports the properties "Both", "None" and "Auto" but not "Portrait" or "Landscape". The Windows platform supports the properties "None" and "Auto" but not "Both", "Portrait" or "Landscape". Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the rendition:spread and rendition:layout properties at the spine level.
+All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are supported on the Android, Desktop and eInk reading platforms. The iOS platform supports the properties `Both`, `None` and `Auto` but not `Portrait` or `Landscape`. The Windows platform supports the properties `None` and `Auto` but not `Both`, `Portrait` or `Landscape`. Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the `rendition:spread` and `rendition:layout` properties at the spine level.
  
 **Pinch and zoom gestures** are available on the Android, iOS, and Windows reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
 
@@ -430,13 +438,17 @@ All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/
 
 The Kobo iOS app will always display the first page centered and as its own spread. As a result, if a Fixed Layout book is formatted as follows it will display the first item as the cover then the second as the left side of the first fill spread and the third as the right side of the first full spread. This will alter the sequence for the entire book, making all right spreads fall on the left side and vice versa. To avoid triggering this display issue simply do not indicate a page spread property for the first item and have your second item start as a left side spread. The same rule applies to books with `<spine page-progression-direction="rtl">` but with opposite directions; applying `properties="page-spread-right"` to the first spine item in `rtl` books will throw off the page sequence on iOS.
 
-Ex. </br>
-  `<spine toc="ncx">`</br>
-    `<itemref idref="page_000001.xhtml" properties="page-spread-left"/> [blank page]`</br>
-    `<itemref idref="page_000002.xhtml" properties="page-spread-right"/> [cover image]`</br>
-    `<itemref idref="page_000003.xhtml" properties="page-spread-left"/>`</br>
-    `<itemref idref="page_000004.xhtml" properties="page-spread-right"/>`</br>
-    `<itemref idref="page_000005.xhtml" properties="page-spread-left"/>`</br>
+Not supported:
+```html
+<spine toc="ncx">
+    <itemref idref="page_001.xhtml" properties="page-spread-left" /> <!-- blank page -->
+    <itemref idref="page_002.xhtml" properties="page-spread-right" /> <!-- cover image -->
+    <itemref idref="page_003.xhtml" properties="page-spread-left" />
+    <itemref idref="page_004.xhtml" properties="page-spread-right" />
+    <itemref idref="page_005.xhtml" properties="page-spread-left" />
+    <itemref idref="page_006.xhtml" properties="page-spread-right" />
+</spine>
+```
 
 **Kobo strongly advises against the following when formatting Fixed Layout content:**
 
@@ -444,14 +456,18 @@ Ex. </br>
  
 * The use of images where the width or height (in pixels) exceed the dimensions of the viewport. ePubs containing images that exceed the viewport dimensions may not render correctly on the eInk platform.
 
-* The use of negative positioning when placing text, images or other content in CSS. Ex.
-
-`.li` </br>
-`{ text-align: justify;`</br>
-`padding: 0;`</br>
-`margin: 0;`</br>
-`word-spacing: -15px;`</br>
-`}`</br>
+* The use of negative positioning when placing text, images or other content in CSS. 
+Not advised:
+```css
+div.background_right {
+    width: 600px;
+    height: 800px;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: -600px;
+}
+```
 
 ### Kobo Advises Against Overuse of Fixed Layout
 
@@ -465,14 +481,14 @@ Note: The Kobo Android platform **does not currently support**:
 
 * Non-Linear playback
 * Text highlighting for SVG text
-* Using decimals when the time is already specified in milliseconds. ex. clipBegin="47808.823ms" clipEnd="48330.373ms. This may cause the audio to stop playing or not start playing at all.
-* Using more than 4 decimals ex. clipBegin="4.82333" clipEnd="7.45334ms. This may also prevent the audio track from playing.
+* Using decimals when the time is already specified in milliseconds. (ex. `clipBegin="47808.823ms" clipEnd="48330.373ms`). This may cause the audio to stop playing or to not start playing at all.
+* Using more than 4 decimal places. (ex. `clipBegin="4.82333" clipEnd="7.45334ms`). This may prevent the audio track from playing at all.
  
-When the rendition:spread property is set to “none” or “auto”, Android displays a full spread in FXL Read Along content in landscape.
+Android will always display a 2-page spread in landscape orientation for SMIL read-along content, even when the `rendition:spread` property is set to `none`.
  
 Custom text colors for highlighting are not currently supported on Android. However, custom text colors for highlighting is possible on iOS. The iOS app uses the CSS class ‘kobo-smil-highlight’ to color highlighted text. So, by adding that class to the CSS plus a color declaration, the color of the highlighted text on the app can be customized.
 
-**SMIL for reflowable content** is supported on iOS but is not supported on the Android, Desktop or Windows platforms.
+**SMIL for reflowable content** is supported on iOS but is not supported on the Android, EPD, Desktop or Windows platforms.
 
 ### Image-Based FXL Reader
  
@@ -482,32 +498,40 @@ The Kobo Android and iOS platforms will render FXL ePubs that meet certain crite
 
 1. The content is Fixed Layout.
 2. The ePub does not contain SMIL content.
-3. An image must be available for each spine item. Spine items are inspected for images using these rules — and each spine item must contain one of the following formats:
-<ul>
-<li>a. either a non-SVG image (e.g. PNG)</li>
-<li>b. or an SVG image with a non-SVG image fallback provided in the manifest. In this case, the fallback image is used in the comics renderer</li>
-<li>c. or an HTML file which falls under one of the following categories:
-<ul>
-<li>i. either it contains a single ‘img’ tag which references an image. In this case, this image will be used</li>
-<li>ii. or it contains a SVG definition with an ‘image’ child tag referencing an image. In this case, the referenced image will be used. NB: embedded object tags (‘object’), which may include an SVG image in the ‘data’ attribute, do not fall into this category</li>
-<li>iii. or an HTML page which contains no child elements under ‘body’. This item will be rendered as a blank white page.</li></ul></li></ul>
+3. An image must be available for each spine item. Spine items are inspected for images using these rules, and each spine item must contain one of the following formats:
+   1. a non-SVG image (e.g. PNG), or
+   2. an SVG image with a non-SVG image fallback provided in the manifest. In this case, the fallback image is used in the comics renderer, or
+   3. an HTML file which falls under one of the following categories:
+      1. either it contains a single `img` tag which references an image. In this case, this image will be used
+      2. or it contains an SVG definition with an `image` child tag referencing an image. In this case, the referenced image will be used. NB: `object` elements, which may include an SVG image in the `data` attribute, do not fall into this category
+      3. or an HTML page which contains no child elements under `body`. This item will be rendered as a blank white page.
 4. The same image cannot appear twice in a row. If two consecutive pages refer to the same image, the platform will assume that CSS styling is repositioning the image, which is not supported by the image-based FXL reader.
  
 For example, a file that lists spine items, manifest items, and contains nothing but an image in the HTML body will trigger the image-based renderer.
  
-First spine item:<br>
-`<spine page-progression-direction="ltr" toc="ncx">`<br>
-`<itemref idref="page0-xhtml" linear="yes"/>`
+First spine item:
 
-Matching item in manifest:<br>
-`<item id="page0-xhtml" href="contents/Page00.xhtml" media-type="application/xhtml+xml"/>`
- 
-HTML body for item:<br>
-`<body>`<br>
-`<div id="layer0">`<br>
-`<image width="1076" height="1394" xlink:href="../images/Image01-1-0.jpg"/>`<br>
-`</div>`<br>
-`</body>`
+```html
+<spine page-progression-direction="ltr" toc="ncx">
+    <itemref idref="page0" linear="yes" /> 
+</spine>
+```
+
+Matching item in manifest:
+
+```html
+<item id="page0" href="contents/Page00.xhtml" media-type="application/xhtml+xml"/>
+```
+
+HTML body for item:
+
+```html
+<body>
+    <div id="layer0">
+        <image width="1076" height="1394" xlink:href="../images/Image01-1-0.jpg" />
+    </div>
+</body>
+```
  
 If images are set using the [background property](http://www.w3.org/TR/CSS21/colors.html#propdef-background) of elements the platform will fall back to using the default reader.
  
