@@ -16,7 +16,7 @@ What’s in this Document:
 6. [Image Formatting](#image-formatting)
 7. [Cover Images](#cover-images)
 8. [Scalable Vector Graphics (SVG)](#scalable-vector-graphics-svg)
-9. [Table of Contents (ToC)](#table-of-contents-toc)
+9. [Table of Contents (TOC)](#table-of-contents-toc)
 10. [OPF](#opf)
 11. [CSS](#css)
 12. [Supported Fonts](#supported-fonts)
@@ -185,15 +185,15 @@ It is recommended that cover images be embedded in the html using the `<img>` ta
  
 Text, images and animations in SVG are supported on all Kobo reading platforms (performance on eInk is limited but the animations will function). Placing SVG items directly in the spine (as opposed to in XHTML files in the spine) is partially supported (Android and iOS) but is not recommended.
  
-### Table of Contents (ToC)
+### Table of Contents (TOC)
  
-**For ePub 2.0.1**, Kobo reading platforms populate the ToC menu in the book with the ToC from the file toc.ncx (which is in navMap). However, if the toc.ncx is not present, the TOC menu is populated by the Spine listing in the OPF.
+**For ePub 2.0.1**, Kobo reading platforms populate the TOC menu in the book with the TOC from the file toc.ncx (which is in navMap). However, if the toc.ncx is not present, the TOC menu is populated by the Spine listing in the OPF.
  
 When an OPF-spine item is not listed in the TOC.ncx, the Kobo CMS will create a listing for it using the filename or the opening words from the section. This listing will be displayed to the user in the TOC Menu across all reading platforms. This process may be removed in a future release. ePubs that use a nav.html TOC will not be impacted. 
  
-**For ePub 3.0**, Kobo platforms will read the ToC from the ToC table in the nav.html file. When a ToC table is not present, the next available table will be used. If the nav.html is not present, it will populate the ToC with the toc.ncx. If the toc.ncx is not present, it will populate the ToC with the spine listing in the OPF.
+**For ePub 3.0**, Kobo platforms will read the TOC from the TOC table in the nav.html file. When a TOC table is not present, the next available table will be used. If the nav.html is not present, it will populate the TOC with the toc.ncx. If the toc.ncx is not present, it will populate the TOC with the spine listing in the OPF.
  
-The hidden attribute can be used to prevent the ToC listing from appearing in the ePub body while still displaying in the ToC menu. ToC menus on Kobo platforms support nesting up to three elements deep on iOS and Android. Nested TOCs are flattened on EPD and Desktop.
+The hidden attribute can be used to prevent the TOC listing from appearing in the ePub body while still displaying in the TOC menu. TOC menus on Kobo platforms support nesting up to three elements deep on iOS and Android. Nested TOCs are flattened on EPD and Desktop.
 
 Kobo does not require a specific naming convention for the .ncx or .html/.xhtml file, the content creator can name the file as they choose ([filename].ncx, [filename].html). Please note the file naming suggestions provided in the [OPF] (#OPF) section.
 
@@ -490,7 +490,7 @@ If images are set using the [background property](http://www.w3.org/TR/CSS21/col
  
 On Android, if the image is determined to be twice as large as the screen in any dimension, a low-res version of the image loads when the user turns a page. Within a second, the high-res version replaces the original image. This optimization prevents memory issues when users quickly flip through pages. The low-res image might appear slightly blurry or soft compared to the final hi-res image.
 
-**Web links will be disabled in the Image Based FXL reader.** If web links must work for an image only Fixed Layout epub it is recommended that invisible sample text be added to any HTML file so that Kobo's Android and iOS apps will open the file with the default reader.
+**Web links will be disabled in the Image Based FXL reader.** If web links must work for an image only Fixed Layout ePub it is recommended that invisible sample text be added to any HTML file so that Kobo's Android and iOS apps will open the file with the default reader.
 
 ### Multimedia Support / Media Overlays 
  
