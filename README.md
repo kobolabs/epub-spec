@@ -388,9 +388,9 @@ Kobo has support for right-to-left language formatting in the following areas:
 * Kobo supports the writing-mode CSS3 property and associated elements for vertical text layouts (LTR or RTL)
 * Kobo supports the HTML5 dir attribute
 * Kobo supports ruby text*
-* * Kobo supports the OPF spine-level [page-progression-direction](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow:
+* * Kobo supports the OPF spine-level [`page-progression-direction`](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow:
 
-```html
+```
 <spine toc="ncx" page-progression-direction="rtl">
     <itemref idref="chapter1" />
     <itemref idref="chapter2" />
@@ -430,7 +430,17 @@ Kobo supports the [official ePub3 FXL spec](http://www.idpf.org/epub/fxl/). This
  
 Kobo platforms also read the field `<option name=”fixed-layout”>true/false</option>` to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
 
-All five values in the [rendition:spread property](http://www.idpf.org/epub/fxl/#property-spread) are supported on the Android, Desktop and eInk reading platforms. The iOS platform supports the properties `Both`, `None` and `Auto` but not `Portrait` or `Landscape`. The Windows platform supports the properties `None` and `Auto` but not `Both`, `Portrait` or `Landscape`. Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the `rendition:spread` and `rendition:layout` properties at the spine level.
+The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread) controls which orientation (portrait and landscape) displays two-page spreads. There are 5 possible values: `auto`, `portrait`, `landscape`, `both` and `none`. Kobo reccomends using `auto` for most Fixed Layout content. All platforms support `none`, in which neither orientation displays spreads. Support for each value breaks down by platform as follows:
+- The iOS platform supports `none`, and ignores the other four values, instead allowing the reader to double-tap to switch between `landscape` and `both`, regardless of the orientation. 
+  - i.e. Double-tapping zooms in to single-page view or zooms out to a spread view.
+- The EPD platform will display all Fixed Layout content as if the value were `none`. 
+  - i.e. The screen only display a single page.
+- The Desktop platform will display two-page spreads for all Fixed Layout content, unless the value is `none`.
+  - i.e. The screen can be thought of as always being in landscape mode 
+- The Windows platform supports `auto` and `none`, but not `both`, `portrait` or `landscape`.
+  - i.e. The screen always displays one page in portrait and two pages in landscape.
+
+Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the `rendition:orientation` and `rendition:layout` properties at the spine level.
  
 **Pinch and zoom gestures** are available on the Android, iOS, and Windows reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
 
@@ -725,7 +735,13 @@ To revise ePubs with these issues:
 
 ### Two Pages Display in Portrait Orientation on Android
 
-In cases with graphic novels or books with small text, Fixed Layout content will fail QA for displaying a full 2-page spread in portrait orientation on our Android platform when they should ideally only display 1 page in portrait. This issue occurs when the rendition:spread property in the OPF file of the ePub is set to "portrait" or "both". To ensure that only 1 page appears in portrait and a full 2-page spread appears in landscape, set the rendition:spread property to "auto" or "landscape" in the OPF file.
+Fixed Layout content is ususally most legible when it displays 1 page in portrait mode and 2 in landscape mode. Control over this setting is given to the [`rendition:spread`](#fixed-layout-fxl-support) meta property in the OPF. In cases with graphic novels or books with small text, Fixed Layout content will fail QA for displaying 2 pages in the portrait orientation on Android. This issue usually occurs when the `rendition:spread` is set to `portrait` or `both`. 
+
+To display 1 page in portrait mode and 2 pages in landscape mode, in the OPF `<metadata>` section, use:
+
+`<meta property="rendition:spread">auto</meta>` or `<meta property="rendition:spread">landscape</meta>`
+
+When 2-page spreads have been hard-coded together in a single HTML file, this property must be set to `none` to avoid 4 page spreads in landscape mode. Even so, Fixed Layout content with hard-coded 2-page spreads spreads may fail QA if text is illegible.
 
 ### Still have questions? 
  
