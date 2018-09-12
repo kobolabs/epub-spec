@@ -45,7 +45,8 @@ What’s in this Document:
 	* [Read-Along issues](#read-along-issues)
 	* [Audio Video Issues on Android and iOS Platforms](#audio-video-issues-on-android-and-ios-platforms)
 	* [Two Pages Display in Portrait Orientation on Android](#two-pages-display-in-portrait-orientation-on-android)
-31. [Questions?](#still-have-questions)
+31. [External Resources](#external-resources)
+32. [Questions?](#still-have-questions)
 
 ### ePub Versions Kobo Supports
  
@@ -742,6 +743,12 @@ To display 1 page in portrait mode and 2 pages in landscape mode, in the OPF `<m
 `<meta property="rendition:spread">auto</meta>` or `<meta property="rendition:spread">landscape</meta>`
 
 When 2-page spreads have been hard-coded together in a single HTML file, this property must be set to `none` to avoid 4 page spreads in landscape mode. Even so, Fixed Layout content with hard-coded 2-page spreads spreads may fail QA if text is illegible.
+
+### External Resources
+Some useful epub resources from around the net.
+- https://ebookflightdeck.com/handbook
+- https://friendsofepub.github.io/Blitz/
+
 
 ### Still have questions? 
  
