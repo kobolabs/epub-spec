@@ -447,7 +447,13 @@ Note: The Kobo Android platform **does not currently support**:
 * Using decimals when the time is already specified in milliseconds. ex. clipBegin="47808.823ms" clipEnd="48330.373ms. This may cause the audio to stop playing or not start playing at all.
 * Using more than 4 decimals ex. clipBegin="4.82333" clipEnd="7.45334ms. This may also prevent the audio track from playing.
  
-When the rendition:spread property is set to “auto” Android displays a full spread in FXL Read Along content in both landscape and portrait. Use "none" if you would like FXL Read Along content to display single pages in portrait and a full spread in landscape. 
+When the rendition:spread property is set to “auto” Android displays a full spread in FXL Read Along content in both landscape and portrait. The same content will be displayed as single spreads in both landscape and portrait when using "none". Use "landscape" if you would like FXL Read Along content to display single pages in portrait and a full spread in landscape. Refer to the following table for expected behaviour. 
+
+| Platform/Content       | rendition:spread | Portait display | Landscape display |
+|------------------------|------------------|-----------------|-------------------|
+| Android/FXL Read Along | "auto"           | full spread     | full spread       |
+| Android/FXL Read Along | "none"           | single page     | single page       |
+| Android/FXL Read Along | "landscape"      | single page     | full spread       |
  
 Custom text colors for highlighting are not currently supported on Android. However, custom text colors for highlighting is possible on iOS. The iOS app uses the CSS class ‘kobo-smil-highlight’ to color highlighted text. So, by adding that class to the CSS plus a color declaration, the color of the highlighted text on the app can be customized.
 
