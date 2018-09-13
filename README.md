@@ -427,11 +427,16 @@ Where chapter.html is a file within this ePub and where uniqueID is the id of a 
 
 ### Fixed Layout (FXL) Support
  
-Kobo supports the [official ePub3 FXL spec](http://www.idpf.org/epub/fxl/). This includes such features as [Right-to-Left Reading](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction), SMIL/Read Along, and various rendition-spread options. The [rendition:layout property](http://www.idpf.org/epub/fxl/#property-layout) in the OPF determines the layout of the content and is read by all of Kobo’s platforms.
+Kobo supports the [official ePub3 FXL spec](http://www.idpf.org/epub/fxl/) on all platforms. This includes such features as [Right-to-Left Reading](http://www.idpf.org/epub/30/spec/epub30-publications.html#attrdef-spine-page-progression-direction), [SMIL read-along](https://www.idpf.org/epub/30/spec/epub30-mediaoverlays.html), and various page-spread options. 
+
+In the `metadata` senction of the OPF, the value set in the [rendition:layout property](http://www.idpf.org/epub/fxl/#property-layout) determines whether the content is fixed layout or reflowable. Fixed layout content should set this value to `pre-paginated`.
+```
+<meta property="rendition:layout">pre-paginated</meta> 
+```
  
 Kobo platforms also read the field `<option name=”fixed-layout”>true/false</option>` to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
 
-The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread) controls which orientation (portrait and landscape) displays two-page spreads. There are 5 possible values: `auto`, `portrait`, `landscape`, `both` and `none`. Kobo reccomends using `auto` for most Fixed Layout content. All platforms support `none`, in which neither orientation displays spreads. Support for each value breaks down by platform as follows:
+The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread) determines the orientations for which synthetic spreads will be rendered. There are 5 possible values: `auto`, `portrait`, `landscape`, `both` and `none`. Kobo reccomends using `auto` for most Fixed Layout content. All platforms support `none`, in which neither orientation displays spreads. Support for each value breaks down by platform as follows:
 - The iOS platform supports `none`, and ignores the other four values, instead allowing the reader to double-tap to switch between `landscape` and `both`, regardless of the orientation. 
   - i.e. Double-tapping zooms in to single-page view or zooms out to a spread view.
 - The EPD platform will display all Fixed Layout content as if the value were `none`. 
@@ -441,7 +446,7 @@ The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread)
 - The Windows platform supports `auto` and `none`, but not `both`, `portrait` or `landscape`.
   - i.e. The screen always displays one page in portrait and two pages in landscape.
 
-Rendition-spread properties are only read at the book level for all reading platforms. Future versions of Kobo’s reading platforms may read the `rendition:orientation` and `rendition:layout` properties at the spine level.
+`rendition:spread` properties are only read at the book level for all reading platforms, set in the `metadata` section. Future versions of Kobo’s reading platforms may read the `rendition:orientation` and `rendition:layout` properties at the spine level.
  
 **Pinch and zoom gestures** are available on the Android, iOS, and Windows reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
 
@@ -520,28 +525,34 @@ The Kobo Android and iOS platforms will render FXL ePubs that meet certain crite
  
 For example, a file that lists spine items, manifest items, and contains nothing but an image in the HTML body will trigger the image-based renderer.
  
-First spine item:
+Example `spine` item:
 
 ```
-<spine page-progression-direction="ltr" toc="ncx">
-    <itemref idref="page0" linear="yes" /> 
-</spine>
+...
+<itemref idref="page007" linear="yes" />
+...
 ```
 
-Matching item in manifest:
+Matching item in `manifest`:
 
 ```
-<item id="page0" href="contents/Page00.xhtml" media-type="application/xhtml+xml"/>
+...
+<item id="page007" href="contents/page007.xhtml" media-type="application/xhtml+xml"/>
+...
 ```
 
-HTML body for item:
+HTML `body` for item:
 
 ```
+...
 <body>
-    <div id="layer0">
-        <image width="1076" height="1394" xlink:href="../images/Image01-1-0.jpg" />
+    <div class="main">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 1283 1800">
+            <image width="1283" height="1800" xlink:href="../image/image007.jpg" />
+        </svg>
     </div>
 </body>
+...
 ```
  
 If images are set using the [background property](http://www.w3.org/TR/CSS21/colors.html#propdef-background) of elements the platform will fall back to using the default reader.
@@ -562,8 +573,11 @@ Windows does not currently support embedded audio and video. Kobo eInk devices a
 
 Kobo's platforms do not currently support autoplay functionality for embedded media. Elements using this tag will display but will not begin playback without user interaction.
 
-Ex. <br>
-`<audio class="myaudio" src="sounds/audio.mp3" autoplay="autoplay">Sample text.</audio>`
+HTML:
+
+```html
+<audio class="myaudio" src="sounds/audio.mp3" autoplay="autoplay">Sample text.</audio>
+```
  
 **Extensive Testing is Strongly Recommended For All Interactive Content**
 
@@ -582,7 +596,9 @@ Note that <a href="http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#app-
 **Disabling Menu Activation for Interactive Elements**
 
 Taps in book content (on elements other than links) are passed up to the Kobo reading apps in order to trigger menus and other reading system interactions. To avoid having your interactive elements trigger unrelated reading system functionality JavaScript files must contain event listeners for both _click_ and _touchend_ (or _touchstart_) events, and both listener functions must call [preventDefault()](http://www.w3schools.com/jquery/event_preventdefault.asp) on both _click_ and _touchend_ (or _touchstart_, if you’d prefer) events. Any interactive logic will need to be implemented in the touch handler, rather than the click handler, as in the example below:
-<pre><code>exampleElement.addEventListener('click', handleClick, false);
+
+```js
+exampleElement.addEventListener('click', handleClick, false);
 exampleElement.addEventListener('touchend', handleTouch, false);
 
 function handleClick(event) {
@@ -593,7 +609,7 @@ function handleTouch(event) {
 	exampleElement.style.background="red";
 	event.preventDefault();
 }
-</code></pre>
+```
  
 ### MathML Support
  
