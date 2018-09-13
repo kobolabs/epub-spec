@@ -434,13 +434,15 @@ In the `metadata` senction of the OPF, the value set in the [rendition:layout pr
 <meta property="rendition:layout">pre-paginated</meta> 
 ```
  
-Kobo platforms also read the field `<option name=”fixed-layout”>true/false</option>` to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
+Kobo platforms also read the field `<option name="fixed-layout">true/false</option>` to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
 
 The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread) determines the orientations for which synthetic spreads will be rendered. There are 5 possible values: `auto`, `portrait`, `landscape`, `both` and `none`. Kobo reccomends using `auto` for most Fixed Layout content. All platforms support `none`, in which neither orientation displays spreads. Support for each value breaks down by platform as follows:
 - The iOS platform supports `none`, and ignores the other four values, instead allowing the reader to double-tap to switch between `landscape` and `both`, regardless of the orientation. 
   - i.e. Double-tapping zooms in to single-page view or zooms out to a spread view.
+- The Android platform supports `none`, `auto`, `portrait`, `landscape` and `both`.
+  - i.e. The spec is followed without any additional behavior.
 - The EPD platform will display all Fixed Layout content as if the value were `none`. 
-  - i.e. The screen only display a single page.
+  - i.e. The screen always only displays a single page.
 - The Desktop platform will display two-page spreads for all Fixed Layout content, unless the value is `none`.
   - i.e. The screen can be thought of as always being in landscape mode 
 - The Windows platform supports `auto` and `none`, but not `both`, `portrait` or `landscape`.
