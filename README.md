@@ -521,7 +521,7 @@ Kobo’s Android and iOS platforms support JavaScript for Fixed Layout and reflo
 
 **The navigator.epubReadingSystem Property** 
 
-Note that <a href="http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#app-ers-syntax">navigator.epubReadingSystem property</a> is only supported on Kobo's Desktop and eInk platforms and is not presently supported on iOS, Android or Windows. As a result ePubs that need to query information on three of Kobo's five reading platforms. Any ePubs that depend on this functionality to present readable content will not pass content QA. 
+Note that <a href="http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#app-ers-syntax">navigator.epubReadingSystem property</a> is only supported on Kobo's Desktop and eInk platforms and is not presently supported on iOS, Android or Windows. As a result ePubs that need to query information about the user's reading system on three of Kobo's five reading platforms will be unable to. Any ePubs that depend on this functionality to present readable content will not pass content QA. 
 
 **Disabling Menu Activation for Interactive Elements**
 
