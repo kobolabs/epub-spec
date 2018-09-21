@@ -98,7 +98,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 1. Open the Kobo Desktop app.
 2. Make sure you have [Adobe Digital Editions](http://www.adobe.com/ca/products/digital-editions/download.html) installed. If you do not wish to install ADE you can skip this step by creating a folder named "My Digital Editions" in your "My Documents" folder. On a Mac, the folder must be named "Digital Editions" instead.
 3. Select the My Books tab in Kobo Desktop and press CTRL+Shift+S on Windows or ⌘+SHIFT+S on a Mac. This will display any files in the “My Digital Editions” folder on your computer with the extension .epub
-4. Any sideloaded books removed from the "My Digital Editions" folder can be stopped from appearing in the My Books tab after sign out/sign in. 
+4. Any sideloaded books can be removed from the My Books tab by right clicking on the book and selecting "Remove Download". 
  
 **Android**
 
