@@ -16,7 +16,7 @@ What’s in this Document:
 6. [Image Formatting](#image-formatting)
 7. [Cover Images](#cover-images)
 8. [Scalable Vector Graphics (SVG)](#scalable-vector-graphics-svg)
-9. [Table of Contents (ToC)](#table-of-contents-toc)
+9. [Table of Contents (TOC)](#table-of-contents-toc)
 10. [OPF](#opf)
 11. [CSS](#css)
 12. [Supported Fonts](#supported-fonts)
@@ -99,6 +99,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 1. Open the Kobo Desktop app.
 2. Make sure you have [Adobe Digital Editions](http://www.adobe.com/ca/products/digital-editions/download.html) installed. If you do not wish to install ADE you can skip this step by creating a folder named "My Digital Editions" in your "My Documents" folder. On a Mac, the folder must be named "Digital Editions" instead.
 3. Select the My Books tab in Kobo Desktop and press CTRL+Shift+S on Windows or ⌘+SHIFT+S on a Mac. This will display any files in the “My Digital Editions” folder on your computer with the extension .epub
+4. Any sideloaded books can be removed from the My Books tab by right clicking on the book and selecting "Remove Download". 
  
 **Android**
 
@@ -114,7 +115,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 1. Connect the device to your computer with the iOS cable.
 2. Open iTunes and navigate to iPad -> Apps.
 3. Select the Kobo app from the box on the left.
-4. Drag the ePub to the box in the bottom right of your iTunes window. If drag and drop functionality is not working then select the "Add file..." button and select the ePub you want to add to the app. The file will then automatically import and display in your library.
+4. Drag the ePub to the box in the bottom right of your iTunes window. If drag and drop functionality is not working then select the "Add file..." button and select the ePub you want to add to the app. The file will then automatically import and display in your library. If it does not appear even after refreshing your library signing out and signing back in to the Kobo app should cause the sideloaded titles to appear. 
 
 (The Kobo iOS app is registered among apps that open ePub and pdf files. Users can use the standard “open in…” menu from Safari, Dropbox, or any other app that supports it to view their files.)
  
@@ -171,6 +172,8 @@ Manifest item listing:
 **Cover images must be contained in their own XHTML files.** Kobo's eInk devices will activate the Fixed Layout reader for the XHTML file containing the cover image to optimize the display. As a result any text or images that have been placed in the same XHTML file as the cover will be displayed as Fixed Layout content. The user will be unable to resize the text and some of the content may not display on the screen at all. 
 
 It is recommended that cover images be embedded in the html using the `<img>` tag, rather than using the `background-image` CSS property. The CSS `background-image` method is not supported by the automatic cover extraction process. Books that do use the CSS method will require separate covers to be submitted in order for covers to appear in the store and in customer libraries.
+
+Kobo advises against placing links in covers. This can create a poor reading experience when attempting to page forward and a link is triggered instead.
  
 ### Scalable Vector Graphics (SVG)
  
@@ -193,15 +196,15 @@ Supported:
 </g>
 ```
  
-### Table of Contents (ToC)
+### Table of Contents (TOC)
  
-**For ePub 2.0.1**, Kobo reading platforms populate the ToC menu in the book with the ToC from the file toc.ncx (which is in navMap). However, if the toc.ncx is not present, the TOC menu is populated by the Spine listing in the OPF.
+**For ePub 2.0.1**, Kobo reading platforms populate the TOC menu in the book with the TOC from the file toc.ncx (which is in navMap). However, if the toc.ncx is not present, the TOC menu is populated by the Spine listing in the OPF.
  
 When an OPF-spine item is not listed in the TOC.ncx, the Kobo CMS will create a listing for it using the filename or the opening words from the section. This listing will be displayed to the user in the TOC Menu across all reading platforms. This process may be removed in a future release. ePubs that use a nav.html TOC will not be impacted. 
  
-**For ePub 3.0**, Kobo platforms will read the ToC from the ToC table in the nav.html file. When a ToC table is not present, the next available table will be used. If the nav.html is not present, it will populate the ToC with the toc.ncx. If the toc.ncx is not present, it will populate the ToC with the spine listing in the OPF.
+**For ePub 3.0**, Kobo platforms will read the TOC from the TOC table in the nav.html file. When a TOC table is not present, the next available table will be used. If the nav.html is not present, it will populate the TOC with the toc.ncx. If the toc.ncx is not present, it will populate the TOC with the spine listing in the OPF.
  
-The hidden attribute can be used to prevent the ToC listing from appearing in the ePub body while still displaying in the ToC menu. ToC menus on Kobo platforms support nesting up to three elements deep on iOS and Android. Nested TOCs are flattened on EPD and Desktop.
+The hidden attribute can be used to prevent the TOC listing from appearing in the ePub body while still displaying in the TOC menu. TOC menus on Kobo platforms support nesting up to three elements deep on iOS and Android. Nested TOCs are flattened on EPD and Desktop.
 
 Kobo does not require a specific naming convention for the .ncx or .html/.xhtml file, the content creator can name the file as they choose ([filename].ncx, [filename].html). Please note the file naming suggestions provided in the [OPF] (#OPF) section.
 
@@ -295,7 +298,8 @@ p.quote {
 
 A page break will occur whenever the reading system encounters a new html file. Creating a new file is the best way to establish page breaks across all Kobo apps. Support for other page-break methods is not consistent.
 
-Page breaking CSS is only partially supported across Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
+Page-breaking CSS is only partially supported across Kobo's reading platforms. Support for page-breaking CSS is limited at this time becasue pagination isn't implemented in a way that supports its use across all of Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
+
 
 |Page Break Type| Windows | iOS | Android | EPD | KDA |
 |---------------|---------|-----|---------|-----|-----|
@@ -501,9 +505,18 @@ Note: The Kobo Android platform **does not currently support**:
 * Text highlighting for SVG text
 * Using decimals when the time is already specified in milliseconds. (ex. `clipBegin="47808.823ms" clipEnd="48330.373ms`). This may cause the audio to stop playing or to not start playing at all.
 * Using more than 4 decimal places. (ex. `clipBegin="4.82333" clipEnd="7.45334ms`). This may prevent the audio track from playing at all.
- 
+
 When the `rendition:spread` property is set to `auto` in Fixed Layout Read Along content, it will display a 2-page spread in portrait orientation. Note this difference in `auto` behavior between Read Along and regular Fixed Layout; regular Fixed Layout content set to `auto` will display only one page in portrait.
- 
+
+The following table outlines `rendition:spread` behaviour in Fixed Layout Read Along content. 
+
+| Platform/Content       | rendition:spread | Portait display | Landscape display |
+|------------------------|------------------|-----------------|-------------------|
+| Android/FXL Read Along | "auto"           | full spread     | full spread       |
+| Android/FXL Read Along | "none"           | single page     | single page       |
+| Android/FXL Read Along | "landscape"      | single page     | full spread       |
+
+
 Custom text colors for highlighting are not currently supported on Android. However, custom text colors for highlighting is possible on iOS. The iOS app uses the CSS class ‘kobo-smil-highlight’ to color highlighted text. So, by adding that class to the CSS plus a color declaration, the color of the highlighted text on the app can be customized.
 
 **SMIL for reflowable content** is supported on iOS but is not supported on the Android, EPD, Desktop or Windows platforms.
@@ -561,7 +574,7 @@ If images are set using the [background property](http://www.w3.org/TR/CSS21/col
  
 On Android, if the image is determined to be twice as large as the screen in any dimension, a low-res version of the image loads when the user turns a page. Within a second, the high-res version replaces the original image. This optimization prevents memory issues when users quickly flip through pages. The low-res image might appear slightly blurry or soft compared to the final hi-res image.
 
-**Web links will be disabled in the Image Based FXL reader.** If web links must work for an image only Fixed Layout epub it is recommended that invisible sample text be added to any HTML file so that Kobo's Android and iOS apps will open the file with the default reader.
+**Web links will be disabled in the Image Based FXL reader.** If web links must work for an image only Fixed Layout ePub it is recommended that invisible sample text be added to any HTML file so that Kobo's Android and iOS apps will open the file with the default reader.
 
 ### Multimedia Support / Media Overlays 
  
@@ -593,7 +606,7 @@ Kobo’s Android and iOS platforms support JavaScript for Fixed Layout and reflo
 
 **The navigator.epubReadingSystem Property** 
 
-Note that <a href="http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#app-ers-syntax">navigator.epubReadingSystem property</a> is only supported on Kobo's Desktop and eInk platforms and is not presently supported on iOS, Android or Windows. As a result ePubs that need to query information on three of Kobo's five reading platforms. Any ePubs that depend on this functionality to present readable content will not pass content QA. 
+Note that <a href="http://www.idpf.org/epub/30/spec/epub30-contentdocs.html#app-ers-syntax">navigator.epubReadingSystem property</a> is only supported on Kobo's Desktop and eInk platforms and is not presently supported on iOS, Android or Windows. As a result ePubs that need to query information about the user's reading system on three of Kobo's five reading platforms will be unable to. Any ePubs that depend on this functionality to present readable content will not pass content QA. 
 
 **Disabling Menu Activation for Interactive Elements**
 
