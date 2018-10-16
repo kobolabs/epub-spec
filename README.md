@@ -718,7 +718,7 @@ To revise ePubs with this issue:
 	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the ePub could be called “image with spaces.jpg” and would be labelled `image&nbsp;with&nbsp;spaces.jpg` in the OPF file.
 * If images are failing to display specifically on the desktop platform:
 	* Check the code for the use of negatively positioned images.
-	* Check to see if you are scaling images. If you are using transforms to shrink/expand the image it may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#image-formatting)
+	* Check to see if you are scaling svg images. If you are using `transform` to shrink/expand the image at the `<g>` container level it may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#scalable-vector-graphics-svg)
 * If you have tried revising the images and the issue still exists contact the Content QA team for additional feedback.
 
 ### Text Spacing and Overlap Issues
