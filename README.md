@@ -66,7 +66,7 @@ Kobo supports a subset of elements from the ePub 3.0 spec. The following covers 
 
 ### Kobo Serves Content to Users on These 5 Reading Platforms 
  
-1. eInk/EPD — Kobo eInk devices (Aura, Glo, Touch) 
+1. eInk/EPD — Kobo eInk devices (Touch, Mini, Glo, H2O, Aura, Aura Edition 2, Aura H2O, Aura One, Clara HD, Forma) 
 2. Desktop — the Kobo desktop app for PC and Apple Computers
 3. Android — all Android devices running the Kobo app including all Kobo Arc versions
 4. iOS — iPad, iPhone and iPod Touch
