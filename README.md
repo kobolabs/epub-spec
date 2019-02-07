@@ -27,17 +27,18 @@ What’s in this Document:
 17. [Right to Left Page and Text Direction](#right-to-left-page-and-text-direction)
 18. [Footnotes/Endnotes](#footnotesendnotes-are-fully-supported-across-kobo-platforms)
 19. [Fixed Layout](#fixed-layout-fxl-support)
-20. [SMIL](#kobo-supports-smil)
-21. [Image-Based FXL Reader](#image-based-fxl-reader)
-22. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
-23. [JavaScript Support](#javascript-support)
-24. [MathML](#mathml-support)
-25. [Fallback Statements](#fallback-statements)
-26. [ePub Previews](#epub-previews)
-27. [Tables](#tables)
-28. [Limitations and Maximums](#limitations-and-maximums)
-29. [Support Grid](#support-grid)
-30. [Common QA Failure Issues](#common-qa-failure-issues)
+	* [Synthetic Spreads](#synthetic-spreads)
+	* [SMIL](#kobo-supports-smil)
+	* [Image-Based FXL Reader](#image-based-fxl-reader)
+20. [Multimedia Support / Media Overlays](#multimedia-support--media-overlays)
+21. [JavaScript Support](#javascript-support)
+22. [MathML](#mathml-support)
+23. [Fallback Statements](#fallback-statements)
+24. [ePub Previews](#epub-previews)
+25. [Tables](#tables)
+26. [Limitations and Maximums](#limitations-and-maximums)
+27. [Support Grid](#support-grid)
+28. [Common QA Failure Issues](#common-qa-failure-issues)
 	* [Pixelated or Low Resolution Images](#pixelated-or-low-resolution-images)
 	* [Missing Images](#missing-images)	
 	* [Text Spacing and Overlap Issues](#text-spacing-and-overlap-issues)
@@ -45,8 +46,8 @@ What’s in this Document:
 	* [Read-Along issues](#read-along-issues)
 	* [Audio Video Issues on Android and iOS Platforms](#audio-video-issues-on-android-and-ios-platforms)
 	* [Two Pages Display in Portrait Orientation on Android](#two-pages-display-in-portrait-orientation-on-android)
-31. [External Resources](#external-resources)
-32. [Questions?](#still-have-questions)
+29. [External Resources](#external-resources)
+30. [Questions?](#still-have-questions)
 
 ### ePub Versions Kobo Supports
  
@@ -440,17 +441,25 @@ In the `metadata` senction of the OPF, the value set in the [rendition:layout pr
  
 Kobo platforms also read the field `<option name="fixed-layout">true/false</option>` to identify whether ePubs should be rendered as FXL. The file containing this field is usually titled com.kobobooks.display-options.xml and can be found in the META-INF directory of the ePub. This file is not required for ePub3 FXL content. 
 
-The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread) determines the orientations for which synthetic spreads will be rendered. There are 5 possible values: `auto`, `portrait`, `landscape`, `both` and `none`. Kobo reccomends using `auto` for most Fixed Layout content. All platforms support `none`, in which neither orientation displays spreads. Support for each value breaks down by platform as follows:
-- The iOS platform supports `none`, and ignores the other four values, instead allowing the reader to double-tap to switch between `landscape` and `both`, regardless of the orientation. 
-  - i.e. Double-tapping zooms in to single-page view or zooms out to a spread view.
-- The Android platform supports `none`, `auto`, `portrait`, `landscape` and `both`.
-  - i.e. The spec is followed without any additional behavior.
-- The EPD platform will display all Fixed Layout content as if the value were `none`. 
-  - i.e. The screen always only displays a single page.
-- The Desktop platform will display two-page spreads for all Fixed Layout content, unless the value is `none`.
-  - i.e. The screen can be thought of as always being in landscape mode 
-- The Windows platform supports `auto` and `none`, but not `both`, `portrait` or `landscape`.
-  - i.e. The screen always displays one page in portrait and two pages in landscape.
+### Synthetic Spreads
+
+A synthetic spread in a Fixed Layout ePub is when two separate page files are rendered together on-screen. The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread) in the .opf determines when synthetic spreads will be rendered. Supplying a value to this property that is suitable for the content is an important step in making Fixed Layout content as legible as possible on smaller screens.
+
+Usually, a synthetic spread is only desirable when a device is in landscape orientation because the spread can be rendered without scaling any pages down. In portrait orientation, it is often best to display a single page because it makes the greatest use of the available space. To achieve this optimal display, use `auto` or `landscape` as the value for `rendition:spread`:
+
+```html
+<meta property="rendition:spread">auto</meta>
+``` 
+or 
+```html
+<meta property="rendition:spread">landscape</meta>
+```  
+
+Unfortunately, software that exports Fixed Layout ePubs often sets the `rendition:spread` property value to `both`, causing synthetic spreads to appear in both landscape and portrait orientations. We strongly recommend verifying the value assigned to the `rendition:spread` property before submitting your ePub, as well as ensuring your Fixed Layout workflow is deliberate when assigning values to this property.
+
+**Warning**: EPubs using an unsuitable value may be removed from sale until a corrected revision has been distributed. For example, if the content is highly detailed (like sheet music, verse, travel guides, or graphic novels), and the `rendition:spread` is set to `both`, the book may fail QA and be removed from sale.
+
+Kobo supports all five available values; `auto`, `landscape`, `none`, `both` and `portrait`. For specific recommendations, see the [Common QA Failures](#common-qa-failure-issues) section.
 
 `rendition:spread` properties are only read at the book level for all reading platforms, set in the `metadata` section. Future versions of Kobo’s reading platforms may read the `rendition:orientation` and `rendition:layout` properties at the spine level.
  
@@ -769,16 +778,26 @@ To revise ePubs with these issues:
 
 ### Two Pages Display in Portrait Orientation on Android
 
-Fixed Layout content is ususally most legible when it displays 1 page in portrait mode and 2 in landscape mode. Control over this setting is given to the [`rendition:spread`](#fixed-layout-fxl-support) meta property in the OPF. In cases with graphic novels or books with small text, Fixed Layout content will fail QA for displaying 2 pages in the portrait orientation on Android. This issue usually occurs when the `rendition:spread` is set to `portrait` or `both`. 
+Not sure what value should be used for your book? This section aims to resolve that.
 
-To display 1 page in portrait mode and 2 pages in landscape mode, in the OPF `<metadata>` section, use:
+#### Do you want the greatest legibility and flexibility across all Kobo apps and devices? 
 
-`<meta property="rendition:spread">auto</meta>` or `<meta property="rendition:spread">landscape</meta>`
+Set the `rendition:spread` value to `auto` or `landscape`. Both values will have the same effect; synthetic (2-page) spreads will only appear in landscape. These settings are suitable for almost all fixed layout ePubs.  
 
-When 2-page spreads have been hard-coded together in a single HTML file, this property must be set to `none` to avoid 4 page spreads in landscape mode. Even so, Fixed Layout content with hard-coded 2-page spreads spreads may fail QA if text is illegible.
+#### Do you want to prevent two pages from appearing next to one another?
+
+Set the `rendition:spread` value to `none`. Synthetic spreads will not appear.
+
+#### Do you have already have two-page spreads contained in a single HTML file?
+
+Set the `rendition:spread` value to `none`. Any other value will cause four pages to appear in portrait or landscape, or both. Please also consider separating the pages so that they can be displayed larger individually. Fixed Layout content with hard-coded 2-page spreads spreads may fail QA if text is illegible.
+
+#### Do you want your children's books to always appear with synthetic spreads?
+
+Set the `rendition:spread` value to `both`. Please consider only using this value when absolutely necessary for the content, as it scales the images and text down when a device is in portrait mode, which can be very uncomfortable to read on a phone or tablet. Please also check that your font size is appropriate for such drastic scaling.
 
 ### External Resources
-Some useful epub resources from around the net.
+Some useful ePub resources from around the net.
 - https://ebookflightdeck.com/handbook
 - https://friendsofepub.github.io/Blitz/
 
