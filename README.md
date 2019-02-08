@@ -443,7 +443,7 @@ Kobo platforms also read the field `<option name="fixed-layout">true/false</opti
 
 ### Synthetic Spreads
 
-A synthetic spread in a Fixed Layout ePub is when two separate page files are rendered together on-screen. The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread) in the .opf determines when synthetic spreads will be rendered. Supplying a value to this property that is suitable for the content is an important step in making Fixed Layout content as legible as possible on smaller screens.
+A synthetic spread in a Fixed Layout ePub is when two separate page files are rendered together on-screen. The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread) in the OPF determines when synthetic spreads will be rendered. Supplying a value to this property that is suitable for the content is an important step in making Fixed Layout content as legible as possible on smaller screens.
 
 Usually, a synthetic spread is only desirable when a device is in landscape orientation because the spread can be rendered without scaling any pages down. In portrait orientation, it is often best to display a single page because it makes the greatest use of the available space. To achieve this optimal display, use `auto` or `landscape` as the value for `rendition:spread`:
 
@@ -788,7 +788,7 @@ Set the `rendition:spread` value to `auto` or `landscape`. Both values will have
 
 Set the `rendition:spread` value to `none`. Synthetic spreads will not appear.
 
-#### Do you have already have two-page spreads contained in a single HTML file?
+#### Do you already have two-page spreads contained in a single HTML file?
 
 Set the `rendition:spread` value to `none`. Any other value will cause four pages to appear in portrait or landscape, or both. Please also consider separating the pages so that they can be displayed larger individually. Fixed Layout content with hard-coded 2-page spreads spreads may fail QA if text is illegible.
 
