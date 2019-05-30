@@ -198,16 +198,43 @@ Supported:
 ```
  
 ### Table of Contents (TOC)
+
+Kobo does not require a specific naming convention for the NCX (in epub2) or epub navigation document (in epub3). The content creator can name the file as they choose (i.e. `your_toc_filename.ncx` or `your_toc_filename.xhtml` respectively). However, please note the general file naming suggestions provided in the [OPF](#opf) section.
+
+#### For epub2 
+Kobo reading platforms populate the TOC menu using the `navMap` element of the NCX. If the NCX is not present, the TOC menu is populated by the epub's OPF `spine`.
  
-**For ePub 2.0.1**, Kobo reading platforms populate the TOC menu in the book with the TOC from the file toc.ncx (which is in navMap). However, if the toc.ncx is not present, the TOC menu is populated by the Spine listing in the OPF.
+When an OPF `spine` item is not listed in the NCX, Kobo will create a listing for it using the filename or the opening words from the section. This listing will be displayed to the user in the TOC Menu across all reading platforms. This process may be removed in a future release. Epub3 files, which use the epub navigation document, will not be impacted. 
  
-When an OPF-spine item is not listed in the TOC.ncx, the Kobo CMS will create a listing for it using the filename or the opening words from the section. This listing will be displayed to the user in the TOC Menu across all reading platforms. This process may be removed in a future release. ePubs that use a nav.html TOC will not be impacted. 
- 
-**For ePub 3.0**, Kobo platforms will read the TOC from the TOC table in the nav.html file. When a TOC table is not present, the next available table will be used. If the nav.html is not present, it will populate the TOC with the toc.ncx. If the toc.ncx is not present, it will populate the TOC with the spine listing in the OPF.
+#### For epub3
+Kobo platforms populate the table of contents with the items listed in the [toc nav element](http://www.idpf.org/epub/301/spec/epub-contentdocs.html#sec-xhtml-nav-def-types-toc) of the [epub navigation document](http://www.idpf.org/epub/301/spec/epub-contentdocs.html#sec-xhtml-nav-def). The `toc nav` element is a `nav` element with an `epub:type` attribute that has been assigned the value `toc`.
+
+Example:
+```
+<nav epub:type="toc">
+    <h2>Contents</h2>
+    <ol>
+        <li><a href="title-page.xhtml">Title Page</a></li>
+		<li><a href="copyright.xhtml">Copyright</a></li>
+		<li><a href="chapter-1.xhtml">Chapter 1</a></li>
+		<li><a href="chapter-2.xhtml">Chapter 2</a></li>
+		<li><a href="chapter-3.xhtml">Chapter 3</a></li>
+    </ol>
+</nav>
+```
+
+**Please note:** For consistency across Kobo platforms, it is highly recommended that all epub3 files include the `toc nav` element; fallbacks vary depending on the platform.
+
+When a `toc nav` element is not present in an epub3:
+- EPD devices and KDA fall back to listing each filename in the epub's OPF `spine`.
+- iOS falls back to the  `page-list nav` element.
+	- If a `page-list nav` is not available either, the TOC will appear blank, but will still function as a list of links to each file listed in the epub's OPF `spine`.
+- Android falls back to the next available `nav` element in the order in which they occur: either a `page-list nav` or a `landmarks nav`.
+	- If neither a `page-list nav` element nor a `landmarks nav` element exists, the TOC will be empty. The OPF `spine` is not used as a fallback on Android.
+
+**Please note:** If an NCX is included in an epub3, it will be ignored. It will not used as a TOC fallback on any Kobo platforms.
  
 The hidden attribute can be used to prevent the TOC listing from appearing in the ePub body while still displaying in the TOC menu. TOC menus on Kobo platforms support nesting up to three elements deep on iOS and Android. Nested TOCs are flattened on EPD and Desktop.
-
-Kobo does not require a specific naming convention for the .ncx or .html/.xhtml file, the content creator can name the file as they choose ([filename].ncx, [filename].html). Please note the file naming suggestions provided in the [OPF](#opf) section.
 
 **Landmarks will display as TOC items but will not trigger behaviour on the apps.** The ePub specification does not define any specific way reading platforms are supposed to handle landmarks (<nav epub:type"landmarks">) and Kobo will not do anything beyond displaying them to users in the TOC. Ex. <epub:type="bodymatter"> will not determine what page/section the book opens to or change the navigation/paging experience in any way.
 
