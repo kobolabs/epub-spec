@@ -114,9 +114,10 @@ Here’s how to sideload content on Kobo's reading platforms:
 **iOS**
 
 1. Connect the device to your computer with the iOS cable.
-2. Open iTunes and navigate to iPad -> Apps.
-3. Select the Kobo app from the box on the left.
-4. Drag the ePub to the box in the bottom right of your iTunes window. If drag and drop functionality is not working then select the "Add file..." button and select the ePub you want to add to the app. The file will then automatically import and display in your library. If it does not appear even after refreshing your library signing out and signing back in to the Kobo app should cause the sideloaded titles to appear. 
+2. Open iTunes and click the device's icon in the upper-left corner of iTunes.
+3. Select File Sharing from the Settings menu on the left.
+4. Select the Kobo Books app from the Apps box in the iTunes window.
+5. Drag the ePub to the Kobo Books Documents box in the iTunes window. If drag and drop functionality is not working then select the "Add File..." button and select the ePub you want to add to the app. The file will then automatically import and display in your library. If it does not appear even after refreshing your library, closing the app and opening it again should cause the sideloaded titles to appear. 
 
 (The Kobo iOS app is registered among apps that open ePub and pdf files. Users can use the standard “open in…” menu from Safari, Dropbox, or any other app that supports it to view their files.)
  
