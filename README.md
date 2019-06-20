@@ -472,7 +472,7 @@ Kobo platforms also read the field `<option name="fixed-layout">true/false</opti
 
 A synthetic spread in a Fixed Layout ePub is when two separate page files are rendered together on-screen. The [`rendition:spread` property](http://www.idpf.org/epub/fxl/#property-spread) in the OPF determines when synthetic spreads will be rendered. Supplying a value to this property that is suitable for the content is an important step in making Fixed Layout content as legible as possible on smaller screens.
 
-Usually, a synthetic spread is only desirable when a device is in landscape orientation because the spread can be rendered without scaling any pages down. In portrait orientation, it is often best to display a single page because it makes the greatest use of the available space. To achieve this optimal display, use `auto` or `landscape` as the value for `rendition:spread`:
+Usually, a synthetic spread is only desirable when a device is in landscape orientation because the spread can be rendered without scaling any pages down. In portrait orientation, it is often best to display a single page because it makes the greatest use of the available space. To achieve this optimal display as long as each file contains only a single page, use `auto` or `landscape` as the value for `rendition:spread`:
 
 ```html
 <meta property="rendition:spread">auto</meta>
@@ -485,6 +485,8 @@ or
 Unfortunately, software that exports Fixed Layout ePubs often sets the `rendition:spread` property value to `both`, causing synthetic spreads to appear in both landscape and portrait orientations. We strongly recommend verifying the value assigned to the `rendition:spread` property before submitting your ePub, as well as ensuring your Fixed Layout workflow is deliberate when assigning values to this property.
 
 **Warning**: EPubs using an unsuitable value may be removed from sale until a corrected revision has been distributed. For example, if the content is highly detailed (like sheet music, verse, travel guides, or graphic novels), and the `rendition:spread` is set to `both`, the book may fail QA and be removed from sale.
+
+**Please note:**  If a Fixed Layout epub's xhtml files contain more than a single page (i.e. if they have been hard-coded to display 2-page spreads), be sure to set `rendition:spread` to `none`; synthetic spreads should not be rendered from hard-coded spreads. Epubs with hard-coded spreads and a `rendition:spread`  value other than `none`  may fail content QA due to the legibility issues that arise.
 
 Kobo supports all five available values; `auto`, `landscape`, `none`, `both` and `portrait`. For specific recommendations, see the [Common QA Failures](#common-qa-failure-issues) section.
 
