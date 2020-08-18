@@ -75,11 +75,9 @@ Kobo supports a subset of elements from the EPUB 3 spec. The following covers wh
 
 ### Kobo Recommends Initial EPUB Check
 
-The Kobo CMS runs incoming files through [EPUBCheck](https://github.com/w3c/epubcheck) version 4.0.1. If your EPUB raises failure messages that are known to prevent files from loading or displaying correctly you will receive an automated failure report indicating which files failed validation and why within two business days.
+The Kobo CMS runs incoming files through [EPUBCheck](https://github.com/w3c/epubcheck) version 4.2.4. If your EPUB raises failure messages that are known to prevent files from loading or displaying correctly you will receive an automated failure report indicating which files failed validation and why within two business days.
 
 Not all EPUBCheck flags will result in files failing upon ingestion but Kobo strongly recommends that only files that pass EPUBCheck without flags are distributed. EPUBs that raise warning flags may pass ingestion but still fail content QA if they produce display issues on Kobo's reading platforms.
-
-**NOTE** Kobo is looking at updating its validator to EPUBCheck Version 4.2.2, we will update this document when that has happened.
 
 ### Sideloading for Testing Purposes
 
