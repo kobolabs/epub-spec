@@ -835,7 +835,7 @@ Some useful EPUB resources from around the net.
 
 ### Still have questions?
 
-If you encounter any rendering issues you can bring them to our attention at renderingissues@kobo.com. Please provide as much detail as possible, including app version, device, and screenshots if possible. Any comments or concerns about the documentation above can be submitted directly via GitHub comments. Immediate responses to all emails and comments cannot be guaranteed but all feedback related to documentation and content rendering is appreciated.
+If you encounter any rendering issues you can bring them to our attention at kobo-renderingissues@mail.rakuten.com. Please provide as much detail as possible, including app version, device, and screenshots if possible. Any comments or concerns about the documentation above can be submitted directly via GitHub comments. Immediate responses to all emails and comments cannot be guaranteed but all feedback related to documentation and content rendering is appreciated.
 
 If you are already configured as a publisher or distributor with Kobo and have questions concerning content management (metadata or EPUB uploads, pricing, pre-orders, etc.) you can follow up with your contact on the Publisher Operations team.
 
