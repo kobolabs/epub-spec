@@ -144,23 +144,23 @@ All images should use the RGB color model, and not CMYK. Encapsulated PostScript
 
 **The advised maximum size for all image types is 5 MB.** EPUBs with larger images are still accepted and those images will not cause Kobo apps and devices to crash. However, EPUBs with images all under this limit perform optimally across platforms.
 
-**Image dimensions should be set in percentages instead of pixels in the CSS for reflowable content.** Images with dimensions set by pixels may stretch depending on the orientation, device and user settings. Kobo reading platforms insert max-width and max-height CSS for images and videos to ensures that they are not split over multiple screens.
+**Image dimensions should be set in percentages instead of pixels in the CSS for reflowable content.** Images with dimensions set by pixels may stretch depending on the orientation, device and user settings. Kobo reading platforms insert max-width and max-height CSS for images and videos to ensure that they are not split over multiple screens.
 
-**Images should not have transparent backgrounds.** This will result in the reading system inserting a default background color or pattern. Fixed Layout titles with where image backgrounds are transparent will fail QA in cases where the content is unreadable.
+**Images should not have transparent backgrounds.** This will result in the reading system inserting a default background color or pattern. Fixed Layout titles where image backgrounds are transparent will fail QA in cases where the content is unreadable.
 
-**For a full screen image view** on the Android and iOS platforms, users can long press images in reflowable ePubs. Once in full-screen view, users will be able to pinch and zoom. This can also be achieved on eInk devices (running version 3.14 or later) by double tapping images.
+**For a full-screen image view** on the Android and iOS platforms, users can long press images in reflowable ePubs. Once in full-screen view, users will be able to pinch and zoom. This can also be achieved on eInk devices (running version 3.14 or later) by double tapping images.
 
 
 
 ### Cover Images
 
-If an external cover image is uploaded to both the Kobo system and the ePub, that external image displays as the thumbnail image in the store and in user’s libraries. The internal EPUB cover still displays when the user opens the file on their device. External cover images must have the ISBN in the filename ex. "9781234567890.jpg" or "9781234567890.png".
+If an external cover image is uploaded to both the Kobo system and the ePub, that external image displays as the thumbnail image in the store and in user libraries. The internal EPUB cover still displays when the user opens the file on their device. External cover images must have the ISBN in the filename ex. "9781234567890.jpg" or "9781234567890.png".
 
 GIF files are not supported for covers.
 
 The suggested optimal ratio for covers on Kobo is 3:4 width:height. (The average size and dimensions for ebook covers in the Kobo store are 800:1224px width:height.) However covers in all dimensions will be rendered consistently across platforms. Content creators are advised to keep their cover images under 3MB. Larger covers will still render but will not improve the display of their content.
 
-Covers should also be listed in the OPF metadata section. The metadata indicates the cover by pointing to the ID of the cover file in the manifest. Kobo uses this tag to identify which image to display as a thumbnail within user's libraries across platforms.
+Covers should also be listed in the OPF metadata section. The metadata indicates the cover by pointing to the ID of the cover file in the manifest. Kobo uses this tag to identify which image to display as a thumbnail within user libraries across platforms.
 
 Ex.
 OPF metadata:
@@ -173,7 +173,7 @@ Manifest item listing:
 
 **Cover images must be contained in their own XHTML files.** Kobo's eInk devices will activate the Fixed Layout reader for the XHTML file containing the cover image to optimize the display. As a result any text or images that have been placed in the same XHTML file as the cover will be displayed as Fixed Layout content. The user will be unable to resize the text and some of the content may not display on the screen at all.
 
-It is recommended that cover images be embedded in the html using the `<img>` tag, rather than using the `background-image` CSS property. The CSS `background-image` method is not supported by the automatic cover extraction process. Books that do use the CSS method will require separate covers to be submitted in order for covers to appear in the store and in customer libraries.
+It is recommended that cover images be embedded in the HTML using the `<img>` tag, rather than using the `background-image` CSS property. The CSS `background-image` method is not supported by the automatic cover extraction process. Books that do use the CSS method will require separate covers to be submitted in order for covers to appear in the store and in customer libraries.
 
 Kobo advises against placing links in covers. This can create a poor reading experience when attempting to page forward and a link is triggered instead.
 
@@ -234,7 +234,7 @@ When a `toc nav` element is not present in an EPUB3:
 - Android falls back to the next available `nav` element in the order in which they occur: either a `page-list nav` or a `landmarks nav`.
 	- If neither a `page-list nav` element nor a `landmarks nav` element exists, the TOC will be empty. The OPF `spine` is not used as a fallback on Android.
 
-**Please note:** If an NCX is included in an EPUB3, it will be ignored. It will not used as a TOC fallback on any Kobo platforms.
+**Please note:** If an NCX is included in an EPUB3, it will be ignored. It will not be used as a TOC fallback on any Kobo platforms.
 
 The hidden attribute can be used to prevent the TOC listing from appearing in the EPUB body while still displaying in the TOC menu. TOC menus on Kobo platforms support nesting up to three elements deep on iOS and Android. Nested TOCs are flattened on EPD and Desktop.
 
@@ -326,9 +326,9 @@ p.quote {
 
 **Page Breaks**
 
-A page break will occur whenever the reading system encounters a new html file. Creating a new file is the best way to establish page breaks across all Kobo apps. Support for other page-break methods is not consistent.
+A page break will occur whenever the reading system encounters a new HTML file. Creating a new file is the best way to establish page breaks across all Kobo apps. Support for other page-break methods is not consistent.
 
-Page-breaking CSS is only partially supported across Kobo's reading platforms. Support for page-breaking CSS is limited at this time becasue pagination isn't implemented in a way that supports its use across all of Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
+Page-breaking CSS is only partially supported across Kobo's reading platforms. Support for page-breaking CSS is limited at this time because pagination isn't implemented in a way that supports its use across all of Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
 
 
 |Page Break Type| Windows | iOS | Android | EPD | KDA |
@@ -348,7 +348,7 @@ Page-breaking CSS is only partially supported across Kobo's reading platforms. S
 
 **Setting Font Sizes**
 
-Font size can be set in the CSS using the unit type `em`, `px`, `pt` or `%`. However, `%` has been known to trigger bugs on Desktop and eInk that can restrict users' ability to change the font size or to reset the font size at the start of each chapter. Kobo advises that content creators set a base font size in `px` or `pt` (or not set a base size at all, to allow each platform to use its default font size) then increase or decrease the font size for specific classes using `em` units.
+Font size can be set in the CSS using the unit type `em`, `px`, `pt` or `%`. However, `%` has been known to trigger bugs on Desktop and eInk that can restrict the user's ability to change the font size or reset the font size at the start of each chapter. Kobo advises that content creators set a base font size in `px` or `pt` (or not set a base size at all, to allow each platform to use its default font size) then increase or decrease the font size for specific classes using `em` units.
 
 ### Supported Fonts
 
@@ -377,7 +377,7 @@ If the reading experience of a book requires that the embedded font be used, con
 
 **To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all Fixed Layout ePubs. If fonts are not embedded and specified, the reading platform falls back to different default fonts depending on the system. This can lead to unexpected text reflow and element-sizing issues. Fixed Layout files that use the default fonts should be tested extensively on Kobo’s reading platforms.
 
-**Content creators are advised against referencing fonts in the CSS that are not embedded in the ePub.** Kobo devices and devices that Kobo apps can be installed on will have specific fonts included. However, the available fonts vary across these devices and there is no way to ensure that any one font will be available on the device chosen by the user. If fonts are not embedded then text will be rendered differently across multiple devices and platforms, with each using the fonts available to it.
+**Content creators are advised against referencing fonts in the CSS that are not embedded in the ePub.** Kobo devices and devices that Kobo apps can be installed on will have specific fonts included. However, the available fonts vary across these devices and there is no way to ensure that any one font will be available on the device chosen by the user. If fonts are not embedded then the text will be rendered differently across multiple devices and platforms, with each using the fonts available to it.
 
 ### All Fonts Used In Fixed Layout Content Must Be Embedded And Cannot be Modified
 
@@ -413,7 +413,7 @@ Here, a bold version of the font has correctly been embedded and linked to using
 
 When a user selects an available default font, Kobo reading platforms may not correctly render all glyphs within the script. So content containing glyphs not present in Kobo’s default apps should be tested across platforms. Creators may want to embed a font that contains the glyphs used in their content to ensure it renders correctly.
 
-Some glyphs do not render on most fonts. In cases where creators are unable to supply embedded fonts they can insert a note into the front matter of their content instructing users to select the font Georgia. It correctly renders the greatest set of scripts.
+Some glyphs do not render on most fonts. In cases where creators are unable to supply embedded fonts, they can insert a note into the front matter of their content instructing users to select the font Georgia. It correctly renders the greatest set of scripts.
 
 Kobo is currently working to add built-in fonts to the eInk and Android-reading platforms and render glyphs from all scripts correctly. The Desktop, iOS and Windows platforms already contain built-in fonts that will render glyphs from all scripts.
 
@@ -423,7 +423,7 @@ Kobo has support for right-to-left language formatting in the following areas:
 * Kobo supports the writing-mode CSS3 property and associated elements for vertical text layouts (LTR or RTL)
 * Kobo supports the HTML5 dir attribute
 * Kobo supports ruby text*
-* * Kobo supports the OPF spine-level [`page-progression-direction`](https://www.w3.org/publishing/epub3/epub-packages.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow:
+* Kobo supports the OPF spine-level [`page-progression-direction`](https://www.w3.org/publishing/epub3/epub-packages.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow:
 
 ```
 <spine toc="ncx" page-progression-direction="rtl">
@@ -437,7 +437,7 @@ The `page-progression-direction` attribute was introduced as part of the EPUB3 s
 
 ### Footnotes/Endnotes Are Fully Supported Across Kobo Platforms
 
-Footnotes and endnotes on the eInk (except for the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS, the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
+Footnotes and endnotes on the eInk (except for the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS, the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows platforms users will not see a pop-up but can simply follow the link to the HTML section with the reference text.
 
 It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](https://www.w3.org/publishing/epub3/epub-contentdocs.html#sec-epub-type-attribute) for footnotes and endnotes (note: this markup is only valid in EPUB3 files and cannot be used in ePub2). This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform.
 
@@ -450,7 +450,7 @@ Ex.
 
 1) The link references a location in the EPUB and also references a specific node within the HTML. Ex.
 <br>`<a href=“chapter.html#uniqueID”>link text</a>`<br>
-Where chapter.html is a file within this EPUB and where uniqueID is the id of a node within that html document.
+Where chapter.html is a file within this EPUB and where uniqueID is the id of a node within that HTML document.
 
 2) The content in the node is nine characters or more once stripped of the HTML tags. Ex.
 <br>`<p id="uniqueID">123456789</p>`
@@ -463,7 +463,7 @@ Where chapter.html is a file within this EPUB and where uniqueID is the id of a 
 
 Kobo supports the [official EPUB3 FXL spec](https://www.w3.org/publishing/epub3/epub-contentdocs.html#sec-fixed-layouts) on all platforms. This includes such features as [Right-to-Left Reading](https://www.w3.org/publishing/epub3/epub-packages.html#attrdef-spine-page-progression-direction), [SMIL read-along](https://www.w3.org/publishing/epub3/epub-mediaoverlays.html), and various page-spread options.
 
-In the `metadata` senction of the OPF, the value set in the [rendition:layout property](https://www.w3.org/publishing/epub3/epub-packages.html#layout) determines whether the content is fixed layout or reflowable. Fixed layout content should set this value to `pre-paginated`.
+In the `metadata` section of the OPF, the value set in the [rendition:layout property](https://www.w3.org/publishing/epub3/epub-packages.html#layout) determines whether the content is fixed layout or reflowable. Fixed layout content should set this value to `pre-paginated`.
 ```
 <meta property="rendition:layout">pre-paginated</meta>
 ```
@@ -482,19 +482,19 @@ Usually, a synthetic spread is only desirable when a device is in landscape orie
 or
 ```html
 <meta property="rendition:spread">landscape</meta>
-```  
+```
 
 Unfortunately, software that exports Fixed Layout EPUBs often sets the `rendition:spread` property value to `both`, causing synthetic spreads to appear in both landscape and portrait orientations. We strongly recommend verifying the value assigned to the `rendition:spread` property before submitting your ePub, as well as ensuring your Fixed Layout workflow is deliberate when assigning values to this property.
 
 **Warning**: EPUBs using an unsuitable value may be removed from sale until a corrected revision has been distributed. For example, if the content is highly detailed (like sheet music, verse, travel guides, or graphic novels), and the `rendition:spread` is set to `both`, the book may fail QA and be removed from sale.
 
-**Please note:**  If a Fixed Layout epub's xhtml files contain more than a single page (i.e. if they have been hard-coded to display 2-page spreads), be sure to set `rendition:spread` to `none`; synthetic spreads should not be rendered from hard-coded spreads. EPUBs with hard-coded spreads and a `rendition:spread`  value other than `none`  may fail content QA due to the legibility issues that arise.
+**Please note:**  If a Fixed Layout ePub's XHTML files contain more than a single page (i.e. if they have been hard-coded to display 2-page spreads), be sure to set `rendition:spread` to `none`; synthetic spreads should not be rendered from hard-coded spreads. EPUBs with hard-coded spreads and a `rendition:spread`  value other than `none`  may fail content QA due to the legibility issues that arise.
 
 Kobo supports all five available values; `auto`, `landscape`, `none`, `both` and `portrait`. For specific recommendations, see the [Common QA Failures](#common-qa-failure-issues) section.
 
 `rendition:spread` properties are only read at the book level for all reading platforms, set in the `metadata` section. Future versions of Kobo’s reading platforms may read the `rendition:orientation` and `rendition:layout` properties at the spine level.
 
-**Pinch and zoom gestures** are available on the Android, iOS, and Windows reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can to zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
+**Pinch and zoom gestures** are available on the Android, iOS, and Windows reading platforms. The zoom option is available in the reading menu of eInk devices. The Kobo Desktop App supports three zoom options: Zoom Slider, Double-click to zoom and Scroll to zoom. The zoom slider is incorporated into the navigation bar so that users can adjust it to zoom in and out. Alternatively, users can zoom in by double-clicking anywhere on the page or adjust the zoom by scrolling up and down with a mouse while holding down the Ctrl (PC) or Command (Mac) key.
 
 **Starting a Fixed Layout Book with a left spread will throw off the page sequence on iOS**
 
@@ -516,7 +516,7 @@ Not supported:
 
 * Text boxes with inline styling. This may result in inconsistent rendering across platforms, resulting in text overlap or incorrect positioning.
 
-* The use of images where the width or height (in pixels) exceed the dimensions of the viewport. EPUBs containing images that exceed the viewport dimensions may not render correctly on the eInk platform.
+* The use of images where the width or height (in pixels) exceeds the dimensions of the viewport. EPUBs containing images that exceed the viewport dimensions may not render correctly on the eInk platform.
 
 * The use of negative positioning when placing text, images or other content in CSS.
 Not advised:
@@ -557,13 +557,13 @@ The following table outlines `rendition:spread` behaviour in Fixed Layout Read A
 | Android/FXL Read Along | "landscape"      | single page     | full spread       |
 
 
-Custom text colors for highlighting are not currently supported on Android. However, custom text colors for highlighting is possible on iOS. The iOS app uses the CSS class ‘kobo-smil-highlight’ to color highlighted text. So, by adding that class to the CSS plus a color declaration, the color of the highlighted text on the app can be customized.
+Custom text colors for highlighting are not currently supported on Android. However, custom text colors for highlighting are possible on iOS. The iOS app uses the CSS class ‘kobo-smil-highlight’ to color highlighted text. So, by adding that class to the CSS plus a color declaration, the color of the highlighted text on the app can be customized.
 
 **SMIL for reflowable content** is supported on iOS but is not supported on the Android, EPD, Desktop or Windows platforms.
 
 ### Image-Based FXL Reader
 
-The Kobo Android and iOS platforms will render FXL EPUBs that meet certain criteria with an image-based Fixed Layout reader. This reader features significantly faster panning, zooming, and page-turns than the standard one. Designed to enhance the reading experience of comics, it works for any FXL EPUBs composed entirely of images.
+The Kobo Android and iOS platforms will render FXL EPUBs that meet certain criteria with an image-based Fixed Layout reader. This reader features significantly faster panning, zooming, and page turns than the standard one. Designed to enhance the reading experience of comics, it works for any FXL EPUBs composed entirely of images.
 
 **EPUBs that meet the following criteria will be displayed with the image-based reader on Kobo’s iOS and Android platforms**:
 
@@ -572,10 +572,10 @@ The Kobo Android and iOS platforms will render FXL EPUBs that meet certain crite
 3. An image must be available for each spine item. Spine items are inspected for images using these rules, and each spine item must contain one of the following formats:
    1. a non-SVG image (e.g. PNG), or
    2. an SVG image with a non-SVG image fallback provided in the manifest. In this case, the fallback image is used in the comics renderer, or
-   3. an HTML file which falls under one of the following categories:
-      1. either it contains a single `img` tag which references an image. In this case, this image will be used
+   3. an HTML file that falls under one of the following categories:
+      1. either it contains a single `img` tag that references an image. In this case, this image will be used
       2. or it contains an SVG definition with an `image` child tag referencing an image. In this case, the referenced image will be used. NB: `object` elements, which may include an SVG image in the `data` attribute, do not fall into this category
-      3. or an HTML page which contains no child elements under `body`. This item will be rendered as a blank white page.
+      3. or an HTML page that contains no child elements under `body`. This item will be rendered as a blank white page.
 4. The same image cannot appear twice in a row. If two consecutive pages refer to the same image, the platform will assume that CSS styling is repositioning the image, which is not supported by the image-based FXL reader.
 
 For example, a file that lists spine items, manifest items, and contains nothing but an image in the HTML body will trigger the image-based renderer.
@@ -614,13 +614,13 @@ If images are set using the [background property](http://www.w3.org/TR/CSS21/col
 
 On Android, if the image is determined to be twice as large as the screen in any dimension, a low-res version of the image loads when the user turns a page. Within a second, the high-res version replaces the original image. This optimization prevents memory issues when users quickly flip through pages. The low-res image might appear slightly blurry or soft compared to the final hi-res image.
 
-**Web links will be disabled in the Image Based FXL reader.** If web links must work for an image only Fixed Layout EPUB it is recommended that invisible sample text be added to any HTML file so that Kobo's Android and iOS apps will open the file with the default reader.
+**Web links will be disabled in the Image Based FXL reader.** If web links must work for an image-only Fixed Layout EPUB it is recommended that invisible sample text be added to any HTML file so that Kobo's Android and iOS apps will open the file with the default reader.
 
 ### Multimedia Support / Media Overlays
 
 Testing across platforms for EPUBs with multimedia and other media overlays is recommended.
 
-Embedded audio and video is currently supported on Kobo’s iOS and Android platforms for all content.
+Embedded audio and video are currently supported on Kobo’s iOS and Android platforms for all content.
 
 Windows does not currently support embedded audio and video. Kobo eInk devices and the desktop app do not support embedded audio and video either but will display any content included as a fallback using the [switch element](https://www.w3.org/publishing/epub3/epub-contentdocs.html#sec-xhtml-content-switch) display instead. *NOTE: This functionality has been deprecated in EPUB3.2.*
 
@@ -711,7 +711,7 @@ Sometimes tables wider than four columns may not be readable in reflowable EPUB 
 
 ### Limitations and Maximums
 
-Kobo recommends the following limits for EPUB and EPUB component sizes. Files exceeding these limits should still load to the Kobo store and be accessible on all reading platforms but will take longer to download to users’ devices and will take up more memory. To ensure optimal performance content creators are advised against producing files that exceed these limits.
+Kobo recommends the following limits for EPUB and EPUB component sizes. Files exceeding these limits should still load to the Kobo store and be accessible on all reading platforms but will take longer to download to user devices and will take up more memory. To ensure optimal performance content creators are advised against producing files that exceed these limits.
 
 * 5 MB/image in FXL and Reflowable ePubs
 * 10 MB of embedded content/each HTML file in an ePub
@@ -732,7 +732,7 @@ The following table lists features supported by at least one Kobo platform but n
 
 ### Common QA Failure Issues
 
-Kobo routinely reviews content and will remove titles from sale when display issues have a significant and negative impact on the reading experience. In these cases a report will be sent to the account contacts indicating which reading platforms the issues were detected on and why it was removed from sale. Upon request Kobo can perform further testing, provide more feedback and sync to content to a Kobo user account belonging to the distributor or creator of the EPUB file in question. Two key methods for revising failed content are sideloading and running ePubCheck.
+Kobo routinely reviews content and will remove titles from sale when display issues have a significant and negative impact on the reading experience. In these cases a report will be sent to the account contacts indicating which reading platforms the issues were detected on and why it was removed from sale. Upon request Kobo can perform further testing, provide more feedback and sync content to a Kobo user account belonging to the distributor or creator of the EPUB file in question. Two key methods for revising failed content are sideloading and running ePubCheck.
 
 **Sideloading**
 
@@ -747,7 +747,7 @@ Using an [EPUB validator](http://validator.idpf.org/) will help detect errors wi
 Kobo often receives reports from customers that images in EPUBs are blurry and contain text or images that are not legible.
 
 To revise EPUBs with this issue:
-* Embed higher resolution images and test via sideloading. Instructions for sideloading can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes). There's no minimum size or dimension required for images but if the image does not appear pixelated on an iPad or Android tablet it should pass content QA. You can double tap to expand images in reflowable content to full screen on Android and iOS for review.
+* Embed higher resolution images and test via sideloading. Instructions for sideloading can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes). There's no minimum size or dimension required for images but if the image does not appear pixelated on an iPad or Android tablet it should pass content QA. You can double tap to expand images in reflowable content to full-screen on Android and iOS for review.
 * When you are satisfied with the image quality, please send in the revised file and let us know that it is available for additional QA testing.
 * If you have tried replacing the images and the issue still exists contact the Content QA team for additional feedback.
 
@@ -760,7 +760,7 @@ To revise EPUBs with this issue:
 	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the EPUB could be called “image with spaces.jpg” and would be labelled `image&nbsp;with&nbsp;spaces.jpg` in the OPF file.
 * If images are failing to display specifically on the desktop platform:
 	* Check the code for the use of negatively positioned images.
-	* Check to see if you are scaling svg images. If you are using `transform` to shrink/expand the image at the `<g>` container level it may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#scalable-vector-graphics-svg)
+	* Check to see if you are scaling SVG images. If you are using `transform` to shrink/expand the image at the `<g>` container level it may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#scalable-vector-graphics-svg)
 * If you have tried revising the images and the issue still exists contact the Content QA team for additional feedback.
 
 ### Text Spacing and Overlap Issues
@@ -780,7 +780,7 @@ Fixed Layout content will fail QA in instances where the page content does not f
 
 To revise EPUBs with this issue:
 * Ensure that the viewport listed in all the CSS and XHTML files is the same.
-* Check to see if the image dimensions (if there is one background image for each page) matches the dimensions of the viewport. The image size does not have to match the viewport but the width:height ratio does. Ex. The image can be 100px by 200px and the viewport could be 200px by 400px.
+* Check to see if the image dimensions (if there is one background image for each page) match the dimensions of the viewport. The image size does not have to match the viewport but the width:height ratio does. Ex. The image can be 100px by 200px and the viewport could be 200px by 400px.
 * [Sideload](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes) the EPUB to various platforms and make sure that there is no extra space, that the whole page displays and that the left and right sides of the pages match up if the book is designed to be displayed in two page spreads.
 * If you cannot correct the viewports contact the Content QA team for additional feedback.
 
@@ -798,14 +798,14 @@ To revise EPUBs with these issues:
 
 ### Audio Video Issues on Android and iOS Platforms
 
-Kobo often receives content with embedded audio that does not work on one or both of our iOS and Android platforms (the criteria for activating such content is that is pass QA on both). This is usually either because the content has not been designed and tested for more than one reading platform or because the media, codecs, HTML or mimetypes are not compatible with one or both of the Android and iOS devices at all (i.e. even outside of the Kobo app).
+Kobo often receives content with embedded audio that does not work on one or both of our iOS and Android platforms (the criteria for activating such content is that it passes QA on both). This is usually either because the content has not been designed and tested for more than one reading platform or because the media, codecs, HTML or mimetypes are not compatible with one or both of the Android and iOS devices at all (i.e. even outside of the Kobo app).
 
 To revise EPUBs with these issues:
 * Ensure that the audio/video components are compatible with iOS and Android devices independent of the Kobo app by extracting the audio or video file and opening it in an app that will play the content. If it does not play the problem is likely the case that the file itself is not compatible with the Android or iOS platform.
 * Make sure you are using the [correct mimetype](http://www.iana.org/assignments/media-types/media-types.xhtml) for the audio/video file you’ve embedded.
 * Unzip the EPUB and open the page containing the media in Chrome and Safari. If it doesn’t work on Safari it will not likely work on the Kobo iOS app and if it does not work in Chrome it will not likely work on the Kobo Android app. The display engines will not always be the same version but they will be very similar. If the media plays in the browser and when opened in a media app on the device but not the Kobo app we will log a ticket to support the media for a future release.
 * Check the media controls. If the reading system has been allowed to use its default media controls it will decrease the likelihood that the media will not play. If JavaScript is in use try to remove it without breaking the intended display of the content.
-* If you unable to get the media to play on both platforms contact the Content QA team for additional feedback.
+* If you are unable to get the media to play on both platforms contact the Content QA team for additional feedback.
 
 ### Two Pages Display in Portrait Orientation on Android
 
@@ -813,7 +813,7 @@ Not sure what value should be used for your book? This section aims to resolve t
 
 #### Do you want the greatest legibility and flexibility across all Kobo apps and devices?
 
-Set the `rendition:spread` value to `auto` or `landscape`. Both values will have the same effect; synthetic (2-page) spreads will only appear in landscape. These settings are suitable for almost all fixed layout ePubs.  
+Set the `rendition:spread` value to `auto` or `landscape`. Both values will have the same effect; synthetic (2-page) spreads will only appear in landscape. These settings are suitable for almost all fixed layout ePubs.
 
 #### Do you want to prevent two pages from appearing next to one another?
 
@@ -821,7 +821,7 @@ Set the `rendition:spread` value to `none`. Synthetic spreads will not appear.
 
 #### Do you already have two-page spreads contained in a single HTML file?
 
-Set the `rendition:spread` value to `none`. Any other value will cause four pages to appear in portrait or landscape, or both. Please also consider separating the pages so that they can be displayed larger individually. Fixed Layout content with hard-coded 2-page spreads spreads may fail QA if text is illegible.
+Set the `rendition:spread` value to `none`. Any other value will cause four pages to appear in portrait or landscape, or both. Please also consider separating the pages so that they can be displayed larger individually. Fixed Layout content with hard-coded 2-page spreads may fail QA if the text is illegible.
 
 #### Do you want your children's books to always appear with synthetic spreads?
 
