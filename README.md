@@ -550,7 +550,7 @@ The following table outlines `rendition:spread` behaviour in Fixed Layout Read A
 | Android/FXL Read Along | "landscape"      | single page     | full spread       |
 
 
-Custom text colors for highlighting are not currently supported on Android. However, custom text colors for highlighting is possible on iOS. The iOS app uses the CSS class ‘kobo-smil-highlight’ to color highlighted text. So, by adding that class to the CSS plus a color declaration, the color of the highlighted text on the app can be customized.
+Custom text colors for highlighting are not currently supported on Android. However, custom text colors for highlighting is possible on iOS. The iOS app uses the CSS class `kobo-smil-highlight` to color highlighted text. So, by adding that class to the CSS plus a color declaration, the color of the highlighted text on the app can be customized.
 
 **SMIL for reflowable content** is supported on iOS but is not supported on the Android, EPD, Desktop or Windows platforms.
 
