@@ -89,7 +89,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 
 1. Connect the device to your computer via USB.
 2. Find the drive on your computer in Finder or Windows Explorer.
-3. Drag your EPUB onto the device. To trigger the Kobo WebKit, change the file extension to “.kepub.epub”. To trigger the Kobo WebKit for a Fixed Layout title, change the extension to “.fxl.kepub.epub”. (If the extension is left unchanged it will render using the Adobe Digital Editions WebKit. This is the default display engine for sideloaded content to enable bookmarking, searching and highlighting.)
+3. Drag your EPUB onto the device. To trigger the Kobo WebKit, change the file extension to `.kepub.epub`. To trigger the Kobo WebKit for a Fixed Layout title, change the extension to `.fxl.kepub.epub`. (If the extension is left unchanged it will render using the Adobe Digital Editions WebKit. This is the default display engine for sideloaded content to enable bookmarking, searching and highlighting.)
 4. Disconnect your device. The file will automatically appear in your library.
 
 *Sideloaded EPUBs with the ".fxl.kepub.epub" or ".kepub.epub" will disable bookmarking and note keeping. Thumbnails for covers may not display. Otherwise the reading experience and content display will be identical to how the file would display when loaded through the store. Leaving the extension as ".epub" will enable bookmarking and note keeping and will trigger the ADE display engine.*
@@ -99,7 +99,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 
 1. Open the Kobo Desktop app.
 2. Make sure you have [Adobe Digital Editions](http://www.adobe.com/ca/products/digital-editions/download.html) installed. If you do not wish to install ADE you can skip this step by creating a folder named "My Digital Editions" in your "My Documents" folder. On a Mac, the folder must be named "Digital Editions" instead.
-3. Select the My Books tab in Kobo Desktop and press CTRL+Shift+S on Windows or ⌘+SHIFT+S on a Mac. This will display any files in the “My Digital Editions” folder on your computer with the extension .epub
+3. Select the My Books tab in Kobo Desktop and press CTRL+Shift+S on Windows or ⌘+SHIFT+S on a Mac. This will display any files in the "My Digital Editions" folder on your computer with the extension .epub
 4. Any sideloaded books can be removed from the My Books tab by right clicking on the book and selecting "Remove Download".
 
 **Android**
@@ -108,7 +108,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 2. Find the drive on your computer in Windows Explorer. If you use a Mac, install and connect to the device using [Android File Transfer](http://www.android.com/filetransfer/).
 3. Drag your EPUB onto the device.
 4. If you use a Kobo Arc, navigate to the Books Collection. Otherwise, navigate to the Kobo App, then tap the side bar menu icon on the top left (the icon with the three horizontal bars vertically stacked) to bring out the sidebar. Then tap on either 'All' or 'All Items' based on your app version.
-5. Select options (the three dots on the top right) then “Import”.
+5. Select options (the three dots on the top right) then "Import".
 6. Once the files appear, confirm that you want to import them. They will display in your library.
 
 **iOS**
@@ -119,14 +119,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 4. Select the Kobo Books app from the Apps box in the iTunes window.
 5. Drag the EPUB to the Kobo Books Documents box in the iTunes window. If drag and drop functionality is not working then select the "Add File..." button and select the EPUB you want to add to the app. The file will then automatically import and display in your library. If it does not appear even after refreshing your library, closing the app and opening it again should cause the sideloaded titles to appear.
 
-(The Kobo iOS app is registered among apps that open EPUB and pdf files. Users can use the standard “open in…” menu from Safari, Dropbox, or any other app that supports it to view their files.)
-
-**Windows**
-
-1. Open the Kobo app, navigate to the Library and swipe up from the bottom of the screen.
-2. Select “import”.
-3. Select the files on the device that you want to import. (The Kobo app will scan all the files on your device that it can import. You may not be able to transfer files via USB depending on the specific Windows device and may need to transfer them by OneDrive, Dropbox, email or some other method instead.)
-4. Select “Open” and wait for the files to load into your library.
+(The Kobo iOS app is registered among apps that open EPUB and pdf files. Users can use the standard "open in…" menu from Safari, Dropbox, or any other app that supports it to view their files.)
 
 ### Digital Rights Management (DRM)
 
@@ -165,7 +158,7 @@ Covers should also be listed in the OPF metadata section. The metadata indicates
 Ex.
 OPF metadata:
 
-`<meta name=“cover” content=“cover-image”/>`
+`<meta name="cover" content="cover-image"/>`
 
 Manifest item listing:
 
@@ -371,9 +364,9 @@ TTF, OTF, and WOFF (v. 1.0) fonts are supported by all Kobo platforms.
 As of 2017 Kobo's reading platforms all support font obfuscation. This was not previously the case but Kobo's CMS can now process the embedded fonts and decryption keys and the fonts will display as intended on eInk, Desktop, Android, iOS and Windows.
 
 ### Embedded Fonts Can Be Selected By Users
-When opening a new book, the font that displays is the one chosen by the user for their previous open book. For an embedded font, users can select “Document Default” or “Publisher Default” from the font options. The exception is FXL content for which users cannot choose their font. Fonts in FXL content are determined by the CSS in the ePub.
+When opening a new book, the font that displays is the one chosen by the user for their previous open book. For an embedded font, users can select "Document Default" or "Publisher Default" from the font options. The exception is FXL content for which users cannot choose their font. Fonts in FXL content are determined by the CSS in the ePub.
 
-If the reading experience of a book requires that the embedded font be used, consider adding a note to the front matter. Instruct the user to select the “Publisher Default” font option.
+If the reading experience of a book requires that the embedded font be used, consider adding a note to the front matter. Instruct the user to select the "Publisher Default" font option.
 
 **To avoid text-positioning errors**, seriously consider embedding and specifying fonts in the CSS for all Fixed Layout ePubs. If fonts are not embedded and specified, the reading platform falls back to different default fonts depending on the system. This can lead to unexpected text reflow and element-sizing issues. Fixed Layout files that use the default fonts should be tested extensively on Kobo’s reading platforms.
 
@@ -449,7 +442,7 @@ Ex.
 **Warning: Hyperlinked content not using the `epub:type` attribute footnote or endnote will display as a pop-up on Kobo's iOS and eInk platforms in cases where all the following criteria are met.**
 
 1) The link references a location in the EPUB and also references a specific node within the HTML. Ex.
-<br>`<a href=“chapter.html#uniqueID”>link text</a>`<br>
+<br>`<a href="chapter.html#uniqueID">link text</a>`<br>
 Where chapter.html is a file within this EPUB and where uniqueID is the id of a node within that html document.
 
 2) The content in the node is nine characters or more once stripped of the HTML tags. Ex.
@@ -463,7 +456,7 @@ Where chapter.html is a file within this EPUB and where uniqueID is the id of a 
 
 Kobo supports the [official EPUB3 FXL spec](https://www.w3.org/publishing/epub3/epub-contentdocs.html#sec-fixed-layouts) on all platforms. This includes such features as [Right-to-Left Reading](https://www.w3.org/publishing/epub3/epub-packages.html#attrdef-spine-page-progression-direction), [SMIL read-along](https://www.w3.org/publishing/epub3/epub-mediaoverlays.html), and various page-spread options.
 
-In the `metadata` senction of the OPF, the value set in the [rendition:layout property](https://www.w3.org/publishing/epub3/epub-packages.html#layout) determines whether the content is fixed layout or reflowable. Fixed layout content should set this value to `pre-paginated`.
+In the `metadata` section of the OPF, the value set in the [rendition:layout property](https://www.w3.org/publishing/epub3/epub-packages.html#layout) determines whether the content is fixed layout or reflowable. Fixed layout content should set this value to `pre-paginated`.
 ```
 <meta property="rendition:layout">pre-paginated</meta>
 ```
@@ -757,7 +750,7 @@ Kobo often receives EPUBs where images are missing or fail to display within the
 
 To revise EPUBs with this issue:
 * If images are failing to display on all platforms:
-	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the EPUB could be called “image with spaces.jpg” and would be labelled `image&nbsp;with&nbsp;spaces.jpg` in the OPF file.
+	* Check that the image is being correctly referenced throughout the HTML, OPF and file name. Sometimes there is a slight discrepancy between the link and the name of the image; this results in the image link being broken. There may also be special characters or spaces in the filename resulting in a mismatch between how the file is named in the OPF. Reading systems may fail to identify images in these cases. Ex. The image in the EPUB could be called `image with spaces.jpg` and would be labelled `image&nbsp;with&nbsp;spaces.jpg` in the OPF file.
 * If images are failing to display specifically on the desktop platform:
 	* Check the code for the use of negatively positioned images.
 	* Check to see if you are scaling svg images. If you are using `transform` to shrink/expand the image at the `<g>` container level it may not display on the Desktop app and eInk devices at all. This issue is expanded on [here](https://github.com/kobolabs/epub-spec#scalable-vector-graphics-svg)
