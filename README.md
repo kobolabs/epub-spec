@@ -59,7 +59,7 @@ Any EPUB file sent to Kobo will be made available on all of Kobo's reading platf
 
 &#42;&#42;Fixed Layout content display on Sony Readers is dependent on the capabilities of Adobe SDK. As a result the display of Fixed Layout content may not always match the display across other Kobo reading platforms.
 
-The EPUB 3.2 spec is based on HTML5 and CSS3, adhering to the most recent versions. Content creators are advised to review the [HTML5 and CSS3 reference profiles](https://www.w3.org/publishing/epub3/epub-spec.html#references) because changes to them could impact file production.
+The EPUB 3.2 spec is based on HTML5 and CSS3, adhering to the most recent versions. Content creators are advised to review the [HTML5 and CSS3 reference profiles](https://www.w3.org/TR/epub-33/#references) because changes to them could impact file production.
 
 Kobo supports a subset of elements from the EPUB 3 spec. The following covers which elements are supported across Kobo’s reading platforms.
 
@@ -98,7 +98,7 @@ Here’s how to sideload content on Kobo's reading platforms:
 **Desktop**
 
 1. Open the Kobo Desktop app.
-2. Make sure you have [Adobe Digital Editions](http://www.adobe.com/ca/products/digital-editions/download.html) installed. If you do not wish to install ADE you can skip this step by creating a folder named "My Digital Editions" in your "My Documents" folder. On a Mac, the folder must be named "Digital Editions" instead.
+2. Make sure you have [Adobe Digital Editions](https://www.adobe.com/ca/products/digital-editions/download.html) installed. If you do not wish to install ADE you can skip this step by creating a folder named "My Digital Editions" in your "My Documents" folder. On a Mac, the folder must be named "Digital Editions" instead.
 3. Select the My Books tab in Kobo Desktop and press CTRL+Shift+S on Windows or ⌘+SHIFT+S on a Mac. This will display any files in the "My Digital Editions" folder on your computer with the extension .epub
 4. Any sideloaded books can be removed from the My Books tab by right clicking on the book and selecting "Remove Download".
 
@@ -131,7 +131,7 @@ At a minimum, Kobo employs encryption standards in the 128-bit version of the Ad
 
 ### Image Formatting
 
-Kobo reading platforms support the core image types outlined in the [W3C spec](https://www.w3.org/publishing/epub3/epub-spec.html#sec-core-media-types). This includes JPG, PNG and Scalable Vector Graphics (SVG). PNG files are preferred over JPG.
+Kobo reading platforms support the core image types outlined in the [W3C spec](https://www.w3.org/TR/epub-33/#sec-core-media-types). This includes JPG, PNG, Scalable Vector Graphics (SVG), and WebP. PNG files are preferred over JPG.
 
 All images should use the RGB color model, and not CMYK. Encapsulated PostScript (EPS) images are not supported on Kobo.
 
@@ -202,7 +202,7 @@ Kobo reading platforms populate the TOC menu using the `navMap` element of the N
 When an OPF `spine` item is not listed in the NCX, Kobo will create a listing for it using the filename or the opening words from the section. This listing will be displayed to the user in the TOC Menu across all reading platforms. This process may be removed in a future release. EPUB3 files, which use the EPUB navigation document, will not be impacted.
 
 #### For EPUB3
-Kobo platforms populate the table of contents with the items listed in the [toc nav element](https://www.w3.org/publishing/epub3/epub-packages.html#sec-package-nav) of the [EPUB navigation document](https://www.w3.org/publishing/epub3/epub-packages.html#sec-package-nav-def). The `toc nav` element is a `nav` element with an `epub:type` attribute that has been assigned the value `toc`.
+Kobo platforms populate the table of contents with the items listed in the [toc nav element](https://www.w3.org/TR/epub-33/#sec-nav-toc) of the [EPUB navigation document](https://www.w3.org/TR/epub-33/#sec-nav). The `toc nav` element is a `nav` element with an `epub:type` attribute that has been assigned the value `toc`.
 
 Example:
 ```
@@ -241,7 +241,7 @@ Kobo uses external metadata files to populate the various metadata fields on the
 
 The OPF file can be named however the content creator chooses ([filename].opf), but please note the file naming conventions suggested below.
 
-**Content creators are advised to use [tags for manifest items](https://www.w3.org/publishing/epub3/epub-packages.html#attrdef-properties)**, specifically the cover tag. Some of these are read across Kobo’s reading platforms and future developments will be able to take advantage of properly tagged items.
+**Content creators are advised to use [tags for manifest items](https://www.w3.org/TR/epub-33/#attrdef-properties)**, specifically the cover tag. Some of these are read across Kobo’s reading platforms and future developments will be able to take advantage of properly tagged items.
 
 **Special characters and spaces should not be used** for file names within an ePub. This can result in naming inconsistencies with the items listed in the OPF manifest. File names containing non-alphanumeric characters are not fully supported, and their use may lead to undefined behaviour, which may be inconsistent across clients.
 
@@ -416,7 +416,7 @@ Kobo has support for right-to-left language formatting in the following areas:
 * Kobo supports the writing-mode CSS3 property and associated elements for vertical text layouts (LTR or RTL)
 * Kobo supports the HTML5 dir attribute
 * Kobo supports ruby text*
-* * Kobo supports the OPF spine-level [`page-progression-direction`](https://www.w3.org/publishing/epub3/epub-packages.html#attrdef-spine-page-progression-direction) attribute for right-to-left page flow:
+* * Kobo supports the OPF spine-level [`page-progression-direction`](https://www.w3.org/TR/epub-33/#attrdef-spine-page-progression-direction) attribute for right-to-left page flow:
 
 ```
 <spine toc="ncx" page-progression-direction="rtl">
@@ -432,7 +432,7 @@ The `page-progression-direction` attribute was introduced as part of the EPUB3 s
 
 Footnotes and endnotes on the eInk (except for the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS, the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
 
-It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](https://www.w3.org/publishing/epub3/epub-contentdocs.html#sec-epub-type-attribute) for footnotes and endnotes (note: this markup is only valid in EPUB3 files and cannot be used in ePub2). This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform.
+It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](https://www.w3.org/TR/epub-33/#sec-epub-type-attribute) for footnotes and endnotes (note: this markup is only valid in EPUB3 files and cannot be used in ePub2). This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform.
 
 Ex.
 ```html
@@ -454,9 +454,9 @@ Where chapter.html is a file within this EPUB and where uniqueID is the id of a 
 
 ### Fixed Layout (FXL) Support
 
-Kobo supports the [official EPUB3 FXL spec](https://www.w3.org/publishing/epub3/epub-contentdocs.html#sec-fixed-layouts) on all platforms. This includes such features as [Right-to-Left Reading](https://www.w3.org/publishing/epub3/epub-packages.html#attrdef-spine-page-progression-direction), [SMIL read-along](https://www.w3.org/publishing/epub3/epub-mediaoverlays.html), and various page-spread options.
+Kobo supports the [official EPUB3 FXL spec](https://www.w3.org/TR/epub-33/#sec-fixed-layouts) on all platforms. This includes such features as [Right-to-Left Reading](https://www.w3.org/TR/epub-33/#attrdef-spine-page-progression-direction), [SMIL read-along](https://www.w3.org/TR/epub-33/#sec-media-overlays), and various page-spread options.
 
-In the `metadata` section of the OPF, the value set in the [rendition:layout property](https://www.w3.org/publishing/epub3/epub-packages.html#layout) determines whether the content is fixed layout or reflowable. Fixed layout content should set this value to `pre-paginated`.
+In the `metadata` section of the OPF, the value set in the [rendition:layout property](https://www.w3.org/TR/epub-33/#layout) determines whether the content is fixed layout or reflowable. Fixed layout content should set this value to `pre-paginated`.
 ```
 <meta property="rendition:layout">pre-paginated</meta>
 ```
@@ -465,7 +465,7 @@ Kobo platforms also read the field `<option name="fixed-layout">true/false</opti
 
 ### Synthetic Spreads
 
-A synthetic spread in a Fixed Layout EPUB is when two separate page files are rendered together on-screen. The [`rendition:spread` property](https://www.w3.org/publishing/epub3/epub-packages.html#spread) in the OPF determines when synthetic spreads will be rendered. Supplying a value to this property that is suitable for the content is an important step in making Fixed Layout content as legible as possible on smaller screens.
+A synthetic spread in a Fixed Layout EPUB is when two separate page files are rendered together on-screen. The [`rendition:spread` property](https://www.w3.org/TR/epub-33/#spread) in the OPF determines when synthetic spreads will be rendered. Supplying a value to this property that is suitable for the content is an important step in making Fixed Layout content as legible as possible on smaller screens.
 
 Usually, a synthetic spread is only desirable when a device is in landscape orientation because the spread can be rendered without scaling any pages down. In portrait orientation, it is often best to display a single page because it makes the greatest use of the available space. To achieve this optimal display as long as each file contains only a single page, use `auto` or `landscape` as the value for `rendition:spread`:
 
@@ -530,7 +530,7 @@ Content creators are advised against producing Fixed Layout EPUBs solely to repr
 
 ### Kobo Supports SMIL
 
-[SMIL (Synchronized Multimedia Integration Language)](https://www.w3.org/publishing/epub3/epub-mediaoverlays.html) is supported for FXL titles on Android and iOS. Audio files must be encoded using Apple iTunes AAC-LC mp4-v2 codec, 256 kbps.
+[SMIL (Synchronized Multimedia Integration Language)](https://www.w3.org/TR/SMIL3/) is supported for FXL titles on Android and iOS. Audio files must be encoded using Apple iTunes AAC-LC mp4-v2 codec, 256 kbps.
 
 Note: The Kobo Android platform **does not currently support**:
 
@@ -615,7 +615,7 @@ Testing across platforms for EPUBs with multimedia and other media overlays is r
 
 Embedded audio and video is currently supported on Kobo’s iOS and Android platforms for all content.
 
-Windows does not currently support embedded audio and video. Kobo eInk devices and the desktop app do not support embedded audio and video either but will display any content included as a fallback using the [switch element](https://www.w3.org/publishing/epub3/epub-contentdocs.html#sec-xhtml-content-switch) display instead. *NOTE: This functionality has been deprecated in EPUB3.2.*
+Windows does not currently support embedded audio and video. Kobo eInk devices and the desktop app do not support embedded audio and video either but will display any content included as a fallback using the [switch element](https://www.w3.org/TR/epub-33/#sec-xhtml-content-switch) display instead. *NOTE: This functionality has been deprecated in EPUB3.3.*
 
 **Autoplay Functionality is Not Currently Supported**
 
@@ -641,7 +641,7 @@ Kobo’s eInk and Desktop platforms have limited support for JavaScript, and do 
 
 **The navigator.epubReadingSystem Property**
 
-Note that <a href="https://www.w3.org/publishing/epub3/epub-contentdocs.html#app-epubReadingSystem">navigator.epubReadingSystem property</a> is only supported on Kobo's Desktop and eInk platforms and is not presently supported on iOS, Android or Windows. As a result EPUBs that need to query information about the user's reading system on three of Kobo's five reading platforms will be unable to. Any EPUBs that depend on this functionality to present readable content will not pass content QA.
+Note that <a href="https://www.w3.org/TR/epub-rs-33/#app-epubReadingSystem">navigator.epubReadingSystem property</a> is only supported on Kobo's Desktop and eInk platforms and is not presently supported on iOS, Android or Windows. As a result EPUBs that need to query information about the user's reading system on three of Kobo's five reading platforms will be unable to. Any EPUBs that depend on this functionality to present readable content will not pass content QA.
 
 **Disabling Menu Activation for Interactive Elements**
 
@@ -663,11 +663,11 @@ function handleTouch(event) {
 
 ### MathML Support
 
-[MathML](https://www.w3.org/publishing/epub3/epub-contentdocs.html#sec-xhtml-mathml) is currently supported on Kobo's iOS, Android, Desktop and eInk platforms. It is not currently supported on the Windows app for Desktop and mobile. It is recommended that content creators test their content across Android, iOS and Desktop prior to distribution to ensure that equations are displaying as intended.
+[MathML](https://www.w3.org/TR/epub-33/#sec-xhtml-mathml) is currently supported on Kobo's iOS, Android, Desktop and eInk platforms. It is not currently supported on the Windows app for Desktop and mobile. It is recommended that content creators test their content across Android, iOS and Desktop prior to distribution to ensure that equations are displaying as intended.
 
 ### Fallback Statements
 
-Any items listed in the manifest that are not [standard EPUB Content Documents](https://www.w3.org/publishing/epub3/epub-spec.html#sec-terminology) should be accompanied by fallback items. Extensive testing should be done across platforms whenever including non-core items in an ePub. More on the IDPF specification on manifest fallbacks can be found [here](https://www.w3.org/publishing/epub3/epub-packages.html#sec-foreign-restrictions-manifest).
+Any items listed in the manifest that are not [standard EPUB Content Documents](https://www.w3.org/TR/epub-33/#sec-contentdocs) should be accompanied by fallback items. Extensive testing should be done across platforms whenever including non-core items in an ePub. More on the W3C specification on manifest fallbacks can be found [here](https://www.w3.org/TR/epub-33/#sec-manifest-fallbacks).
 
 Example:
 ```
@@ -677,7 +677,7 @@ Example:
 </manifest>
 ```
 
-When embedding audio and video Kobo recommends using intrinsic fallbacks so that users reading on platforms that do not support embedded media (ex. eInk) can be directed to other platforms if they wish to access the content. More on IDPF specification on intrinsic fallbacks can be found [here](https://www.w3.org/publishing/epub3/epub-packages.html#sec-foreign-restrictions-manifest).
+When embedding audio and video Kobo recommends using intrinsic fallbacks so that users reading on platforms that do not support embedded media (ex. eInk) can be directed to other platforms if they wish to access the content. More on W3C specification on intrinsic fallbacks can be found [here](https://www.w3.org/TR/epub-33/#sec-intrinsic-fallbacks).
 
 ```html
 <audio controls="">
@@ -733,7 +733,7 @@ Sideloading content for testing purposes will allow you to see the issue first h
 
 **Running ePubCheck**
 
-Using an [EPUB validator](http://validator.idpf.org/) will help detect errors within the ePub. In some cases Kobo will be unable to investigate failed content until the file passes validation without raising any flags. There are EPUBs that will raise flags in ePubCheck that will successfully load and display on Kobo as well as files that will pass ePubCheck and still fail to display correctly on Kobo's platforms. However, files that pass ePubCheck are always less likely to produce display issues and those that do are much easier to diagnose. When display issues are produced by valid EPUBs that display correctly on other reading platforms Kobo will log bugs and attempt to resolve them for future releases.
+Using an [EPUB validator](https://www.w3.org/publishing/epubcheck/) will help detect errors within the ePub. In some cases Kobo will be unable to investigate failed content until the file passes validation without raising any flags. There are EPUBs that will raise flags in ePubCheck that will successfully load and display on Kobo as well as files that will pass ePubCheck and still fail to display correctly on Kobo's platforms. However, files that pass ePubCheck are always less likely to produce display issues and those that do are much easier to diagnose. When display issues are produced by valid EPUBs that display correctly on other reading platforms Kobo will log bugs and attempt to resolve them for future releases.
 
 ### Pixelated or Low-Resolution Images
 
@@ -782,7 +782,7 @@ To revise EPUBs with this issue:
 Common issues flagged in QA for books with Read-Along audio include audio stuttering, audio getting cut off before all the text on the page has been read, reading text that is not on the current page or not playing the audio track at all. More on Kobo's support of Read-Along can be found [here](https://github.com/kobolabs/epub-spec#multimedia-support--media-overlays).
 
 To revise EPUBs with these issues:
-* Ensure that you are using the SMIL format to enable Read-Along and that it conforms with the [specification](https://www.w3.org/TR/SMIL/)
+* Ensure that you are using the SMIL format to enable Read-Along and that it conforms with the [specification](https://www.w3.org/TR/SMIL3/)
 * Check the mimetype for your SMIL files in the OPF manifest. It should be application/smil+xml.
 * Play the embedded audio file and compare it to the times listed in the .smil files. The times listed in the .smil files should match the audio you want to hear for that page in the audio file.
 * If a page references multiple audio files or if the SMIL file references out of sequence points in the audio file (ex. it reads seconds 2-8, then 20-24, then 10-13) this may result in performance issues across reading platforms. You can improve performance by having each page only refer to one audio file and having that sequence of the audio match the sequence of the text being read.
@@ -795,7 +795,7 @@ Kobo often receives content with embedded audio that does not work on one or bot
 
 To revise EPUBs with these issues:
 * Ensure that the audio/video components are compatible with iOS and Android devices independent of the Kobo app by extracting the audio or video file and opening it in an app that will play the content. If it does not play the problem is likely the case that the file itself is not compatible with the Android or iOS platform.
-* Make sure you are using the [correct mimetype](http://www.iana.org/assignments/media-types/media-types.xhtml) for the audio/video file you’ve embedded.
+* Make sure you are using the [correct mimetype](https://www.w3.org/TR/epub-33/#sec-core-media-types) for the audio/video file you’ve embedded.
 * Unzip the EPUB and open the page containing the media in Chrome and Safari. If it doesn’t work on Safari it will not likely work on the Kobo iOS app and if it does not work in Chrome it will not likely work on the Kobo Android app. The display engines will not always be the same version but they will be very similar. If the media plays in the browser and when opened in a media app on the device but not the Kobo app we will log a ticket to support the media for a future release.
 * Check the media controls. If the reading system has been allowed to use its default media controls it will decrease the likelihood that the media will not play. If JavaScript is in use try to remove it without breaking the intended display of the content.
 * If you unable to get the media to play on both platforms contact the Content QA team for additional feedback.
