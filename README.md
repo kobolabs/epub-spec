@@ -51,15 +51,11 @@ What’s in this Document:
 
 ### EPUB Versions Kobo Supports
 
-Kobo supports ePub, the universal open standard eBook format maintained by the W3C EPUB3 Community Group [(W3C)](https://www.w3.org/publishing/epub3/epub-spec.html). The current version is EPUB 3 but Kobo still supports its predecessor, EPUB 2.0.1.
+Kobo supports EPUB, the universal open standard eBook format maintained by the W3C Publishing Maintenance Working Group [(W3C)](https://www.w3.org/groups/wg/pm/). The current version is EPUB 3 but Kobo still supports its predecessor, EPUB 2.0.1.
 
 Any EPUB file sent to Kobo will be made available on all of Kobo's reading platforms.
 
-&#42;The Kobo Vox and Blackberry apps both run older versions/ports of the Android app and will not be updated.
-
-&#42;&#42;Fixed Layout content display on Sony Readers is dependent on the capabilities of Adobe SDK. As a result the display of Fixed Layout content may not always match the display across other Kobo reading platforms.
-
-The EPUB 3.2 spec is based on HTML5 and CSS3, adhering to the most recent versions. Content creators are advised to review the [HTML5 and CSS3 reference profiles](https://www.w3.org/TR/epub-33/#references) because changes to them could impact file production.
+The EPUB 3.3 spec is based on HTML and CSS, adhering to the most recent versions. Content creators are advised to review the [HTML and CSS reference profiles](https://www.w3.org/TR/epub-33/#references) because changes to them could impact file production.
 
 Kobo supports a subset of elements from the EPUB 3 spec. The following covers which elements are supported across Kobo’s reading platforms.
 
@@ -67,17 +63,17 @@ Kobo supports a subset of elements from the EPUB 3 spec. The following covers wh
 
 ### Kobo Serves Content to Users on These 5 Reading Platforms
 
-1. eInk/EPD — Kobo eInk devices (Touch, Mini, Glo, H2O, Aura, Aura Edition 2, Aura H2O, Aura One, Clara HD, Forma)
+1. eInk/EPD — Kobo eInk devices
 2. Desktop — the Kobo desktop app for PC and Apple Computers
-3. Android — all Android devices running the Kobo app including all Kobo Arc versions
-4. iOS — iPad, iPhone and iPod Touch
-5. Windows — all tablets, smartphones and computers running Windows apps.
+3. Android — all Android devices running the Kobo app
+4. iOS — iPad and iPhone
+5. Web Reader - all major browsers 
 
 ### Kobo Recommends Initial EPUB Check
 
-The Kobo CMS runs incoming files through [EPUBCheck](https://github.com/w3c/epubcheck) version 4.2.4. If your EPUB raises failure messages that are known to prevent files from loading or displaying correctly you will receive an automated failure report indicating which files failed validation and why within two business days.
+The Kobo CMS runs incoming files through [EPUBCheck](https://github.com/w3c/epubcheck) version 4.2.6. If your EPUB raises failure messages that are known to prevent files from loading or displaying correctly you will receive an automated failure report indicating which files failed validation and why within two business days.
 
-Not all EPUBCheck flags will result in files failing upon ingestion but Kobo strongly recommends that only files that pass EPUBCheck without flags are distributed. EPUBs that raise warning flags may pass ingestion but still fail content QA if they produce display issues on Kobo's reading platforms.
+Not all EPUBCheck flags will result in files failing upon ingestion but Kobo strongly recommends that only files that pass EPUBCheck without flags should be distributed. EPUBs that raise warning flags may pass ingestion but still fail content QA if they produce display issues on Kobo's reading platforms.
 
 ### Sideloading for Testing Purposes
 
@@ -104,22 +100,14 @@ Here’s how to sideload content on Kobo's reading platforms:
 
 **Android**
 
-1. Connect the device to your computer via USB.
-2. Find the drive on your computer in Windows Explorer. If you use a Mac, install and connect to the device using [Android File Transfer](http://www.android.com/filetransfer/).
-3. Drag your EPUB onto the device.
-4. If you use a Kobo Arc, navigate to the Books Collection. Otherwise, navigate to the Kobo App, then tap the side bar menu icon on the top left (the icon with the three horizontal bars vertically stacked) to bring out the sidebar. Then tap on either 'All' or 'All Items' based on your app version.
-5. Select options (the three dots on the top right) then "Import".
-6. Once the files appear, confirm that you want to import them. They will display in your library.
+1. Download the EPUB file or make it accessible to your Android device via [QuickShare](https://www.android.com/better-together/quick-share-app/) or a file sharing service like Google Drive or DropBox. 
+2. [Check steps on device]
 
 **iOS**
 
-1. Connect the device to your computer with the iOS cable.
-2. Open iTunes and click the device's icon in the upper-left corner of iTunes.
-3. Select File Sharing from the Settings menu on the left.
-4. Select the Kobo Books app from the Apps box in the iTunes window.
-5. Drag the EPUB to the Kobo Books Documents box in the iTunes window. If drag and drop functionality is not working then select the "Add File..." button and select the EPUB you want to add to the app. The file will then automatically import and display in your library. If it does not appear even after refreshing your library, closing the app and opening it again should cause the sideloaded titles to appear.
-
-(The Kobo iOS app is registered among apps that open EPUB and pdf files. Users can use the standard "open in…" menu from Safari, Dropbox, or any other app that supports it to view their files.)
+1. Use iCloud file storage or another cloud storage method to make the EPUB file accessible on device. 
+2. Select the file, and use the "open in" option from the Share menu to select the Kobo Books app. 
+3. Open the Kobo iOS app and the file should appear in library. 
 
 ### Digital Rights Management (DRM)
 
@@ -135,8 +123,6 @@ Kobo reading platforms support the core image types outlined in the [W3C spec](h
 
 All images should use the RGB color model, and not CMYK. Encapsulated PostScript (EPS) images are not supported on Kobo.
 
-**The advised maximum size for all image types is 5 MB.** EPUBs with larger images are still accepted and those images will not cause Kobo apps and devices to crash. However, EPUBs with images all under this limit perform optimally across platforms.
-
 **Image dimensions should be set in percentages instead of pixels in the CSS for reflowable content.** Images with dimensions set by pixels may stretch depending on the orientation, device and user settings. Kobo reading platforms insert max-width and max-height CSS for images and videos to ensures that they are not split over multiple screens.
 
 **Images should not have transparent backgrounds.** This will result in the reading system inserting a default background color or pattern. Fixed Layout titles with where image backgrounds are transparent will fail QA in cases where the content is unreadable.
@@ -147,11 +133,11 @@ All images should use the RGB color model, and not CMYK. Encapsulated PostScript
 
 ### Cover Images
 
-If an external cover image is uploaded to both the Kobo system and the ePub, that external image displays as the thumbnail image in the store and in user’s libraries. The internal EPUB cover still displays when the user opens the file on their device. External cover images must have the ISBN in the filename ex. "9781234567890.jpg" or "9781234567890.png".
+If an external cover image is uploaded to both the Kobo system and the EPUB, that external image displays as the thumbnail image in the store and in user’s libraries. The internal EPUB cover still displays when the user opens the file on their device. External cover images must have the ISBN in the filename ex. "9781234567890.jpg" or "9781234567890.png".
 
 GIF files are not supported for covers.
 
-The suggested optimal ratio for covers on Kobo is 3:4 width:height. (The average size and dimensions for ebook covers in the Kobo store are 800:1224px width:height.) However covers in all dimensions will be rendered consistently across platforms. Content creators are advised to keep their cover images under 3MB. Larger covers will still render but will not improve the display of their content.
+The suggested optimal ratio for covers on Kobo is 3:4 width:height. (The average size and dimensions for ebook covers in the Kobo store are 800:1224px width:height.) However, covers in all dimensions will be rendered consistently across platforms. Larger covers will still render but will not improve the display of their content.
 
 Covers should also be listed in the OPF metadata section. The metadata indicates the cover by pointing to the ID of the cover file in the manifest. Kobo uses this tag to identify which image to display as a thumbnail within user's libraries across platforms.
 
@@ -174,7 +160,7 @@ Kobo advises against placing links in covers. This can create a poor reading exp
 
 Text, images and animations in SVG are supported on all Kobo reading platforms (performance on eInk is limited but the animations will function). Placing SVG items directly in the spine (as opposed to in XHTML files in the spine) is partially supported (Android and iOS) but is not recommended.
 
-**Scaling images may prevent them from displaying on eInk and Desktop.** Some ePubs will rotate and shrink images down to the size of a single pixel and then blow them back up to the intended view size. This will work on Android, iOS and Windows but on Desktop it results in the image either not displaying at all or only displaying as a single pixel.
+**Scaling images may prevent them from displaying on eInk and Desktop.** Some ePubs will rotate and shrink images down to the size of a single pixel and then blow them back up to the intended view size. This will work on Android and iOS but on Desktop it results in the image either not displaying at all or only displaying as a single pixel.
 
 Not supported:
 ```svg
@@ -324,20 +310,20 @@ A page break will occur whenever the reading system encounters a new html file. 
 Page-breaking CSS is only partially supported across Kobo's reading platforms. Support for page-breaking CSS is limited at this time becasue pagination isn't implemented in a way that supports its use across all of Kobo's reading platforms. Work is underway to add support for all platforms in future releases. Current support across all platforms is as follows:
 
 
-|Page Break Type| Windows | iOS | Android | EPD | KDA |
-|---------------|---------|-----|---------|-----|-----|
-| after:always  |    N    |  Y  |    Y    |  N  |  N  |
-| after:auto    |    N    |  N  |    N    |  N  |  N  |
-| after:avoid   |    N    |  Y  |    Y    |  N  |  N  |
-| after:left    |    N    |  Y  |    Y    |  N  |  N  |
-| after:right   |    N    |  Y  |    Y    |  N  |  N  |
-| before:auto   |    N    |  N  |    N    |  N  |  N  |
-| before:always |    N    |  Y  |    Y    |  N  |  N  |
-| before:avoid  |    N    |  Y  |    Y    |  N  |  N  |
-| before:left   |    N    |  Y  |    Y    |  N  |  N  |
-| before:right  |    N    |  Y  |    Y    |  N  |  N  |
-| inside:auto   |    N    |  N  |    N    |  N  |  N  |
-| inside:avoid  |    N    |  N  |    N    |  N  |  N  |
+|Page Break Type| iOS | Android | EPD | KDA |
+|---------------|-----|---------|-----|-----|
+| after:always  |  Y  |    Y    |  N  |  N  |
+| after:auto    |  N  |    N    |  N  |  N  |
+| after:avoid   |  Y  |    Y    |  N  |  N  |
+| after:left    |  Y  |    Y    |  N  |  N  |
+| after:right   |  Y  |    Y    |  N  |  N  |
+| before:auto   |  N  |    N    |  N  |  N  |
+| before:always |  Y  |    Y    |  N  |  N  |
+| before:avoid  |  Y  |    Y    |  N  |  N  |
+| before:left   |  Y  |    Y    |  N  |  N  |
+| before:right  |  Y  |    Y    |  N  |  N  |
+| inside:auto   |  N  |    N    |  N  |  N  |
+| inside:avoid  |  N  |    N    |  N  |  N  |
 
 **Setting Font Sizes**
 
@@ -357,7 +343,6 @@ TTF, OTF, and WOFF (v. 1.0) fonts are supported by all Kobo platforms.
 
 **iOS:** Avenir, Baskerville, Cochin, Georgia, Helvetica, Optima, Palatino, Trebuchet, Verdana.
 
-**Windows:** Cambria, Calibri, Georgia, SegoeUI, Times New Roman, Trebuchet MS, Verdana.
 
 ### Obfuscated Fonts Are Supported on all Reading Platforms
 
@@ -408,7 +393,7 @@ When a user selects an available default font, Kobo reading platforms may not co
 
 Some glyphs do not render on most fonts. In cases where creators are unable to supply embedded fonts they can insert a note into the front matter of their content instructing users to select the font Georgia. It correctly renders the greatest set of scripts.
 
-Kobo is currently working to add built-in fonts to the eInk and Android-reading platforms and render glyphs from all scripts correctly. The Desktop, iOS and Windows platforms already contain built-in fonts that will render glyphs from all scripts.
+Kobo is currently working to add built-in fonts to the eInk and Android reading platforms and render glyphs from all scripts correctly. The Desktop and iOS platforms already contain built-in fonts that will render glyphs from all scripts.
 
 ### Right to Left Page and Text Direction
 
@@ -432,7 +417,7 @@ The `page-progression-direction` attribute was introduced as part of the EPUB3 s
 
 Footnotes and endnotes on the eInk (except for the original Kobo reader and the Kobo Wi-Fi) and iOS platforms will display as a pop-up box containing the content being linked to. The pop-up boxes also contain links to the HTML sections containing the reference material. On iOS, the footnote pop-up will render more than just plain text, including images, links and other content in the footnote or endnote. On the Desktop, Android and Windows platforms users will not see a pop-up but can simply follow the link to HTML section with the reference text.
 
-It is strongly recommended that reference notes use the appropriate [ePub:type identifying attribute](https://www.w3.org/TR/epub-33/#sec-epub-type-attribute) for footnotes and endnotes (note: this markup is only valid in EPUB3 files and cannot be used in ePub2). This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform.
+It is strongly recommended that reference notes use the appropriate [epub:type identifying attribute](https://www.w3.org/TR/epub-33/#sec-epub-type-attribute) for footnotes and endnotes (note: this markup is only valid in EPUB3 files and cannot be used in ePub2). This attribute is currently supported on Kobo's iOS platform and its use is the best way to ensure that footnotes and endnotes will display as intended on iOS as well as future releases on other platforms. All links using the footnote or endnote attribute will display within a pop-up on Kobo's iOS platform.
 
 Ex.
 ```html
@@ -615,7 +600,6 @@ Testing across platforms for EPUBs with multimedia and other media overlays is r
 
 Embedded audio and video is currently supported on Kobo’s iOS and Android platforms for all content.
 
-Windows does not currently support embedded audio and video. Kobo eInk devices and the desktop app do not support embedded audio and video either but will display any content included as a fallback using the [switch element](https://www.w3.org/TR/epub-33/#sec-xhtml-content-switch) display instead. *NOTE: This functionality has been deprecated in EPUB3.3.*
 
 **Autoplay Functionality is Not Currently Supported**
 
@@ -641,7 +625,7 @@ Kobo’s eInk and Desktop platforms have limited support for JavaScript, and do 
 
 **The navigator.epubReadingSystem Property**
 
-Note that <a href="https://www.w3.org/TR/epub-rs-33/#app-epubReadingSystem">navigator.epubReadingSystem property</a> is only supported on Kobo's Desktop and eInk platforms and is not presently supported on iOS, Android or Windows. As a result EPUBs that need to query information about the user's reading system on three of Kobo's five reading platforms will be unable to. Any EPUBs that depend on this functionality to present readable content will not pass content QA.
+Note that <a href="https://www.w3.org/TR/epub-rs-33/#app-epubReadingSystem">navigator.epubReadingSystem property</a> is only supported on Kobo's Desktop and eInk platforms and is not presently supported on iOS or Android. As a result EPUBs that need to query information about the user's reading system on three of Kobo's five reading platforms will be unable to. Any EPUBs that depend on this functionality to present readable content will not pass content QA.
 
 **Disabling Menu Activation for Interactive Elements**
 
@@ -663,7 +647,7 @@ function handleTouch(event) {
 
 ### MathML Support
 
-[MathML](https://www.w3.org/TR/epub-33/#sec-xhtml-mathml) is currently supported on Kobo's iOS, Android, Desktop and eInk platforms. It is not currently supported on the Windows app for Desktop and mobile. It is recommended that content creators test their content across Android, iOS and Desktop prior to distribution to ensure that equations are displaying as intended.
+[MathML](https://www.w3.org/TR/epub-33/#sec-xhtml-mathml) is currently supported on Kobo's iOS, Android, Desktop and eInk platforms. It is recommended that content creators test their content across Android, iOS and Desktop prior to distribution to ensure that equations are displaying as intended.
 
 ### Fallback Statements
 
@@ -706,7 +690,6 @@ Sometimes tables wider than four columns may not be readable in reflowable EPUB 
 
 Kobo recommends the following limits for EPUB and EPUB component sizes. Files exceeding these limits should still load to the Kobo store and be accessible on all reading platforms but will take longer to download to users’ devices and will take up more memory. To ensure optimal performance content creators are advised against producing files that exceed these limits.
 
-* 5 MB/image in FXL and Reflowable ePubs
 * 10 MB of embedded content/each HTML file in an ePub
 * 3 800 000 pixels/viewport or ~1950x1950 in FXL EPUBs
 * 1 GB/ePub
@@ -721,7 +704,6 @@ The following table lists features supported by at least one Kobo platform but n
 | Desktop   | Y      | N    | N          | Y              | N           |
 | eInk      | Y      | N    | N          | Y              | N           |
 | iOS       | Y      | Y    | Y          | Y              | Y           |
-| Windows   | N      | N    | N          | N              | N           |
 
 ### Common QA Failure Issues
 
@@ -731,9 +713,9 @@ Kobo routinely reviews content and will remove titles from sale when display iss
 
 Sideloading content for testing purposes will allow you to see the issue first hand. This can also be used after fixes are applied, to verify that content is displaying as intended. Instructions for sideloading EPUBs to each of the different platforms can be found [here](https://github.com/kobolabs/epub-spec#sideloading-for-testing-purposes).
 
-**Running ePubCheck**
+**Running EPUBCheck**
 
-Using an [EPUB validator](https://www.w3.org/publishing/epubcheck/) will help detect errors within the ePub. In some cases Kobo will be unable to investigate failed content until the file passes validation without raising any flags. There are EPUBs that will raise flags in ePubCheck that will successfully load and display on Kobo as well as files that will pass ePubCheck and still fail to display correctly on Kobo's platforms. However, files that pass ePubCheck are always less likely to produce display issues and those that do are much easier to diagnose. When display issues are produced by valid EPUBs that display correctly on other reading platforms Kobo will log bugs and attempt to resolve them for future releases.
+Using an [EPUB validator](https://www.w3.org/publishing/epubcheck/) will help detect errors within the EPUB. In some cases Kobo will be unable to investigate failed content until the file passes validation without raising any flags. There are EPUBs that will raise flags in EPUBCheck that will successfully load and display on Kobo as well as files that will pass EPUBCheck and still fail to display correctly on Kobo's platforms. However, files that pass EPUBCheck are always less likely to produce display issues and those that do are much easier to diagnose. When display issues are produced by valid EPUBs that display correctly on other reading platforms Kobo will log bugs and attempt to resolve them for future releases.
 
 ### Pixelated or Low-Resolution Images
 
